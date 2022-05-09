@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const VideoList = () => {
-  return (
-    <div>VideoList</div>
-  )
+function VideoList() {
+  return <div>VideoList</div>;
 }
 
-export default VideoList
+export default VideoList;

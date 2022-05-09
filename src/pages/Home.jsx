@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const Home = () => {
-  return (
-    <div>YOUTUBE HOME</div>
-  )
+function Home() {
+  return <div>YOUTUBE HOME</div>;
 }
 
-export default Home
+export default Home;

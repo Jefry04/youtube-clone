@@ -1,14 +1,14 @@
-import React from 'react'
-import Header from './Header'
-import Sidebar from  "./Sidebar"
+import React from 'react';
+import Header from './Header';
+import Sidebar from './Sidebar';
 
-const Layout = () => {
+function Layout() {
   return (
     <>
       <Header />
       <Sidebar />
     </>
-  )
+  );
 }
 
-export default Layout
+export default Layout;
