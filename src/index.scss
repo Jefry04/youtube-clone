@@ -1,0 +1,10 @@
+/* Abstracts */
+@use './styles/abstract/variables';
+@use './styles/abstract/mixins';
+
+/* base */
+@use  './styles/base/reset';
+@use './styles/base/base';
+
+/* components */
+@use './styles/components/VideoList.scss';
