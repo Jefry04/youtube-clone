@@ -28,6 +28,7 @@ module.exports = {
   rules: {
     'prettier/prettier': RULES.ERROR,
     'arrow-body-style': RULES.OFF,
+    'react/prop-types': RULES.OFF,
     'react/function-component-definition': [
       RULES.ERROR,
       {
