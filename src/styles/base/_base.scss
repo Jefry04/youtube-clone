@@ -1,3 +1,15 @@
+.relative{
+  position: relative;
+}
+
+.fixed{
+  position: fixed;
+}
+
+.z-fixed{
+  z-index: var(--z-fixed);
+}
+
 .header {
   background-color: #ffffff;
   display: flex;
