@@ -1,12 +1,12 @@
-.relative{
+.relative {
   position: relative;
 }
 
-.fixed{
+.fixed {
   position: fixed;
 }
 
-.z-fixed{
+.z-fixed {
   z-index: var(--z-fixed);
 }
 
@@ -49,14 +49,15 @@
   display: flex;
   align-items: center;
   height: 20px;
-  transform: scale(0.6, 0.6);
+  margin-left: 15px;
+;
 
   @include tablet() {
-    transform: scale(1, 1);
+    margin-left: 0px;
   }
 
   @include desktop() {
-    transform: scale(1, 1);
+    margin-left: 0px;
   }
 }
 
@@ -74,49 +75,46 @@
 
 .group__hamburger {
   display: flex;
-  transform: scale(0.6, 0.6);
-
-  @include tablet() {
-    transform: scale(1, 1);
-  }
-
-  @include desktop() {
-    transform: scale(1, 1);
-  }
 }
 
 .header__search {
   display: flex;
+  justify-content: flex-end;
   width: 685px;
-  height: 40px;
-  transform: scale(0.6, 0.6);
 
   @include tablet() {
     margin: 10px;
-    transform: scale(1, 1);
+    justify-content: none;
+    height: 40px;
+
   }
 
   @include desktop() {
     margin: 40px;
-    transform: scale(1, 1);
+    justify-content: none;
+    height: 40px;
   }
 }
 
 .header__user {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  width: 242px;
-  height: 40px;
-  transform: scale(0.6, 0.6);
+  margin-right: 10px;
+  
 
   @include tablet() {
     margin: 10px;
-    transform: scale(1, 1);
+    justify-content: flex-end;
+    width: 242px;
+    height: 40px;
+    margin-right: 0;
   }
 
   @include desktop() {
     margin: 40px;
-    transform: scale(1, 1);
+    justify-content: flex-end;
+    width: 242px;
+    height: 40px;
+    margin-right: 0;
   }
 }

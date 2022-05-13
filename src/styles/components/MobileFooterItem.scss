@@ -1,4 +1,4 @@
-.mobile-footer__item{
+.mobile-footer__item {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -6,14 +6,14 @@
   align-items: center;
 }
 
-.mobile-footer__item__icon{
+.mobile-footer__item__icon {
   display: flex;
   align-items: center;
   width: 24px;
   height: 24px;
 }
 
-.mobile-footer__item__content{
+.mobile-footer__item__content {
   color: var(--text-paragrap);
   font-size: 11px;
 }
