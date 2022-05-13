@@ -1,9 +1,10 @@
 import React from 'react';
 import MobileFooterItem from './MobileFooterItem';
-import HomeIcon from './icons/HomeIcon';
-import ShortsIcon from './icons/ShortsIcon';
-import SubscriptionsIcon from './icons/SubscriptionsIcon';
-import LibraryIcon from './icons/LibraryIcon';
+import HomeIcon from '../assets/icons/HomeIcon';
+import ShortsIcon from '../assets/icons/ShortsIcon';
+import SubscriptionsIcon from '../assets/icons/SubscriptionsIcon';
+import LibraryIcon from '../assets/icons/LibraryIcon';
+import '../styles/components/MobileFooter.scss';
 
 function MobileFooter() {
   return (
