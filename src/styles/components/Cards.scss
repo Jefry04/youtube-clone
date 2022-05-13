@@ -1,16 +1,45 @@
 
 .card__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+   @include tablet{
     margin: 10px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+   }
+
+   @include desktop{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+   }
+
   }
+
   .card {
-    margin-left: 15px;
-    margin-bottom: 15px;
-    width: 276px;
+    width: 70%;
     display: flex;
     flex-direction: column;
+
+    @include tabletAndDesktop {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+
+  .card__video {
+    width: 100%;
+
+    img {
+      display: block;
+    }
   }
   
   .card__body {

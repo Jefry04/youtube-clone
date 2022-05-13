@@ -1,7 +1,6 @@
 import React from 'react';
-import '../styles/components/Filters.scss';
 
-const BottonFilters = ({ filtersName = [] }) => {
+const ButtonFilters = ({ filtersName = [] }) => {
   return (
     <div className="filter">
       {filtersName.map((filter) => (
@@ -13,4 +12,4 @@ const BottonFilters = ({ filtersName = [] }) => {
   );
 };
 
-export default BottonFilters;
+export default ButtonFilters;
