@@ -1,0 +1,50 @@
+
+.card__container {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .card {
+    margin-left: 15px;
+    margin-bottom: 15px;
+    width: 276px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card__body {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    margin-top: 12px;
+  }
+  .card__avatar {
+    margin-right: 12px;
+  }
+  .card__text {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card__name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .card__name img {
+    margin-left: 10px;
+    margin-top: 7px;
+  }
+  
+  .card__text h3 {
+    font-size: 16px;
+    margin: 0px;
+  }
+  .card__text span {
+    color: var(--text-paragrap-2);
+    margin-top: 5px;
+    font-size: 14px;
+  }

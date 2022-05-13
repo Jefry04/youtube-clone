@@ -1,0 +1,78 @@
+[
+    {
+      "name": "MichelleVar",
+      "title": "Esquiando en Dubai",
+      "videoSrc": "../images/video3.png",
+      "avatarSrc": "images/imagenPerfil.png",
+      "checkSrc": "images/Vector.png",
+      "visitas": "1 M de visitas en 15 horas"
+    },
+    {
+      "name": "Annete Black",
+      "title": "Impressive Buildings",
+      "videoSrc": "images/impressive.png",
+      "avatarSrc": "images/unsplash_XttWKETqCCQ.png",
+      "checkSrc": "images/Vector.png",
+      "visitas": "3 M de visitas en 10 dias"
+    },
+    {
+      "name": "Jefferson Vasquez",
+      "title": "Animales salvajes",
+      "videoSrc": "images/video3.png",
+      "avatarSrc": "images/perfil3.png",
+      "checkSrc": "images/Vector.png",
+      "visitas": "2K de visitas en 20 dias",
+      "tiempo": "15 horas"
+    },
+    {
+      "name": "Anderson Uribe",
+      "title": "Planetas",
+      "videoSrc": "images/video4.png",
+      "avatarSrc": "images/perfil4.png",
+      "checkSrc": "images/Vector.png",
+      "visitas": "2K de visitas en 20 dias",
+      "tiempo": "15 horas"
+    },
+    {
+      "name": "Andres Zuñiga",
+      "title": "travel adventure",
+      "videoSrc": "images/video5.png",
+      "avatarSrc": "images/perfil5.png",
+      "checkSrc": "images/Vector.png",
+      "visitas": "3 M de visitas en 10 dias"
+    },
+    {
+      "name": "Jefferson ",
+      "title": "Otro Titulo",
+      "videoSrc": "images/video6.png",
+      "avatarSrc": "images/perfil6.png",
+      "checkSrc": "images/Vector.png",
+      "visitas": "2K de visitas en 20 dias",
+      "tiempo": "15 horas"
+    },
+    {
+      "name": "Andres Zuñiga",
+      "title": "travel adventure",
+      "videoSrc": "images/video5.png",
+      "avatarSrc": "images/perfil5.png",
+      "checkSrc": "images/Vector.png",
+      "visitas": "3 M de visitas en 10 dias"
+    },
+    {
+      "name": "Annete Black",
+      "title": "Impressive Buildings",
+      "videoSrc": "images/impressive.png",
+      "avatarSrc": "images/unsplash_XttWKETqCCQ.png",
+      "checkSrc": "images/Vector.png",
+      "visitas": "3 M de visitas en 10 dias"
+    },
+    {
+      "name": "Jefferson Vasquez",
+      "title": "Animales salvajes",
+      "videoSrc": "images/video3.png",
+      "avatarSrc": "images/perfil3.png",
+      "checkSrc": "images/Vector.png",
+      "visitas": "2K de visitas en 20 dias",
+      "tiempo": "15 horas"
+    }
+  ]
