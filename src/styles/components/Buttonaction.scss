@@ -1,0 +1,138 @@
+@import '../abstract/mixins';
+
+.header__search__button {
+  display: flex;
+  width: 64px;
+  height: 40px;
+  background: #ffffff;
+  border: none;
+  align-items: center;
+  justify-content: center;
+
+  @include tablet() {
+    background: #f0f0f0;
+    border: 1px solid #c6c6c6;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @include desktop() {
+    background: #f0f0f0;
+    border: 1px solid #c6c6c6;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.header__voice {
+  display: none;
+  width: 40px;
+  height: 40px;
+  background: #f9f9f9;
+  border-radius: 100%;
+  border: #f9f9f9;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+
+  @include tablet() {
+    display: flex;
+  }
+
+  @include desktop() {
+    display: flex;
+  }
+}
+
+.header__hamburger {
+  display: none;
+  align-items: center;
+  height: 100%;
+  border: none;
+  background-color: #ffffff;
+
+  @include tablet() {
+    display: flex;
+  }
+
+  @include desktop() {
+    display: flex;
+  }
+}
+
+.header__apps {
+  display: none;
+  width: 24px;
+  height: 24px;
+  background-color: #ffffff;
+  border: none;
+  align-items: center;
+  border: none;
+
+  @include tablet() {
+    display: flex;
+  }
+
+  @include desktop() {
+    display: flex;
+  }
+}
+
+.header__options {
+  display: none;
+  width: 24px;
+  height: 24px;
+  margin: 0px 16px;
+  align-items: center;
+  background-color: #ffffff;
+  border: none;
+
+  @include tablet() {
+    display: flex;
+  }
+
+  @include desktop() {
+    display: flex;
+  }
+}
+
+.header__conect {
+  display: flex;
+  font-size: 0px;
+  border: none;
+  background-color: #ffffff;
+
+  @include tablet() {
+    display: flex;
+    width: 162px;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    height: 40px;
+    color: #065fd4;
+    margin: 0px 10px;
+    padding: 8px 11px;
+    border: 1px solid #065fd4;
+    border-radius: 2px;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  @include desktop() {
+    display: flex;
+    width: 162px;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    height: 40px;
+    color: #065fd4;
+    margin: 0px 10px;
+    padding: 8px 11px;
+    border: 1px solid #065fd4;
+    border-radius: 2px;
+    justify-content: space-around;
+    align-items: center;
+  }
+}

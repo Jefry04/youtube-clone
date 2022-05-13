@@ -1,12 +1,18 @@
 :root {
-    font-family: "Roboto", sans-serif;
-    --text-paragrap: #030303;
-    --text-paragrap-2: #606060;
-    --text-link: #174ea6;
-    --connect-btn: #065fd4;
-    --logo-bg: #ff0000;
-    --filter-bg-1: #0000001a;
-    --filter-bg-2: #0f0e0e0d;
-    --filter-bg-3: #333333;
-    --header-height: 60px;
-  }
+  font-family: 'Roboto', sans-serif;
+  --text-paragrap: #030303;
+  --text-paragrap-2: #606060;
+  --text-link: #174ea6;
+  --connect-btn: #065fd4;
+  --logo-bg: #ff0000;
+  --filter-bg-1: #0000001a;
+  --filter-bg-2: #0f0e0e0d;
+  --filter-bg-3: #333333;
+  --header-height: 60px;
+  --z-back: -1;
+  --z-normal: 0;
+  --z-tooltip: 10;
+  --z-fixed: 40;
+  --z-modal: 50;
+  --footer-height: 50px;
+}

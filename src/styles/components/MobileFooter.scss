@@ -1,0 +1,16 @@
+@import '../abstract/mixins';
+
+.mobile-footer {
+  display: flex;
+  bottom: 0;
+  width: 100%;
+  height: var(--footer-height);
+  justify-content: space-evenly;
+  align-items: center;
+  border-top: 1px solid var(--text-paragrap-2);
+  background-color: white;
+
+  @include tabletAndDesktop() {
+    display: none;
+  }
+}
