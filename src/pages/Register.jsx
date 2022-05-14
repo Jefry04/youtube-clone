@@ -5,7 +5,7 @@ import Icono from '../images/brand/icon.png';
 import Letter from '../images/brand/letter.png';
 import '../styles/components/Login.scss';
 
-function Login() {
+function Register() {
   return (
     <main className="register__container">
       <form className="form">
@@ -14,9 +14,19 @@ function Login() {
             <img src={Icono} alt="logoYoutube" className="brand__icon" />
             <img src={Letter} alt="letterYoutube" className="brand__letter" />
           </div>
-          <p className="form__subtitle"> Login </p>
+          <p className="form__subtitle"> Crea tu cuenta </p>
         </header>
         <div className="form__content">
+          <ImputForm
+            classinput="text"
+            forminput="Login"
+            placeholder="First name"
+          />
+          <ImputForm
+            classinput="text"
+            forminput="Login"
+            placeholder="Last name"
+          />
           <ImputForm
             classinput="email"
             forminput="Login"
@@ -27,12 +37,16 @@ function Login() {
             classinput="password"
             forminput="Login"
             placeholder="password"
-            secondforminput="--span"
+          />
+          <ImputForm
+            classinput="password"
+            forminput="Login"
+            placeholder="Confirm pasword"
           />
         </div>
         <div className="form__footer">
           <a href=";" className="form__link">
-            Olvidaste la contraseña
+            Login si tienes cuenta
           </a>
           <Buttonaction nameButton="form__login" wordkey="Next" />
         </div>
@@ -41,4 +55,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

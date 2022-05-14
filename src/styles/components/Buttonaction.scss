@@ -101,6 +101,7 @@
   font-size: 0px;
   border: none;
   background-color: #ffffff;
+  margin: 0px 5px;
 
   @include tablet() {
     display: flex;

@@ -50,8 +50,6 @@
   align-items: center;
   height: 20px;
   margin-left: 15px;
-;
-
   @include tablet() {
     margin-left: 0px;
   }
@@ -86,7 +84,6 @@
     margin: 10px;
     justify-content: none;
     height: 40px;
-
   }
 
   @include desktop() {
@@ -100,7 +97,6 @@
   display: flex;
   align-items: center;
   margin-right: 10px;
-  
 
   @include tablet() {
     margin: 10px;
