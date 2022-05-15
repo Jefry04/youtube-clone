@@ -3,13 +3,16 @@ import React from 'react';
 const LibraryIcon = () => {
   return (
     <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      enableBackground="new 0 0 24 24"
-      height="24"
-      viewBox="0 0 24 24"
-      width="24"
     >
-      <path d="M11,7l6,3.5L11,14V7L11,7z M18,20H4V6H3v15h15V20z M21,18H6V3h15V18z M7,17h13V4H7V17z" />
+      <path
+        d="M8 4L14 7.5L8 11V4ZM15 17H1V3H0V18H15V17ZM18 15H3V0H18V15ZM4 14H17V1H4V14Z"
+        fill="black"
+      />
     </svg>
   );
 };

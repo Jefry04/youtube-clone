@@ -2,12 +2,18 @@ import React from 'react';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import MobileFooter from '../MobileFooter';
+import '../../styles/components/Layout/Layout.scss';
 
-function Layout() {
+function Layout(props) {
+  const { children } = props;
+
   return (
-    <div className="relative">
+    <div className="layout">
       <Header />
-      <Sidebar />
+      <div className="layout__container">
+        <Sidebar />
+        <main className="layout__content">{children}</main>
+      </div>
       <MobileFooter />
     </div>
   );

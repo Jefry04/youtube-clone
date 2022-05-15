@@ -19,7 +19,8 @@
   left: 0px;
   right: 0px;
   top: 0px;
-  height: 60px;
+  height: var(--header-height);
+  z-index: var(--z-fixed);
 
   @include tablet() {
     padding: 0px 16px;

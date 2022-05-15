@@ -101,11 +101,10 @@
   font-size: 0px;
   border: none;
   background-color: #ffffff;
-  margin: 0px 5px;
 
   @include tablet() {
     display: flex;
-    width: 162px;
+    width: 100%;
     font-size: 14px;
     line-height: 16px;
     letter-spacing: 0.5px;
@@ -122,14 +121,13 @@
 
   @include desktop() {
     display: flex;
-    width: 162px;
+    width: 100%;
     font-size: 14px;
     line-height: 16px;
     letter-spacing: 0.5px;
     font-weight: bold;
     height: 40px;
     color: #065fd4;
-    margin: 0px 10px;
     padding: 8px 11px;
     border: 1px solid #065fd4;
     border-radius: 2px;
