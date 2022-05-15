@@ -5,7 +5,7 @@ import Layout from '../components/Layout/Layout';
 function Home() {
   return (
     <Layout>
-      <VideoList />;
+      <VideoList />
     </Layout>
   );
 }

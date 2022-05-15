@@ -3,15 +3,13 @@ import React from 'react';
 const HomeIcon = () => {
   return (
     <svg
+      width="16px"
+      height="18px"
+      viewBox="0 0 16 18"
+      fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      enableBackground="new 0 0 24 24"
-      height="24"
-      viewBox="0 0 24 24"
-      width="24"
     >
-      <g>
-        <path d="M4,21V10.08l8-6.96l8,6.96V21h-6v-6h-4v6H4z" />
-      </g>
+      <path d="M0 7V18H6V12H10V18H16V7L8 0L0 7Z" fill="black" />
     </svg>
   );
 };
