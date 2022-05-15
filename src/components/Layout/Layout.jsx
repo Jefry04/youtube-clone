@@ -3,11 +3,16 @@ import Header from './Header';
 import Sidebar from './Sidebar';
 import MobileFooter from '../MobileFooter';
 
-function Layout() {
+function Layout(props) {
+  const { children } = props;
+
   return (
     <div className="relative">
       <Header />
-      <Sidebar />
+      <div className="layout__container">
+        <Sidebar />
+        <main>{children}</main>
+      </div>
       <MobileFooter />
     </div>
   );
