@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  gap: 8px;
 
   @include tablet {
     margin: 10px;

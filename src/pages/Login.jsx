@@ -1,5 +1,5 @@
 import React from 'react';
-import Buttonaction from '../components/Buttonaction';
+import Buttonaction from '../components/ButtonAction';
 import ImputForm from '../components/ImputForm';
 import Icono from '../images/brand/icon.png';
 import Letter from '../images/brand/letter.png';
@@ -7,8 +7,8 @@ import '../styles/components/Login.scss';
 
 function Login() {
   return (
-    <main className="register__container">
-      <form className="form">
+    <main>
+      <form>
         <header>
           <div className="form__header">
             <img src={Icono} alt="logoYoutube" className="brand__icon" />
