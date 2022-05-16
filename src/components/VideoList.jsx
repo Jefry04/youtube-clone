@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Cards from './Cards';
-import ButtonFilters from './ButtonFilters';
+import ButtonAction from './ButtonAction';
 
 const fetchData = async () => {
   try {
@@ -35,7 +35,17 @@ function VideoList() {
 
   return (
     <>
-      <ButtonFilters filtersName={filtersName} />
+      <div className="filter">
+        <div className="filter__container">
+          {filtersName.map((filter) => (
+            <ButtonAction
+              key={filter.id}
+              wordkey={filter.filterName}
+              nameButton="filter__button"
+            />
+          ))}
+        </div>
+      </div>
       <Cards data={cardData} />
     </>
   );

@@ -4,7 +4,7 @@ import React from 'react';
 import '../../styles/components/Layout/Sidebar.scss';
 import SidebarSection from './SidebarSection';
 import SidebarTab from './SidebarTab';
-import Buttonaction from '../Buttonaction';
+import Buttonaction from '../ButtonAction';
 
 import HomeIcon from '../../assets/icons/HomeIcon';
 import ExplorerIcon from '../../assets/icons/ExplorerIcon';

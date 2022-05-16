@@ -1,15 +1,15 @@
 import React from 'react';
 import '../styles/components/Buttonaction.scss';
 
-function Buttonaction(props) {
-  const { svg, nameButton, wordkey } = props;
+function ButtonAction(props) {
+  const { svg, nameButton, wordkey, handleClick } = props;
 
   return (
-    <button type="button" className={`${nameButton}`}>
+    <button type="button" className={`${nameButton}`} onClick={handleClick}>
       {svg}
       {wordkey}
     </button>
   );
 }
 
-export default Buttonaction;
+export default ButtonAction;
