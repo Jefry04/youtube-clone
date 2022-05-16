@@ -40,8 +40,8 @@ function VideoList() {
           {filtersName.map((filter) => (
             <ButtonAction
               key={filter.id}
-              wordkey={filter.filterName}
-              nameButton="filter__button"
+              content={filter.filterName}
+              classname="filter__button"
             />
           ))}
         </div>

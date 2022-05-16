@@ -28,7 +28,7 @@ function Header() {
       <nav className="header">
         <div className="header__group">
           <div className="group__hamburger">
-            <Buttonaction nameButton="header__hamburger" svg={<BarsIcon />} />
+            <Buttonaction classname="header__hamburger" svg={<BarsIcon />} />
           </div>
           <div className="hamburger__logo">
             <img
@@ -46,20 +46,20 @@ function Header() {
         <div className="header__search">
           <SearchHeader />
           <Buttonaction
-            nameButton="header__search__button"
+            classname="header__search__button"
             svg={<SearchIcon />}
           />
-          <Buttonaction nameButton="header__voice" svg={<VoiceIcon />} />
+          <Buttonaction classname="header__voice" svg={<VoiceIcon />} />
         </div>
         <div className="header__user">
-          <Buttonaction nameButton="header__apps" svg={<AppsIcon />} />
+          <Buttonaction classname="header__apps" svg={<AppsIcon />} />
           <Buttonaction
-            nameButton="header__options"
+            classname="header__options"
             svg={<VerticalDotsIcon />}
           />
           <Buttonaction
-            nameButton="header__conect"
-            wordkey="REGISTRARSE"
+            classname="header__conect"
+            content="REGISTRARSE"
             svg={<UserIcon />}
             handleClick={handleRegister}
           />

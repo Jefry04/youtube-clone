@@ -2,12 +2,16 @@ import React from 'react';
 import '../styles/components/Buttonaction.scss';
 
 function ButtonAction(props) {
-  const { svg, nameButton, wordkey, handleClick } = props;
+  const { svg, isSubmit, classname, content, handleClick } = props;
 
   return (
-    <button type="button" className={`${nameButton}`} onClick={handleClick}>
+    <button
+      type={isSubmit ? 'submit' : 'button'}
+      className={`${classname}`}
+      onClick={handleClick}
+    >
       {svg}
-      {wordkey}
+      {content}
     </button>
   );
 }
