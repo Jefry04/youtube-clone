@@ -1,50 +1,50 @@
 [
-    {
-      "id":1,
-      "filterName":"Dua Lipa"
-    },
-    {
-      "id":2,
-      "filterName":"Deep House"
-    },
-    {
-      "id":3,
-      "filterName":"Harry Styles"
-    },
-    {
-      "id":4,
-      "filterName":"Harry Styles"
-    },
-    {
-      "id":5,
-      "filterName":"Harry Styles"
-    },
-    {
-      "id":6,
-      "filterName":"Linkin Park"
-    },
-    {
-      "id":7,
-      "filterName":"Linkin Park"
-    },
-    {
-      "id":8,
-      "filterName":"Blink"
-    },
-    {
-      "id":9,
-      "filterName":"Superman"
-    },
-    {
-      "id":10,
-      "filterName":"Blink"
-    },
-    {
-      "id":11,
-      "filterName":"Superman"
-    },
-    {
-      "id":12,
-      "filterName":"Madona"
-    }
-  ] 
+  {
+    "id": 1,
+    "filterName": "Dua Lipa"
+  },
+  {
+    "id": 2,
+    "filterName": "Deep House"
+  },
+  {
+    "id": 3,
+    "filterName": "Harry Styles"
+  },
+  {
+    "id": 4,
+    "filterName": "Harry Styles"
+  },
+  {
+    "id": 5,
+    "filterName": "Harry Styles"
+  },
+  {
+    "id": 6,
+    "filterName": "Linkin Park"
+  },
+  {
+    "id": 7,
+    "filterName": "Linkin Park"
+  },
+  {
+    "id": 8,
+    "filterName": "Blink"
+  },
+  {
+    "id": 9,
+    "filterName": "Superman"
+  },
+  {
+    "id": 10,
+    "filterName": "Blink"
+  },
+  {
+    "id": 11,
+    "filterName": "Superman"
+  },
+  {
+    "id": 12,
+    "filterName": "Madona"
+  }
+]

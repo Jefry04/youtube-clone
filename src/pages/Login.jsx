@@ -34,7 +34,7 @@ function Login() {
           <a href=";" className="form__link">
             Olvidaste la contraseña
           </a>
-          <Buttonaction nameButton="form__login" wordkey="Next" />
+          <Buttonaction className="btn-action--form" content="Next" />
         </div>
       </form>
     </main>
