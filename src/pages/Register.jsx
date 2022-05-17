@@ -62,7 +62,7 @@ function Register() {
             <button type="button" className="form__link" onClick={handleLogin}>
               Login si tienes cuenta
             </button>
-            <Buttonaction nameButton="form__login" wordkey="Next" />
+            <Buttonaction className="btn-action--form" wordkey="Next" />
           </div>
         </form>
       </main>

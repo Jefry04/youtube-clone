@@ -120,3 +120,14 @@
   border-radius: 100px;
   white-space: nowrap;
 }
+
+.btn-action--form{
+  justify-content: center;
+  width: 30%;
+  padding: 6px 10px;
+  margin: 0px 10px;
+  border: 1px solid var(--text-link);
+  border-radius: 2px;
+  color: white;
+  background-color: var(--text-link);
+}
