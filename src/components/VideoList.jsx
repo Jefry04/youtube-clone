@@ -41,7 +41,7 @@ function VideoList() {
             <ButtonAction
               key={filter.id}
               content={filter.filterName}
-              classname="filter__button"
+              className="btn-action--filter"
             />
           ))}
         </div>

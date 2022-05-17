@@ -46,9 +46,9 @@ function Sidebar() {
         <SidebarSection description='Connectez-vous à YouTube pour cliquer sur "J&apos;aime", ajouter un commentaire et vous abonner.'>
           <div className="sidebar__actions">
             <Buttonaction
-              classname="header__conect"
-              content="ACCEDER"
-              svg={<UserIcon />}
+              className="btn-action--login"
+              content="REGISTRARSE"
+              prependIcon={<UserIcon />}
             />
           </div>
         </SidebarSection>

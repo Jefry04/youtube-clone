@@ -14,21 +14,4 @@
     justify-content: space-evenly;
   }
 
-  .filter__button {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 6px;
-    margin-right: 12px;
-    color: var(--filter-bg-3);
-    border: solid var(--filter-bg-1) 1px;
-    background-color: var(--filter-bg-1);
-    border-radius: 100px;
-    white-space: nowrap;
-  }
-  
 }
-
-
-
