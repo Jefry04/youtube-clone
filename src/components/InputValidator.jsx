@@ -35,7 +35,7 @@ function InputValidator({
         onBlur={handleFocus}
         focused={focused.toString()}
       />
-      <span className="input_error-msg">{errorMessage}</span>
+      <span className="input_error">{errorMessage}</span>
     </div>
   );
 }

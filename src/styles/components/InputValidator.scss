@@ -1,4 +1,4 @@
-.input_error-msg {
+.input_error {
   font-size: 12px;
   padding: 3px;
   color: red;
@@ -9,6 +9,6 @@ input:invalid[focused='true'] {
   border: 1px solid red;
 }
 
-input:invalid[focused='true'] ~ .input_error-msg {
+input:invalid[focused='true'] ~ .input_error {
   display: block;
 }
