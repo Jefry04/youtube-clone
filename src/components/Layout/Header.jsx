@@ -3,7 +3,7 @@ import iconoYoutube from '../../images/brand/icon.png';
 import letterYoutube from '../../images/brand/letter.png';
 import Buttonaction from '../ButtonAction';
 import SearchHeader from '../SearchHeader';
-import Register from '../../pages/Register';
+import Register from '../Register';
 
 import UserIcon from '../../assets/icons/UserIcon';
 import BarsIcon from '../../assets/icons/BarsIcon';
