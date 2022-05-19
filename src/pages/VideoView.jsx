@@ -1,14 +1,14 @@
 import React from 'react';
-import EnbeddedVideo from '../components/EmbeddedVideo';
+import EmbeddedVideo from '../components/EmbeddedVideo';
 
-const VideoShow = () => {
+const VideoView = () => {
   return (
     <div className="video__container">
-      <EnbeddedVideo />
+      <EmbeddedVideo />
       <div className="comentarios">area comentarios</div>
       <div className="lista video">lista de videos</div>
     </div>
   );
 };
 
-export default VideoShow;
+export default VideoView;

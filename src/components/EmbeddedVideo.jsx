@@ -1,7 +1,7 @@
 import React from 'react';
 import ButtonAction from './ButtonAction';
 
-const EnbeddedVideo = (props) => {
+const EmbeddedVideo = (props) => {
   const { video, title, views, profileName, subscribers, descriptions } = props;
   return (
     <div className="container__userandvideo">
@@ -34,4 +34,4 @@ const EnbeddedVideo = (props) => {
   );
 };
 
-export default EnbeddedVideo;
+export default EmbeddedVideo;
