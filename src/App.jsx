@@ -2,14 +2,14 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Layout from './components/Layout/Layout';
-import VideoShow from './pages/VideoShow';
+import VideoView from './pages/VideoView';
 
 function App() {
   return (
     <Layout>
       <BrowserRouter>
         <Routes>
-          <Route path="/videoshow" element={<VideoShow />} />
+          <Route path="/videoview" element={<VideoView />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>
