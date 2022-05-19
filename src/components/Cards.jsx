@@ -2,16 +2,17 @@
 /* eslint-disable global-require */
 import React from 'react';
 
-const Cards = ({ data = [] }) => {
+const Cards = ({ data = [], className }) => {
   return (
-    <div className="card__container">
+    <div className={`${className}`}>
       {data?.map((user) => (
         <div className="card" key={user.id}>
           <header className="card__video">
-            <img
-              src={require(`../assets/images/${user.videoSrc}.png`)}
-              alt="video"
+            <iframe
+              src={`https://www.youtube.com/embed/${user.videoSrc}`}
+              title="video"
               width="100%"
+              allowFullScreen
             />
           </header>
           <div className="card__body">
