@@ -18,59 +18,101 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
   }
-}
 
-.card {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-
-  @include tabletAndDesktop {
+  .card {
+    width: 90%;
     display: flex;
     flex-direction: column;
+
+    @include tabletAndDesktop {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .card__video {
+    width: 100%;
+
+    img {
+      display: block;
+    }
+  }
+
+  .card__body {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    margin-top: 12px;
+
+    .card__avatar {
+      margin-right: 12px;
+    }
+    .card__text {
+      display: flex;
+      flex-direction: column;
+      h3 {
+        font-size: 16px;
+        margin: 0px;
+      }
+      span {
+        color: var(--text-paragrap-2);
+        margin-top: 5px;
+        font-size: 14px;
+      }
+    }
+    .card__name {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      img {
+        margin-left: 10px;
+        margin-top: 7px;
+      }
+    }
   }
 }
 
-.card__video {
-  width: 100%;
+.card__container-row {
+  display: none;
 
-  img {
-    display: block;
+  @include desktop {
+    display: flex;
+    flex-direction: column;
+    width: 38%;
   }
-}
+  .card {
+    @include desktop {
+      display: flex;
+      flex-direction: row;
+      padding-bottom: 1%;
+      width: 410px;
+      height: 98px;
+    }
+    .card__video {
+      display: flex;
+    }
+    .card__body {
+      padding-left: 2%;
+      margin-top: 2%;
+      width: 80%;
 
-.card__body {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px;
-  margin-top: 12px;
-}
-.card__avatar {
-  margin-right: 12px;
-}
-.card__text {
-  display: flex;
-  flex-direction: column;
-}
-
-.card__name {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.card__name img {
-  margin-left: 10px;
-  margin-top: 7px;
-}
-
-.card__text h3 {
-  font-size: 16px;
-  margin: 0px;
-}
-.card__text span {
-  color: var(--text-paragrap-2);
-  margin-top: 5px;
-  font-size: 14px;
+      .card__avatar {
+        display: none;
+      }
+      .card__text {
+        display: flex;
+        flex-direction: column;
+        h3 {
+          font-size: 16px;
+          margin: 0px;
+        }
+        span {
+          color: var(--text-paragrap-2);
+          margin-top: 5px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
 }

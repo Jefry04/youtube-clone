@@ -1,8 +1,8 @@
 import React from 'react';
-import VideoList from '../components/VideoList';
+import VideoGrid from '../components/VideoGrid';
 
 function Home() {
-  return <VideoList />;
+  return <VideoGrid />;
 }
 
 export default Home;

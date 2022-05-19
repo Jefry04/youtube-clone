@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Cards from './Cards';
-import ButtonAction from './ButtonAction';
 
 const fetchData = async () => {
   try {
@@ -12,43 +11,14 @@ const fetchData = async () => {
   }
 };
 
-const fetchFilters = async () => {
-  try {
-    const response = await axios.get('/mocks/filters.json');
-    return response.data;
-  } catch (error) {
-    return error;
-  }
-};
-
 function VideoList() {
   const [cardData, setCardData] = useState([]);
-  const [filtersName, setFilterName] = useState([]);
 
   useEffect(() => {
     fetchData().then((response) => setCardData(response));
   }, []);
 
-  useEffect(() => {
-    fetchFilters().then((response) => setFilterName(response));
-  }, []);
-
-  return (
-    <>
-      <div className="filter">
-        <div className="filter__container">
-          {filtersName.map((filter) => (
-            <ButtonAction
-              key={filter.id}
-              content={filter.filterName}
-              className="btn-action--filter"
-            />
-          ))}
-        </div>
-      </div>
-      <Cards data={cardData} />
-    </>
-  );
+  return <Cards data={cardData} className="card__container-row" />;
 }
 
 export default VideoList;
