@@ -1,6 +1,6 @@
 @import '../abstract/mixins';
 
-.btn-action{
+.btn-action {
   display: flex;
   align-items: center;
   width: 100%;
@@ -8,7 +8,6 @@
   border: 1px solid transparent;
   background: transparent;
   cursor: pointer;
-  
 }
 
 .btn-action__prepend,
@@ -28,7 +27,7 @@
   margin-left: 8px;
 }
 
-.btn-action--login{
+.btn-action--login {
   background-color: #ffffff;
 
   .btn-action__content {
@@ -52,19 +51,19 @@
   }
 }
 
-.btn-action--toggle{
+.btn-action--toggle {
   display: none;
 
   @include tabletAndDesktop() {
     display: flex;
-    
+
     .btn-action__prepend {
       margin: 0;
     }
-    }
   }
+}
 
-.btn-action--search{
+.btn-action--search {
   width: 64px;
 
   .btn-action__prepend {
@@ -74,14 +73,14 @@
   @include tabletAndDesktop() {
     background: #f0f0f0;
     border: 1px solid #c6c6c6;
-    
+
     .btn-action__prepend {
       margin: 0;
     }
   }
 }
 
-.btn-action--voice{
+.btn-action--voice {
   display: none;
 
   @include tabletAndDesktop() {
@@ -99,19 +98,19 @@
   }
 }
 
-.btn-action--appsconf{
+.btn-action--appsconf {
   display: none;
 
   @include tabletAndDesktop() {
     display: flex;
-    
+
     .btn-action__prepend {
       margin: 0;
     }
   }
 }
 
-.btn-action--filter{
+.btn-action--filter {
   padding: 6px;
   margin-right: 12px;
   color: var(--filter-bg-3);
@@ -121,7 +120,7 @@
   white-space: nowrap;
 }
 
-.btn-action--form{
+.btn-action--form {
   justify-content: center;
   width: 30%;
   padding: 6px 10px;
@@ -130,4 +129,38 @@
   border-radius: 2px;
   color: white;
   background-color: var(--text-link);
+}
+
+.btn-action--join{
+  display: none;
+
+  @include tabletAndDesktop() {
+    display: flex;
+    background-color: transparent;
+    border: 1px solid #065fd4;
+    border-radius: 2px;
+    color: #065fd4;
+    padding: 0.7em 0.57em;
+    margin-left: 5px;
+    font-weight: bold;
+  }
+}
+
+.btn-action--subscription{
+  background-color: transparent;
+  color: var(--logo-bg);
+  font-weight: bold;
+  margin-right: 20px;
+
+  @include tabletAndDesktop() {
+    background-color: var(--logo-bg);
+    color: white;
+    border-radius: 3px;
+    padding: 0.7em 0.57em;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+    margin-left: 10px;
+    
+  }
 }

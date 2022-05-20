@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Buttonaction from './ButtonAction';
 import InputValidator from './InputValidator';
-import Icono from '../images/brand/icon.png';
+import Icon from '../images/brand/icon.png';
 import Letter from '../images/brand/letter.png';
 import '../styles/components/Login.scss';
 
@@ -26,7 +26,7 @@ function Login() {
     <form>
       <header>
         <div className="form__header">
-          <img src={Icono} alt="logoYoutube" className="brand__icon" />
+          <img src={Icon} alt="logoYoutube" className="brand__icon" />
           <img src={Letter} alt="letterYoutube" className="brand__letter" />
         </div>
         <p className="form__subtitle"> Login </p>

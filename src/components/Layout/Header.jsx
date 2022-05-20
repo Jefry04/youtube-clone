@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import iconoYoutube from '../../images/brand/icon.png';
+import iconYoutube from '../../images/brand/icon.png';
 import letterYoutube from '../../images/brand/letter.png';
 import Buttonaction from '../ButtonAction';
 import SearchHeader from '../SearchHeader';
@@ -34,11 +34,7 @@ function Header() {
             />
           </div>
           <div className="hamburger__logo">
-            <img
-              src={iconoYoutube}
-              alt="icon youtube"
-              className="brand__icon"
-            />
+            <img src={iconYoutube} alt="icon youtube" className="brand__icon" />
             <img
               src={letterYoutube}
               alt="letter youtube"

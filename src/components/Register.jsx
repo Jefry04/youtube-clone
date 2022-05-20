@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ButtonAction from './ButtonAction';
 import PublicModal from './PublicModal';
-import Icono from '../images/brand/icon.png';
+import Icon from '../images/brand/icon.png';
 import Letter from '../images/brand/letter.png';
 import Login from './Login';
 
@@ -43,7 +43,7 @@ function Register() {
       <form>
         <header>
           <div className="form__header">
-            <img src={Icono} alt="logoYoutube" className="brand__icon" />
+            <img src={Icon} alt="logoYoutube" className="brand__icon" />
             <img src={Letter} alt="letterYoutube" className="brand__letter" />
           </div>
           <p className="form__subtitle"> Crea tu cuenta </p>
