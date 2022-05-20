@@ -130,3 +130,37 @@
   color: white;
   background-color: var(--text-link);
 }
+
+.btn-action--join{
+  display: none;
+
+  @include tabletAndDesktop() {
+    display: flex;
+    background-color: transparent;
+    border: 1px solid #065fd4;
+    border-radius: 2px;
+    color: #065fd4;
+    padding: 0.7em 0.57em;
+    margin-left: 5px;
+    font-weight: bold;
+  }
+}
+
+.btn-action--subscription{
+  background-color: transparent;
+  color: var(--logo-bg);
+  font-weight: bold;
+  margin-right: 20px;
+
+  @include tabletAndDesktop() {
+    background-color: var(--logo-bg);
+    color: white;
+    border-radius: 3px;
+    padding: 0.7em 0.57em;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+    margin-left: 10px;
+    
+  }
+}
