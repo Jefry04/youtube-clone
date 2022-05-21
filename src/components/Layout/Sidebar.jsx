@@ -1,11 +1,15 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 import React from 'react';
+import { useSelector } from 'react-redux';
+
+//  Components
 import '../../styles/components/Layout/Sidebar.scss';
 import SidebarSection from './SidebarSection';
 import SidebarTab from './SidebarTab';
 import Buttonaction from '../ButtonAction';
 
+//  Icons
 import HomeIcon from '../../assets/icons/HomeIcon';
 import ExplorerIcon from '../../assets/icons/ExplorerIcon';
 import ShortsIcon from '../../assets/icons/ShortsIcon';
@@ -21,8 +25,10 @@ import AlertMessageIcon from '../../assets/icons/AlertMessageIcon';
 import UserIcon from '../../assets/icons/UserIcon';
 
 function Sidebar() {
+  const show = useSelector(({ LayoutReducer }) => LayoutReducer.showSidebar);
+  const className = `sidebar ${show ? 'show' : 'hidden'}`;
   return (
-    <div className="sidebar">
+    <div className={className}>
       <aside className="sidebar__content">
         {/* <!-- Explorer Area --> */}
         <SidebarSection>

@@ -1,20 +1,26 @@
 import React, { useState } from 'react';
-import iconYoutube from '../../images/brand/icon.png';
-import letterYoutube from '../../images/brand/letter.png';
+import { useDispatch } from 'react-redux';
+import { sidebarToggle } from '../../store/reducers/Layout.reducer';
+
+//  COMPONENTS
 import Buttonaction from '../ButtonAction';
 import SearchHeader from '../SearchHeader';
 import Register from '../Register';
+import PublicModal from '../PublicModal';
 
+//  ICONS
+import iconYoutube from '../../images/brand/icon.png';
+import letterYoutube from '../../images/brand/letter.png';
 import UserIcon from '../../assets/icons/UserIcon';
 import BarsIcon from '../../assets/icons/BarsIcon';
 import SearchIcon from '../../assets/icons/SearchIcon';
 import VoiceIcon from '../../assets/icons/VoiceIcon';
 import AppsIcon from '../../assets/icons/AppsIcon';
 import VerticalDotsIcon from '../../assets/icons/VerticalDotsIcon';
-import PublicModal from '../PublicModal';
 
 function Header() {
   const [openRegisterForm, setOpenRegisterForm] = useState(false);
+  const dispatch = useDispatch();
 
   const handleRegister = () => {
     setOpenRegisterForm(true);
@@ -23,6 +29,7 @@ function Header() {
   const closeRegisterForm = () => {
     setOpenRegisterForm(false);
   };
+
   return (
     <>
       <nav className="header">
@@ -31,6 +38,7 @@ function Header() {
             <Buttonaction
               className="btn-action--toggle"
               prependIcon={<BarsIcon />}
+              handleClick={() => dispatch(sidebarToggle())}
             />
           </div>
           <div className="hamburger__logo">
