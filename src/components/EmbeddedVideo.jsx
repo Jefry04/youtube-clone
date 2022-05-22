@@ -11,11 +11,12 @@ const EmbeddedVideo = (props) => {
   return (
     data && (
       <div className="container__userandvideo">
-        <div className="userandvideo__video">
+        <div className="userandvideo__videowrapper">
           <iframe
             src={`https://www.youtube.com/embed/${data.videoSrc}`}
             title="video"
             width="100%"
+            height="100%"
           />
         </div>
         <div className="userandvideo__primaryinfo">

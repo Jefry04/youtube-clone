@@ -1,46 +1,52 @@
 @import '../abstract/mixins';
 
-.container__userandvideo{
-  
+.container__userandvideo {
+  display: flex;
+  flex-direction: column;
   @include tabletAndDesktop() {
-    margin-left: 50px;
+    /* margin-left: 50px; */
   }
 }
-.userandvideo__video{
+.userandvideo__videowrapper {
   padding-top: 24px;
 
   @include tabletAndDesktop() {
-    padding: 24px 24px 0 0;
+    padding: 24px 24px 0 24px;
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9, for an aspect ratio of 1:1 change to this value to 100% */
   }
 }
 
-.userandvideo__video iframe{
-  width: 390px;
-  height: 219px;
+.userandvideo__videowrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
   @include tabletAndDesktop() {
-    width: 932px;
-    height: 524px;
+    /* width: 932px; */
+    /* height: 524px; */
   }
 }
 
-.userandvideo__primaryinfo{
+.userandvideo__primaryinfo {
   display: flex;
   flex-direction: column;
 }
 
-.primaryinfo__title h2{
+.primaryinfo__title h2 {
   line-height: 1;
   font-weight: normal;
   margin: 0 0 3px 10px;
   font-size: 1.8rem;
 
   @include tabletAndDesktop() {
-    margin: 0 0 3px ;
+    margin: 0 0 3px;
   }
 }
 
-.primaryinfo__scope{
+.primaryinfo__scope {
   display: flex;
   flex-direction: column;
 
@@ -50,7 +56,7 @@
   }
 }
 
-.scope__buttons{
+.scope__buttons {
   display: flex;
   justify-content: space-between;
   margin: 0 40px;
@@ -60,35 +66,34 @@
   }
 }
 
-.secundaryinfo__scope{
+.secundaryinfo__scope {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.scope__user{
+.scope__user {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.user__image{
+.user__image {
   margin-right: 5px;
 }
 
-.user__profile{
+.user__profile {
   display: flex;
   flex-direction: column;
 }
 
-.profile__buttons{
+.profile__buttons {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-
 }
 
-.scope__views{
+.scope__views {
   color: #606060;
   font-size: 0.8rem;
   margin: 0 0 0 10px;
@@ -98,20 +103,20 @@
   }
 }
 
-.profile__name{
+.profile__name {
   line-height: 1;
   font-weight: normal;
   margin: 0;
   font-size: 1rem;
 }
 
-.profile__subscribers{
+.profile__subscribers {
   color: #606060;
   font-size: 0.8rem;
   line-height: 0.8;
 }
 
-.secundaryinfo__description{
+.secundaryinfo__description {
   display: none;
 
   @include tabletAndDesktop() {
