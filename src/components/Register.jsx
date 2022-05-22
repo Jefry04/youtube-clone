@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { showLoginForm } from '../store/reducers/Auth.reducer';
 import ButtonAction from './ButtonAction';
-import PublicModal from './PublicModal';
-import Icon from '../images/brand/icon.png';
-import Letter from '../images/brand/letter.png';
-import Login from './Login';
-
-import '../styles/components/Login.scss';
 import InputValidator from './InputValidator';
 
+import Icon from '../images/brand/icon.png';
+import Letter from '../images/brand/letter.png';
+import '../styles/components/Login.scss';
+
 function Register() {
-  const [openLoginModal, setOpenLoginModal] = useState(false);
+  /* const [openLoginModal, setOpenLoginModal] = useState(false); */
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -18,13 +18,7 @@ function Register() {
     confirmPassword: '',
   });
 
-  const handleLogin = () => {
-    setOpenLoginModal(true);
-  };
-
-  const closeLoginModal = () => {
-    setOpenLoginModal(false);
-  };
+  const dispatch = useDispatch();
 
   const onChange = (event) => {
     setFormData({
@@ -39,86 +33,85 @@ function Register() {
   };
 
   return (
-    <>
-      <form>
-        <header>
-          <div className="form__header">
-            <img src={Icon} alt="logoYoutube" className="brand__icon" />
-            <img src={Letter} alt="letterYoutube" className="brand__letter" />
-          </div>
-          <p className="form__subtitle"> Crea tu cuenta </p>
-        </header>
-        <div className="form__content">
-          <InputValidator
-            name="firstName"
-            value={formData.name}
-            type="text"
-            classname="input__Login"
-            placeholder="First name"
-            onChange={onChange}
-            errorMessage="Nombre no debe estar vacio"
-            required
-          />
-          <InputValidator
-            name="lastName"
-            value={formData.name}
-            type="text"
-            classname="input__Login"
-            placeholder="Last name"
-            onChange={onChange}
-            errorMessage="Apellido no debe estar vacio"
-            required
-          />
-          <InputValidator
-            name="email"
-            classSpan="col-span-2"
-            value={formData.name}
-            type="email"
-            classname="input__Login"
-            placeholder="Email"
-            onChange={onChange}
-            errorMessage="Debe ser email valido"
-            required
-          />
-          <InputValidator
-            name="password"
-            value={formData.name}
-            type="password"
-            classname="input__Login"
-            placeholder="password"
-            onChange={onChange}
-            errorMessage="Minimo 8 caracteres e incluir 1 numero y 1 caracter especial"
-            pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
-            required
-          />
-          <InputValidator
-            name="confirmPassword"
-            value={formData.name}
-            type="password"
-            classname="input__Login"
-            placeholder="Confirm pasword"
-            onChange={onChange}
-            errorMessage="NO coinciden las claves"
-            pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
-            required
-          />
+    <form>
+      <header>
+        <div className="form__header">
+          <img src={Icon} alt="logoYoutube" className="brand__icon" />
+          <img src={Letter} alt="letterYoutube" className="brand__letter" />
         </div>
-        <div className="form__footer">
-          <button type="button" className="form__link" onClick={handleLogin}>
-            Login si tienes cuenta
-          </button>
-          <ButtonAction
-            className="btn-action--form"
-            content="Next"
-            type="submit"
-            handleClick={handleSubmit}
-          />
-        </div>
-      </form>
-      <PublicModal opened={openLoginModal} onClose={closeLoginModal}>
-        <Login />
-      </PublicModal>
-    </>
+        <p className="form__subtitle"> Crea tu cuenta </p>
+      </header>
+      <div className="form__content">
+        <InputValidator
+          name="firstName"
+          value={formData.name}
+          type="text"
+          classname="input__Login"
+          placeholder="First name"
+          onChange={onChange}
+          errorMessage="Nombre no debe estar vacio"
+          required
+        />
+        <InputValidator
+          name="lastName"
+          value={formData.name}
+          type="text"
+          classname="input__Login"
+          placeholder="Last name"
+          onChange={onChange}
+          errorMessage="Apellido no debe estar vacio"
+          required
+        />
+        <InputValidator
+          name="email"
+          classSpan="col-span-2"
+          value={formData.name}
+          type="email"
+          classname="input__Login"
+          placeholder="Email"
+          onChange={onChange}
+          errorMessage="Debe ser email valido"
+          required
+        />
+        <InputValidator
+          name="password"
+          value={formData.name}
+          type="password"
+          classname="input__Login"
+          placeholder="password"
+          onChange={onChange}
+          errorMessage="Minimo 8 caracteres e incluir 1 numero y 1 caracter especial"
+          pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
+          required
+        />
+        <InputValidator
+          name="confirmPassword"
+          value={formData.name}
+          type="password"
+          classname="input__Login"
+          placeholder="Confirm pasword"
+          onChange={onChange}
+          errorMessage="NO coinciden las claves"
+          pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
+          required
+        />
+      </div>
+      <div className="form__footer">
+        <button
+          type="button"
+          className="form__link"
+          onClick={() => dispatch(showLoginForm())}
+        >
+          Login si tienes cuenta
+        </button>
+        <ButtonAction
+          className="btn-action--form"
+          content="Next"
+          type="submit"
+          handleClick={handleSubmit}
+        />
+      </div>
+    </form>
   );
 }
 
