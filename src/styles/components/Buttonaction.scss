@@ -131,7 +131,7 @@
   background-color: var(--text-link);
 }
 
-.btn-action--join{
+.btn-action--join {
   display: none;
 
   @include tabletAndDesktop() {
@@ -146,7 +146,7 @@
   }
 }
 
-.btn-action--subscription{
+.btn-action--subscription {
   background-color: transparent;
   color: var(--logo-bg);
   font-weight: bold;
@@ -161,6 +161,5 @@
     justify-content: center;
     letter-spacing: 1px;
     margin-left: 10px;
-    
   }
 }

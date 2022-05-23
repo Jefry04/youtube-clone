@@ -1,10 +1,11 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 import React from 'react';
+import { useSelector } from 'react-redux';
+
 import '../../styles/components/Layout/Sidebar.scss';
 import SidebarSection from './SidebarSection';
 import SidebarTab from './SidebarTab';
-import Buttonaction from '../ButtonAction';
 
 import HomeIcon from '../../assets/icons/HomeIcon';
 import ExplorerIcon from '../../assets/icons/ExplorerIcon';
@@ -18,11 +19,13 @@ import CogIcon from '../../assets/icons/CogIcon';
 import FlagIcon from '../../assets/icons/FlagIcon';
 import HelpIcon from '../../assets/icons/HelpIcon';
 import AlertMessageIcon from '../../assets/icons/AlertMessageIcon';
-import UserIcon from '../../assets/icons/UserIcon';
+import RegisterButton from '../RegisterButton';
 
 function Sidebar() {
+  const show = useSelector(({ LayoutReducer }) => LayoutReducer.showSidebar);
+  const className = `sidebar ${show ? 'show' : 'hidden'}`;
   return (
-    <div className="sidebar">
+    <div className={className}>
       <aside className="sidebar__content">
         {/* <!-- Explorer Area --> */}
         <SidebarSection>
@@ -45,11 +48,7 @@ function Sidebar() {
         {/* <!-- Connection --> */}
         <SidebarSection description='Connectez-vous à YouTube pour cliquer sur "J&apos;aime", ajouter un commentaire et vous abonner.'>
           <div className="sidebar__actions">
-            <Buttonaction
-              className="btn-action--login"
-              content="REGISTRARSE"
-              prependIcon={<UserIcon />}
-            />
+            <RegisterButton />
           </div>
         </SidebarSection>
 

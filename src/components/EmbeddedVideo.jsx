@@ -1,21 +1,25 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import ButtonAction from './ButtonAction';
 import '../styles/components/EmbeddedVideo.scss';
 import LikeIcon from '../assets/icons/LikeIcon';
 import ShareIcon from '../assets/icons/ShareIcon';
+import { showRegisterForm } from '../store/reducers/Modals.reducer';
 
 const EmbeddedVideo = (props) => {
   const { data, subscribers, descriptions } = props;
+  const dispatch = useDispatch();
   return (
     data && (
       <div className="container__userandvideo">
-        <div className="userandvideo__video">
+        <div className="userandvideo__videowrapper">
           <iframe
             src={`https://www.youtube.com/embed/${data.videoSrc}`}
             title="video"
             width="100%"
+            height="100%"
           />
         </div>
         <div className="userandvideo__primaryinfo">
@@ -51,7 +55,11 @@ const EmbeddedVideo = (props) => {
               </div>
             </div>
             <div className="profile__buttons">
-              <ButtonAction className="btn-action--join" content="UNIRSE" />
+              <ButtonAction
+                className="btn-action--join"
+                content="UNIRSE"
+                handleClick={() => dispatch(showRegisterForm())}
+              />
               <ButtonAction
                 className="btn-action--subscription"
                 content="SUSCRIBIRSE"
