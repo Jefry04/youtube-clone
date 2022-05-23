@@ -3,12 +3,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-//  Components
 import '../../styles/components/Layout/Sidebar.scss';
 import SidebarSection from './SidebarSection';
 import SidebarTab from './SidebarTab';
 
-//  Icons
 import HomeIcon from '../../assets/icons/HomeIcon';
 import ExplorerIcon from '../../assets/icons/ExplorerIcon';
 import ShortsIcon from '../../assets/icons/ShortsIcon';

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   hiddeRegisterForm,
   hiddeLoginForm,
-} from '../../store/reducers/Auth.reducer';
+} from '../../store/reducers/Modals.reducer';
 
 //  COMPONENTS
 import Header from './Header';
@@ -17,7 +17,7 @@ import '../../styles/components/Layout/Layout.scss';
 function Layout(props) {
   const { children } = props;
   const { showingRegisterForm, showingLoginForm } = useSelector(
-    ({ AuthReducer }) => AuthReducer
+    ({ ModalsReducer }) => ModalsReducer
   );
 
   const dispatch = useDispatch();
