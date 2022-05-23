@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { showLoginForm } from '../store/reducers/Auth.reducer';
+import { showLoginForm } from '../store/reducers/Modals.reducer';
 import ButtonAction from './ButtonAction';
 import InputValidator from './InputValidator';
 
@@ -9,7 +9,6 @@ import Letter from '../images/brand/letter.png';
 import '../styles/components/Login.scss';
 
 function Register() {
-  /* const [openLoginModal, setOpenLoginModal] = useState(false); */
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',

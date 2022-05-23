@@ -2,16 +2,11 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { sidebarToggle } from '../../store/reducers/Layout.reducer';
 
-//  COMPONENTS
 import Buttonaction from '../ButtonAction';
 import SearchHeader from '../SearchHeader';
-/* import Register from '../Register';
-import PublicModal from '../PublicModal'; */
 
-//  ICONS
 import iconYoutube from '../../images/brand/icon.png';
 import letterYoutube from '../../images/brand/letter.png';
-/* import UserIcon from '../../assets/icons/UserIcon'; */
 import BarsIcon from '../../assets/icons/BarsIcon';
 import SearchIcon from '../../assets/icons/SearchIcon';
 import VoiceIcon from '../../assets/icons/VoiceIcon';
