@@ -9,6 +9,9 @@
 }
 .userandvideo__videowrapper {
   padding-top: 24px;
+  width: 100%;
+  height: 100%;
+  
 
   @include tabletAndDesktop() {
     padding: 24px 24px 0 24px;
@@ -18,15 +21,14 @@
 }
 
 .userandvideo__videowrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
+  
 
   @include tabletAndDesktop() {
-    /* width: 932px; */
-    /* height: 524px; */
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }
 
@@ -48,7 +50,10 @@
 
 .primaryinfo__scope {
   display: flex;
-  flex-direction: column;
+  margin-bottom: 16px;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-color: rgba($color: #000000, $alpha: 0.5);
 
   @include tabletAndDesktop() {
     flex-direction: row;
