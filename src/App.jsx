@@ -9,7 +9,7 @@ function App() {
     <Layout>
       <BrowserRouter>
         <Routes>
-          <Route path="/videoview" element={<VideoView />} />
+          <Route path="videoview/:videoId" element={<VideoView />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>
