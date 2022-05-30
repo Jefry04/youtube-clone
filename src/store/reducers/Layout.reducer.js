@@ -1,3 +1,5 @@
+import sidebarTabs from './sidebarTabs/sidebarTabs';
+
 const ACTIONS = {
   SIDEBAR__TOGGLE: 'SIDEBAR__TOGLE',
 };
@@ -9,6 +11,7 @@ export const sidebarToggle = (payload) =>
 
 const initialState = {
   showSidebar: true,
+  sidebarTabs,
 };
 
 function LayoutReducer(state = initialState, action = null) {

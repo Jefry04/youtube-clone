@@ -6,14 +6,14 @@ import VideoView from './pages/VideoView';
 
 function App() {
   return (
-    <Layout>
-      <BrowserRouter>
+    <BrowserRouter>
+      <Layout>
         <Routes>
           <Route path="videoview/:videoId" element={<VideoView />} />
           <Route path="/" element={<Home />} />
         </Routes>
-      </BrowserRouter>
-    </Layout>
+      </Layout>
+    </BrowserRouter>
   );
 }
 

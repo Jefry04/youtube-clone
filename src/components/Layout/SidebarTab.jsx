@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function SidebarTab(props) {
-  const { Icon, content, isActive, imgUrl } = props;
+  const { Icon, content, path, isActive, imgUrl } = props;
 
   const className = `sidebar__tab${isActive ? ' active' : ''}`;
 
   return (
     <div className={className}>
-      <a href="#Top" className="sidebar__tab__link">
+      <Link to={path} className="sidebar__tab__link">
         {Icon ? (
           <div className="sidebar__tab__icon">
             <Icon />
@@ -18,7 +19,7 @@ function SidebarTab(props) {
           </figure>
         )}
         <div className="sidebar__tab__name"> {content} </div>
-      </a>
+      </Link>
     </div>
   );
 }
