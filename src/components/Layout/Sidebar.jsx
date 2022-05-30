@@ -2,15 +2,15 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import '../../styles/components/Layout/Sidebar.scss';
 import SidebarSection from './SidebarSection';
 import SidebarTab from './SidebarTab';
 import RegisterButton from '../RegisterButton';
 
+import '../../styles/components/Layout/Sidebar.scss';
+import sidebarTabs from './sidebarTabs/sidebarTabs';
+
 function Sidebar() {
-  const { showSidebar, sidebarTabs } = useSelector(
-    ({ LayoutReducer }) => LayoutReducer
-  );
+  const show = useSelector(({ LayoutReducer }) => LayoutReducer.showSidebar);
 
   const {
     explorerTabs,
@@ -21,7 +21,7 @@ function Sidebar() {
     links,
   } = sidebarTabs;
 
-  const className = `sidebar ${showSidebar ? 'show' : 'hidden'}`;
+  const className = `sidebar ${show ? 'show' : 'hidden'}`;
 
   return (
     <div className={className}>
