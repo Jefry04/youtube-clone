@@ -137,11 +137,16 @@
 }
 
 .sidebar__link {
+  margin-right: 2px;
   font-weight: 500;
   font-size: 13px;
   line-height: 18px;
   text-decoration: none;
   color: var(--text-paragrap-2);
+}
+
+.sidebar__link:hover {
+  opacity: 0.8;
 }
 
 .sidebar__footer {
