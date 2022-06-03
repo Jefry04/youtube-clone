@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Layout from './components/Layout/Layout';
 import VideoView from './pages/VideoView';
+import UserView from './pages/UserView';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="videoview/:videoId" element={<VideoView />} />
           <Route path="/" element={<Home />} />
+          <Route path="/user" element={<UserView />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

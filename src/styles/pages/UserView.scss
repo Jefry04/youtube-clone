@@ -1,0 +1,60 @@
+.page {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.page__headerview {
+  display: flex;
+  justify-content: center;
+
+  padding: 0 80px;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  width: 1284px;
+}
+
+.container__profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile__info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.data__user {
+  p {
+    font-size: 24px;
+    margin: 0;
+  }
+}
+
+.data__subscriber {
+  p {
+    margin: 0;
+    font-size: 12px;
+  }
+}
+
+.header__tabsContainer {
+  display: flex;
+  margin-left: 85px;
+}
+
+.page__grillaVideos {
+  height: calc(100vh - var(--header-height));
+  overflow-y: auto;
+  background-color: #f1f1f1;
+}
+
+.grillaVideos__videosperfil {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}

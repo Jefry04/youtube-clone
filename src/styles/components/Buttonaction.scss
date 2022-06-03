@@ -163,3 +163,22 @@
     margin-left: 10px;
   }
 }
+
+.btn-action--videoup {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  background-color: #065fd4;
+  color: white;
+  border: none;
+  width: 200px;
+}
+
+.btn-action--tabsContainer {
+  border: none;
+  background-color: none;
+  font-size: 14px;
+  width: 15%;
+  padding-bottom: 0;
+  color: var(--text-paragrap-2 #606060);
+}
