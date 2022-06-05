@@ -2,23 +2,25 @@
 import { React, useState, useEffect } from 'react';
 
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+
 import ButtonAction from '../components/ButtonAction';
 import '../styles/pages/UserView.scss';
 import pic from '../assets/images/perfil5.png';
+import { getUerData } from '../store/reducers/User.reducer';
 
 function UserView() {
   const [videoData, setVideoData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const token = localStorage.getItem('token');
+  const dispatch = useDispatch();
+  const { user, error } = useSelector((state) => state.UserReducer);
 
   useEffect(() => {
     setLoading(true);
-    axios.get('/mocks/data.json').then((response) => {
-      setVideoData(response.data[4]);
-      setLoading(false);
-    });
-  }, []);
-
-  console.log(videoData);
+    dispatch(getUerData(token));
+    setLoading(false);
+  }, [token, dispatch]);
 
   if (loading === true) {
     return (
@@ -27,6 +29,7 @@ function UserView() {
       </div>
     );
   }
+
   return (
     <div className="page">
       <div className="page__headerview">
@@ -60,7 +63,8 @@ function UserView() {
       </div>
       <div className="page__grillaVideos">
         <div className="grillaVideos__videosperfil">
-          <iframe
+          Perfil de: {user.firstName}
+          {/* <iframe
             src={`https://www.youtube.com/embed/${videoData.videoSrc}`}
             title="video"
             width="100%"
@@ -71,7 +75,7 @@ function UserView() {
             title="video"
             width="100%"
             height="100%"
-          />
+          /> */}
         </div>
       </div>
     </div>

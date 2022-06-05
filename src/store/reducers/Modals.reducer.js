@@ -18,7 +18,6 @@ const initialState = {
 function ModalsReducer(state = initialState, action = null) {
   switch (action.type) {
     case SHOW_REGISTER_FORM:
-      console.log('click');
       return {
         ...state,
         showingRegisterForm: true,

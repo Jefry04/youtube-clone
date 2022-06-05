@@ -22,8 +22,6 @@ const Video = () => {
   }, []);
   const videoDetails = videoData.find((video) => video.videoSrc === videoId);
 
-  console.log('video detalle', videoDetails);
-
   return (
     <EmbeddedVideo
       data={videoDetails}

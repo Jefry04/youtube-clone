@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { sidebarToggle } from '../../store/reducers/Layout.reducer';
 
 import Buttonaction from '../ButtonAction';
@@ -16,6 +16,7 @@ import RegisterButton from '../RegisterButton';
 
 function Header() {
   const dispatch = useDispatch();
+  const { isAuth, user } = useSelector((state) => state.AuthReducer);
 
   return (
     <nav className="header">
@@ -56,7 +57,7 @@ function Header() {
           className="btn-action--appsconf"
           prependIcon={<VerticalDotsIcon />}
         />
-        <RegisterButton />
+        {isAuth ? `LOGOUT` : <RegisterButton />}
       </div>
     </nav>
   );
