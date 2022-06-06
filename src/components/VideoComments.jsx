@@ -32,7 +32,7 @@ const fetchComments = async () => {
     const res = await axios.get('https://jsonplaceholder.typicode.com/posts');
     comments = buildComments(res.data);
   } catch (error) {
-    // console.log(error);
+    console.log(error);
   }
 
   return comments;
