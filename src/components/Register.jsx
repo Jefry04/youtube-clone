@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {
-  hiddeRegisterForm,
-  showLoginForm,
-} from '../store/reducers/Modals.reducer';
+import { showLoginForm } from '../store/reducers/Modals.reducer';
 import ButtonAction from './ButtonAction';
 import InputValidator from './InputValidator';
-import { register } from '../utils/auth';
 
 import Icon from '../images/brand/icon.png';
 import Letter from '../images/brand/letter.png';
 import '../styles/components/Login.scss';
+import { register } from '../store/reducers/Auth.reducer';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -34,16 +31,8 @@ function Register() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await register(formData);
-    if (response.status === 201) {
-      dispatch(hiddeRegisterForm());
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('userData', JSON.stringify(response.data.user));
-      navigate('/user');
-    } else {
-      console.log(response);
-      // TODO mostrar error
-    }
+    dispatch(register(formData));
+    navigate('/user');
   };
 
   return (

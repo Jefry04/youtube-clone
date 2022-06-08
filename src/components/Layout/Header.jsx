@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { sidebarToggle } from '../../store/reducers/Layout.reducer';
 
 import Buttonaction from '../ButtonAction';
@@ -13,10 +14,18 @@ import VoiceIcon from '../../assets/icons/VoiceIcon';
 import AppsIcon from '../../assets/icons/AppsIcon';
 import VerticalDotsIcon from '../../assets/icons/VerticalDotsIcon';
 import RegisterButton from '../RegisterButton';
+import UserIcon from '../../assets/icons/UserIcon';
+import { logout } from '../../store/reducers/Auth.reducer';
 
 function Header() {
   const dispatch = useDispatch();
-  const { isAuth, user } = useSelector((state) => state.AuthReducer);
+  const navigate = useNavigate();
+  const { isAuth } = useSelector((state) => state.AuthReducer);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/');
+  };
 
   return (
     <nav className="header">
@@ -57,7 +66,16 @@ function Header() {
           className="btn-action--appsconf"
           prependIcon={<VerticalDotsIcon />}
         />
-        {isAuth ? `LOGOUT` : <RegisterButton />}
+        {isAuth ? (
+          <Buttonaction
+            className="btn-action--login"
+            content="LOGOUT"
+            prependIcon={<UserIcon />}
+            handleClick={handleLogout}
+          />
+        ) : (
+          <RegisterButton />
+        )}
       </div>
     </nav>
   );

@@ -7,8 +7,7 @@ import InputValidator from './InputValidator';
 import Icon from '../images/brand/icon.png';
 import Letter from '../images/brand/letter.png';
 import '../styles/components/Login.scss';
-import { authUser } from '../utils/auth';
-import { hiddeLoginForm } from '../store/reducers/Modals.reducer';
+import { authUser } from '../store/reducers/Auth.reducer';
 
 function Login() {
   const [loginData, setLoginData] = useState({
@@ -27,19 +26,13 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await authUser({
-      email: loginData.email,
-      password: loginData.password,
-    });
-    if (response.status === 201) {
-      dispatch(hiddeLoginForm());
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('userData', JSON.stringify(response.data.user));
-      navigate('/user');
-    } else {
-      console.log(response);
-      // TODO mostrar error
-    }
+    dispatch(
+      authUser({
+        email: loginData.email,
+        password: loginData.password,
+      })
+    );
+    navigate('/user');
   };
 
   return (
