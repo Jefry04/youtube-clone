@@ -2,6 +2,7 @@ const SHOW_REGISTER_FORM = 'SHOW_REGISTER_FORM';
 const HIDDE_REGISTER_FORM = 'HIDDE_REGISTER_FORM';
 const SHOW_LOGIN_FORM = 'SHOW_LOGIN_FORM';
 const HIDDE_LOGIN_FORM = 'HIDDE_LOGIN_FORM';
+const SHOW_FORM = 'SHOW_FORM';
 
 const actionBody = (type, payload = null) => ({ type, payload });
 
@@ -9,10 +10,12 @@ export const showRegisterForm = () => actionBody(SHOW_REGISTER_FORM);
 export const hiddeRegisterForm = () => actionBody(HIDDE_REGISTER_FORM);
 export const showLoginForm = () => actionBody(SHOW_LOGIN_FORM);
 export const hiddeLoginForm = () => actionBody(HIDDE_LOGIN_FORM);
+export const showFormAction = () => actionBody(SHOW_FORM);
 
 const initialState = {
   showingRegisterForm: false,
   showingLoginForm: false,
+  showForm: false,
 };
 
 function ModalsReducer(state = initialState, action = null) {
@@ -33,6 +36,11 @@ function ModalsReducer(state = initialState, action = null) {
         ...state,
         showingLoginForm: true,
         showingRegisterForm: false,
+      };
+    case SHOW_FORM:
+      return {
+        ...state,
+        showForm: !state.showForm,
       };
     case HIDDE_LOGIN_FORM:
       return {

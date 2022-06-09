@@ -1,14 +1,19 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import { React } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ButtonAction from '../components/ButtonAction';
 import '../styles/pages/UserView.scss';
 import pic from '../assets/images/perfil5.png';
+import PublicModal from '../components/PublicModal';
+import VideoUploadForm from '../components/VideoUploadForm';
+import { showFormAction } from '../store/reducers/Modals.reducer';
 
 function UserView() {
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.AuthReducer);
+  const { showForm } = useSelector((state) => state.ModalsReducer);
 
   return (
     user && (
@@ -34,6 +39,7 @@ function UserView() {
               <ButtonAction
                 className="btn-action--videoup"
                 content="SUBIR VIDEO"
+                handleClick={() => dispatch(showFormAction())}
               />
             </div>
           </div>
@@ -53,6 +59,12 @@ function UserView() {
             Perfil de: {user.name}
           </div>
         </div>
+        <PublicModal
+          opened={showForm}
+          onClose={() => dispatch(showFormAction())}
+        >
+          <VideoUploadForm />
+        </PublicModal>
       </div>
     )
   );
