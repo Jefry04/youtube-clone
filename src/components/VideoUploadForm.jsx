@@ -1,37 +1,15 @@
-/* eslint-disable jsx-a11y/media-has-caption */
-
 import React, { useState } from 'react';
-import { X, Video } from 'tabler-icons-react';
 import axios from 'axios';
-import { Group, Text } from '@mantine/core';
+import { useDispatch } from 'react-redux';
 import { Dropzone, MIME_TYPES, IMAGE_MIME_TYPE } from '@mantine/dropzone';
 
 import ButtonAction from './ButtonAction';
 import InputValidator from './InputValidator';
-
-function ImageUploadIcon({ uploadVideoState, mediaUrl, isImage }) {
-  if (uploadVideoState.accepted) {
-    return isImage ? (
-      <img src={mediaUrl} className="videoform__videopreview" alt="preview" />
-    ) : (
-      <video src={mediaUrl} className="videoform__videopreview" />
-    );
-  }
-  if (uploadVideoState.rejected) {
-    return <X />;
-  }
-  return (
-    <Group position="center" spacing="xl" style={{ pointerEvents: 'none' }}>
-      <Text size="xl" inline>
-        CARGAR VIDEO
-      </Text>
-      <Video />
-    </Group>
-  );
-}
+import DropzonePreview from './DropzonePreview';
+import { showFormAction } from '../store/reducers/Modals.reducer';
 
 export const dropzoneChildren = (uploadVideoState, mediaUrl, isImage) => (
-  <ImageUploadIcon
+  <DropzonePreview
     uploadVideoState={uploadVideoState}
     mediaUrl={mediaUrl}
     isImage={isImage}
@@ -43,18 +21,18 @@ const VideoUploadForm = () => {
   const [imageData, setImageData] = useState(null);
   const [videoPreview, setVideoPreview] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
-
   const [uploadVideoState, setUploadVideoState] = useState({
     accepted: false,
     rejected: false,
   });
-
   const [formVideoData, setVideoFormData] = useState({
     title: '',
     description: '',
     labels: '',
   });
+  const dispatch = useDispatch();
   const token = localStorage.getItem('token');
+  const url = process.env.REACT_APP_BACKEND_URI;
 
   const onChange = (e) => {
     setVideoFormData({
@@ -88,13 +66,15 @@ const VideoUploadForm = () => {
     data.append('video', videoData);
     data.append('image', imageData);
 
-    const response = await axios.post('http://localhost:8080/videos', data, {
+    const response = await axios.post(`${url}videos`, data, {
       headers: {
         'Content-Type': 'multipart/form-data',
         Authorization: `bearer ${token}`,
       },
     });
-    console.log(response);
+    if (response.status === 201) {
+      dispatch(showFormAction());
+    } else console.log('no subio el video');
   };
 
   return (
