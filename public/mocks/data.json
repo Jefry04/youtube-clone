@@ -3,85 +3,94 @@
     "id": 1,
     "name": "MichelleVar",
     "title": "Esquiando en Dubai",
-    "videoSrc": "FXV-zwkRMxo",
+    "videoSrc": "https://res.cloudinary.com/dlvo62jmk/video/upload/v1654792082/video_playa_corto_mp4_ucyrht.mp4",
     "avatarSrc": "imagenPerfil",
     "checkSrc": "Vector",
-    "visitas": "1 M de visitas en 15 horas"
+    "visitas": "1 M de visitas en 15 horas",
+    "imagePreview": "https://res.cloudinary.com/dlvo62jmk/image/upload/v1654791775/cld-sample-5.jpg"
   },
   {
     "id": 2,
     "name": "Annete Black",
     "title": "Impressive Buildings",
-    "videoSrc": "fNWxN0q-ZgE",
+    "videoSrc": "https://res.cloudinary.com/dlvo62jmk/video/upload/v1654794035/Video_corto_promo_y2rsuo.mp4",
     "avatarSrc": "unsplash_XttWKETqCCQ",
     "checkSrc": "Vector",
-    "visitas": "3 M de visitas en 10 dias"
+    "visitas": "3 M de visitas en 10 dias",
+    "imagePreview": "https://res.cloudinary.com/dlvo62jmk/image/upload/v1654791775/cld-sample-4.jpg"
   },
   {
     "id": 3,
     "name": "Jefferson ",
     "title": "Animales salvajes",
-    "videoSrc": "fNWxN0q-ZgE",
+    "videoSrc": "https://res.cloudinary.com/dlvo62jmk/video/upload/v1654793955/Bogot%C3%A1_TM_Bus__Juega_y_conoce_la_capital_de_Colombia___Corto_del_juego_sf9u9j.mp4",
     "avatarSrc": "perfil3",
     "checkSrc": "Vector",
     "visitas": "2K de visitas en 20 dias",
-    "tiempo": "15 horas"
+    "tiempo": "15 horas",
+    "imagePreview": "https://res.cloudinary.com/dlvo62jmk/image/upload/v1654791775/cld-sample-3.jpg"
   },
   {
     "id": 4,
     "name": "Anderson Uribe",
     "title": "Planetas",
-    "videoSrc": "0pYOPvfarS8",
+    "videoSrc": "https://res.cloudinary.com/dlvo62jmk/video/upload/v1654793905/Regalando_Baile_de_No_empieces_ahora_a_amigos_Goku202HF_Fortnite_dra3vh.mp4",
     "avatarSrc": "perfil4",
     "checkSrc": "Vector",
     "visitas": "2K de visitas en 20 dias",
-    "tiempo": "15 horas"
+    "tiempo": "15 horas",
+    "imagePreview":"https://res.cloudinary.com/dlvo62jmk/image/upload/v1654791774/cld-sample-2.jpg"
   },
   {
     "id": 5,
     "name": "Andres Zuñiga",
     "title": "travel adventure",
-    "videoSrc": "jQ19FCO4MYA",
+    "videoSrc": "https://res.cloudinary.com/dlvo62jmk/video/upload/v1654793795/Video_de_motivaci%C3%B3n_corto_fszk1y.mp4",
     "avatarSrc": "perfil5",
     "checkSrc": "Vector",
-    "visitas": "3 M de visitas en 10 dias"
+    "visitas": "3 M de visitas en 10 dias",
+    "imagePreview": "https://res.cloudinary.com/dlvo62jmk/image/upload/v1654791773/cld-sample.jpg"
   },
   {
     "id": 6,
     "name": "Jefferson ",
     "title": "Otro Titulo",
-    "videoSrc": "6DNQWB3e0BU",
+    "videoSrc": "https://res.cloudinary.com/dlvo62jmk/video/upload/v1654794177/Malas_noticias..._video_corto_lr0gmc.mp4",
     "avatarSrc": "perfil6",
     "checkSrc": "Vector",
     "visitas": "2K de visitas en 20 dias",
-    "tiempo": "15 horas"
+    "tiempo": "15 horas",
+    "imagePreview": "https://res.cloudinary.com/dlvo62jmk/image/upload/v1654791749/sample.jpg"
   },
   {
     "id": 7,
     "name": "Andres Zuñiga",
     "title": "travel adventure",
-    "videoSrc": "afDXVnDnBf4",
+    "videoSrc": "https://res.cloudinary.com/dlvo62jmk/video/upload/v1654794119/hermanos_haitani_video_corto_sjrs5l.mp4",
     "avatarSrc": "perfil5",
     "checkSrc": "Vector",
-    "visitas": "3 M de visitas en 10 dias"
+    "visitas": "3 M de visitas en 10 dias",
+    "imagePreview": "https://res.cloudinary.com/dlvo62jmk/image/upload/v1654817322/pexels-klt-dinusha-12058532_mcbmba.jpg"
   },
   {
     "id": 8,
     "name": "Annete Black",
     "title": "Impressive Buildings",
-    "videoSrc": "2Lmz87uYBsw",
+    "videoSrc": "https://res.cloudinary.com/dlvo62jmk/video/upload/v1654794079/Video_Corto_para_estado_de_WhatsApp_Sebasti%C3%A1n_Yatra_-_Por_Perro_ft._Luis_Figueroa_Lary_Over_vdbhum.mp4",
     "avatarSrc": "unsplash_XttWKETqCCQ",
     "checkSrc": "Vector",
-    "visitas": "3 M de visitas en 10 dias"
+    "visitas": "3 M de visitas en 10 dias",
+    "imagePreview": "https://res.cloudinary.com/dlvo62jmk/image/upload/v1654817317/pexels-ben-collins-7330248_cqx12v.jpg"
   },
   {
     "id": 9,
     "name": "Jefferson",
     "title": "Animales salvajes",
-    "videoSrc": "85L420nh4a0",
+    "videoSrc": "https://res.cloudinary.com/dlvo62jmk/video/upload/v1654794282/Alan_Walker_-_Faded_m7ppak.mp4",
     "avatarSrc": "perfil3",
     "checkSrc": "Vector",
     "visitas": "2K de visitas en 20 dias",
-    "tiempo": "15 horas"
+    "tiempo": "15 horas",
+    "imagePreview": "https://res.cloudinary.com/dlvo62jmk/image/upload/v1654817296/pexels-julia-volk-5272994_uuj1da.jpg"
   }
 ]
