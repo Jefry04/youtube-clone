@@ -1,24 +1,23 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import ReactPlayer from 'react-player';
 
 const Cards = ({ data = [], className }) => {
+  const navigate = useNavigate();
+
   return (
     <div className={`${className}`}>
       {data?.map((user) => (
-        <Link
-          key={user.id}
-          to={`videoview/${user.videoSrc}`}
-          className="card__link"
-        >
+        <Link key={user.id} to={`videoview/${user.id}`} className="card__link">
           <div className="card" key={user.id}>
             <header className="card__video">
-              <iframe
-                src={`https://www.youtube.com/embed/${user.videoSrc}`}
-                title="video"
+              <ReactPlayer
+                url={user.videoSrc}
+                light={user.imagePreview}
+                height="100%"
                 width="100%"
-                allowFullScreen
               />
             </header>
             <div className="card__body">

@@ -2,6 +2,7 @@
 /* eslint-disable global-require */
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import ReactPlayer from 'react-player';
 import ButtonAction from './ButtonAction';
 import '../styles/components/EmbeddedVideo.scss';
 import LikeIcon from '../assets/icons/LikeIcon';
@@ -15,11 +16,12 @@ const EmbeddedVideo = (props) => {
     data && (
       <div className="container__userandvideo">
         <div className="userandvideo__videowrapper">
-          <iframe
-            src={`https://www.youtube.com/embed/${data.videoSrc}`}
-            title="video"
+          <ReactPlayer
+            className="videowrapper__video"
+            url={data.videoSrc}
             width="100%"
             height="100%"
+            controls
           />
         </div>
         <div className="userandvideo__primaryinfo">
