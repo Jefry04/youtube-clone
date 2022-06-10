@@ -1,12 +1,14 @@
 import React from 'react';
 import { Group, Text } from '@mantine/core';
-import { X, Video } from 'tabler-icons-react';
+import { X, Video, Photo } from 'tabler-icons-react';
 import ReactPlayer from 'react-player';
 
 const DropzonePreview = ({ uploadVideoState, mediaUrl, isImage }) => {
   if (uploadVideoState.accepted) {
     return isImage ? (
-      <img src={mediaUrl} className="videoform__videopreview" alt="preview" />
+      <figure className="video-upload-form__fig">
+        <img src={mediaUrl} className="video-upload-form__img" alt="preview" />
+      </figure>
     ) : (
       <ReactPlayer url={mediaUrl} height="100%" width="100%" />
     );
@@ -17,9 +19,9 @@ const DropzonePreview = ({ uploadVideoState, mediaUrl, isImage }) => {
   return (
     <Group position="center" spacing="xl" style={{ pointerEvents: 'none' }}>
       <Text size="xl" inline>
-        CARGAR VIDEO
+        {isImage ? 'CARGAR IMAGEN' : 'CARGAR VIDEO'}
       </Text>
-      <Video />
+      {isImage ? <Photo /> : <Video />}
     </Group>
   );
 };

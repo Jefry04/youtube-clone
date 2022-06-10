@@ -25,6 +25,10 @@ const VideoUploadForm = () => {
     accepted: false,
     rejected: false,
   });
+  const [uploadImageState, setUploadImageState] = useState({
+    accepted: false,
+    rejected: false,
+  });
   const [formVideoData, setVideoFormData] = useState({
     title: '',
     description: '',
@@ -78,37 +82,54 @@ const VideoUploadForm = () => {
   };
 
   return (
-    <form>
-      <header className="videoform__header">
-        <Dropzone
-          onDrop={(files) => {
-            setVideoData(files[0]);
-            readFile(files[0]);
-            setUploadVideoState({ ...uploadVideoState, accepted: true });
-          }}
-          onReject={() =>
-            setUploadVideoState({ ...uploadVideoState, rejected: true })
-          }
-          multiple={false}
-          accept={MIME_TYPES.mp4}
-        >
-          {() => dropzoneChildren(uploadVideoState, videoPreview, false)}
-        </Dropzone>
-
-        <Dropzone
-          accept={IMAGE_MIME_TYPE}
-          onDrop={(files) => {
-            setImageData(files[0]);
-            readFile(files[0]);
-            setUploadVideoState({ ...uploadVideoState, accepted: true });
-          }}
-          onReject={() =>
-            setUploadVideoState({ ...uploadVideoState, rejected: true })
-          }
-          multiple={false}
-        >
-          {() => dropzoneChildren(uploadVideoState, imagePreview, true)}
-        </Dropzone>
+    <form className="video-upload-form">
+      <header className="video-upload-form__header">
+        <div className="video-upload-form__media">
+          <div className="video-upload-form__media__container">
+            <Dropzone
+              onDrop={(files) => {
+                setVideoData(files[0]);
+                readFile(files[0]);
+                setUploadVideoState({ ...uploadVideoState, accepted: true });
+              }}
+              onReject={() =>
+                setUploadVideoState({ ...uploadVideoState, rejected: true })
+              }
+              multiple={false}
+              accept={MIME_TYPES.mp4}
+            >
+              {() => dropzoneChildren(uploadVideoState, videoPreview, false)}
+            </Dropzone>
+          </div>
+          {videoPreview && (
+            <button className="video-upload-form__trash-btn" type="button">
+              <span>x</span>
+            </button>
+          )}
+        </div>
+        <div className="video-upload-form__media">
+          <div className="video-upload-form__media__container">
+            <Dropzone
+              accept={IMAGE_MIME_TYPE}
+              onDrop={(files) => {
+                setImageData(files[0]);
+                readFile(files[0]);
+                setUploadImageState({ ...uploadImageState, accepted: true });
+              }}
+              onReject={() =>
+                setUploadImageState({ ...uploadImageState, rejected: true })
+              }
+              multiple={false}
+            >
+              {() => dropzoneChildren(uploadImageState, imagePreview, true)}
+            </Dropzone>
+          </div>
+          {imagePreview && (
+            <button className="video-upload-form__trash-btn" type="button">
+              <span>x</span>
+            </button>
+          )}
+        </div>
       </header>
       <div className="videoform__content">
         <InputValidator
@@ -116,7 +137,7 @@ const VideoUploadForm = () => {
           id="title"
           value={formVideoData.title}
           type="text"
-          classname="input__videoform"
+          classname="video-upload-form__input"
           placeholder="Titulo del video"
           onChange={onChange}
           errorMessage="El titulo es obligatorio "
@@ -127,7 +148,7 @@ const VideoUploadForm = () => {
           id="description"
           value={formVideoData.description}
           type="text"
-          classname="input__videoform"
+          classname="video-upload-form__input"
           placeholder="Descripcion del video"
           onChange={onChange}
           errorMessage="La descripcion es obligatorio "
@@ -138,12 +159,12 @@ const VideoUploadForm = () => {
           id="labels"
           value={formVideoData.labels}
           type="text"
-          classname="input__videoform"
+          classname="video-upload-form__input"
           placeholder="Etiqueta1, Etiqueta2"
           onChange={onChange}
         />
       </div>
-      <div className="videoform__footer">
+      <div className="video-upload-form__footer">
         <ButtonAction
           className="btn-action--videoup"
           content="SUBIR VIDEO"
