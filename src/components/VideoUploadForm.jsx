@@ -1,8 +1,6 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useRef, useState } from 'react';
+
+import React, { useState } from 'react';
 import { X, Video } from 'tabler-icons-react';
 import axios from 'axios';
 import { Group, Text } from '@mantine/core';
@@ -11,12 +9,12 @@ import { Dropzone, MIME_TYPES, IMAGE_MIME_TYPE } from '@mantine/dropzone';
 import ButtonAction from './ButtonAction';
 import InputValidator from './InputValidator';
 
-function ImageUploadIcon({ uploadVideoState, videoPreview, imageData }) {
+function ImageUploadIcon({ uploadVideoState, mediaUrl, isImage }) {
   if (uploadVideoState.accepted) {
-    return videoPreview ? (
-      <video src={videoPreview} className="videoform__videopreview" />
+    return isImage ? (
+      <img src={mediaUrl} className="videoform__videopreview" alt="preview" />
     ) : (
-      <img src={imageData} className="videoform__videopreview" alt="preview" />
+      <video src={mediaUrl} className="videoform__videopreview" />
     );
   }
   if (uploadVideoState.rejected) {
@@ -32,12 +30,11 @@ function ImageUploadIcon({ uploadVideoState, videoPreview, imageData }) {
   );
 }
 
-export const dropzoneChildren = (uploadVideoState, videoPreview, imageData) => (
+export const dropzoneChildren = (uploadVideoState, mediaUrl, isImage) => (
   <ImageUploadIcon
     uploadVideoState={uploadVideoState}
-    size={80}
-    videoPreview={videoPreview}
-    imageData={imageData}
+    mediaUrl={mediaUrl}
+    isImage={isImage}
   />
 );
 
@@ -45,17 +42,19 @@ const VideoUploadForm = () => {
   const [videoData, setVideoData] = useState(null);
   const [imageData, setImageData] = useState(null);
   const [videoPreview, setVideoPreview] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+
   const [uploadVideoState, setUploadVideoState] = useState({
     accepted: false,
     rejected: false,
   });
+
   const [formVideoData, setVideoFormData] = useState({
     title: '',
     description: '',
     labels: '',
   });
   const token = localStorage.getItem('token');
-  const dropzoneRef = useRef();
 
   const onChange = (e) => {
     setVideoFormData({
@@ -66,7 +65,14 @@ const VideoUploadForm = () => {
 
   const readFile = (file) => {
     const reader = new FileReader();
-    reader.onload = (e) => setVideoPreview(e.target.result);
+
+    reader.onload = (e) => {
+      const fileData = e.target.result.split(';')[0];
+      const mimeType = fileData.substring(fileData.indexOf(':') + 1);
+      const fileType = mimeType.split('/')[0];
+      if (fileType === 'video') setVideoPreview(e.target.result);
+      if (fileType === 'image') setImagePreview(e.target.result);
+    };
     reader.readAsDataURL(file);
   };
 
@@ -77,9 +83,10 @@ const VideoUploadForm = () => {
     const data = new FormData();
     data.append('title', formVideoData.title);
     data.append('description', formVideoData.description);
+    data.append('labels', JSON.stringify(labelsArray));
+
     data.append('video', videoData);
     data.append('image', imageData);
-    data.append('labels', labelsArray);
 
     const response = await axios.post('http://localhost:8080/videos', data, {
       headers: {
@@ -94,36 +101,33 @@ const VideoUploadForm = () => {
     <form>
       <header className="videoform__header">
         <Dropzone
-          ref={dropzoneRef}
           onDrop={(files) => {
             setVideoData(files[0]);
             readFile(files[0]);
             setUploadVideoState({ ...uploadVideoState, accepted: true });
           }}
-          onReject={(files) =>
+          onReject={() =>
             setUploadVideoState({ ...uploadVideoState, rejected: true })
           }
           multiple={false}
-          // maxSize={3 * 1024 ** 2}
           accept={MIME_TYPES.mp4}
         >
-          {(state) => dropzoneChildren(uploadVideoState, videoPreview)}
+          {() => dropzoneChildren(uploadVideoState, videoPreview, false)}
         </Dropzone>
 
         <Dropzone
           accept={IMAGE_MIME_TYPE}
           onDrop={(files) => {
             setImageData(files[0]);
-            // readFile(files[0]);
+            readFile(files[0]);
             setUploadVideoState({ ...uploadVideoState, accepted: true });
           }}
-          onReject={(files) =>
+          onReject={() =>
             setUploadVideoState({ ...uploadVideoState, rejected: true })
           }
           multiple={false}
-          // maxSize={3 * 1024 ** 2}
         >
-          {() => dropzoneChildren(uploadVideoState, imageData)}
+          {() => dropzoneChildren(uploadVideoState, imagePreview, true)}
         </Dropzone>
       </header>
       <div className="videoform__content">
