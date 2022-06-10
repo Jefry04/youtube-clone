@@ -1,12 +1,45 @@
-.uploadLabel {
-  border: 1px solid #ccc;
-  display: inline-block;
-  padding: 7px 15px;
-  cursor: pointer;
+// .uploadLabel {
+//   border: 1px solid #ccc;
+//   display: inline-block;
+//   padding: 7px 15px;
+//   cursor: pointer;
+//   border-radius: 5px;
+// }
+// .uploadButton {
+//   display: none;
+// }
+
+.input__videoform {
+  border: 1px solid #cccccc;
   border-radius: 5px;
-  background-color: blue;
-  color: #ffffff;
+  padding: 6px 8px;
+  display: block;
+  margin-top: 10px;
+  width: 100%;
+  margin: 10px 0 10px 0;
+
+  @include tablet() {
+    margin-top: 0;
+  }
+
+  @include desktop() {
+    margin-top: 0;
+  }
 }
-.uploadButton {
-  display: none;
+.mantine-Dropzone-root {
+  margin-bottom: 10px;
+  margin-left: 10px;
+  width: 40%;
+}
+
+.videoform__footer {
+  display: flex;
+  justify-content: flex-end;
+}
+.videoform__header {
+  display: flex;
+  align-items: center;
+}
+.videoform__videopreview {
+  width: 100%;
 }

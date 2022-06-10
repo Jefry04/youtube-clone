@@ -62,6 +62,7 @@ function UserView() {
         <PublicModal
           opened={showForm}
           onClose={() => dispatch(showFormAction())}
+          size="50%"
         >
           <VideoUploadForm />
         </PublicModal>

@@ -5,6 +5,7 @@
   "dependencies": {
     "-": "0.0.1",
     "@mantine/core": "^4.2.5",
+    "@mantine/dropzone": "^4.2.8",
     "@mantine/hooks": "^4.2.5",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
@@ -19,6 +20,7 @@
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
     "sass": "^1.51.0",
+    "tabler-icons-react": "^1.48.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

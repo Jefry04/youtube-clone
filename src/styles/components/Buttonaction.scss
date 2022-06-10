@@ -166,12 +166,12 @@
 
 .btn-action--videoup {
   display: flex;
+  flex-grow: 1;
   text-align: center;
   justify-content: center;
   background-color: #065fd4;
   color: white;
   border: none;
-  width: 200px;
 }
 
 .btn-action--tabsContainer {
