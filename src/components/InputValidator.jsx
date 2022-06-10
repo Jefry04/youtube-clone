@@ -11,6 +11,7 @@ function InputValidator({
   pattern,
   required,
   value,
+  id,
   classSpan,
 }) {
   const [focused, setFocused] = useState(false);
@@ -24,6 +25,7 @@ function InputValidator({
       <label htmlFor="control" className="form__label" />
       <input
         name={name}
+        id={id}
         value={value}
         className={classname}
         type={type}

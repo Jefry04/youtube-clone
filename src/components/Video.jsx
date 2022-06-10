@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -20,7 +21,7 @@ const Video = () => {
   useEffect(() => {
     fetchData().then((response) => setVideoData(response));
   }, []);
-  const videoDetails = videoData.find((video) => video.videoSrc === videoId);
+  const videoDetails = videoData.find((video) => video.id == videoId);
 
   return (
     <EmbeddedVideo

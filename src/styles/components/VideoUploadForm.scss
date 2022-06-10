@@ -1,0 +1,112 @@
+.video-upload-form {
+  padding: 1rem 0.5rem;
+  border-style: dashed;
+  border-width: 2px;
+  border-color: hsla(0, 0%, 0%, 0.411);
+}
+
+.video-upload-form__header {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.video-upload-form__media {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+}
+
+.video-upload-form__trash-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 4px;
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+  border-color: transparent;
+  border-radius: 100%;
+  background: transparent;
+  cursor: pointer;
+  color: #0000005b;
+  font-weight: 700;
+  z-index: 2000;
+  transition-property: background, color;
+  transition-duration: 200ms;
+}
+
+.video-upload-form__trash-btn:hover {
+  background-color: #f1e9e994;
+  color: #000000d2;
+}
+
+.video-upload-form__media__container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.video-upload-form__image-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+}
+
+.video-upload-form__fig {
+  display: block;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-upload-form__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: scale-down;
+}
+
+.video-upload-form__footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.video-upload-form__input {
+  display: block;
+  width: 100%;
+  padding: 6px 8px;
+  margin-top: 10px;
+  margin: 10px 0 10px 0;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+
+  @include tablet() {
+    margin-top: 0;
+  }
+
+  @include desktop() {
+    margin-top: 0;
+  }
+}
+
+.video-upload-form__input:focus {
+  outline-width: 2px;
+  outline-color: rgba(6, 95, 212, 0.5);
+  outline-style: solid;
+}
+.mantine-Dropzone-root {
+  flex-grow: 1;
+  height: 100%;
+}

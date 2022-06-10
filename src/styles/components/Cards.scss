@@ -23,18 +23,11 @@
     width: 90%;
     display: flex;
     flex-direction: column;
-
-    @include tabletAndDesktop {
-      display: flex;
-      flex-direction: column;
-    }
   }
-  .card__video {
-    width: 100%;
 
-    img {
-      display: block;
-    }
+  .card__video {
+    height: 153px;
+    width: 273px;
   }
 
   .card__body {
@@ -80,6 +73,9 @@
     width: 38%;
   }
   .card {
+    display: flex;
+    margin-bottom: 5px;
+
     @include desktop {
       display: flex;
       flex-direction: row;
@@ -88,7 +84,8 @@
       height: 98px;
     }
     .card__video {
-      display: flex;
+      height: 94px;
+      width: 168px;
     }
     .card__body {
       padding-left: 2%;
