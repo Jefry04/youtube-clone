@@ -8,11 +8,13 @@ import thunk from 'redux-thunk';
 import AuthReducer from './reducers/Auth.reducer';
 import LayoutReducer from './reducers/Layout.reducer';
 import ModalsReducer from './reducers/Modals.reducer';
+import VideoReducer from './reducers/Video.reducer';
 
 const rootReducer = combineReducers({
   AuthReducer,
   LayoutReducer,
   ModalsReducer,
+  VideoReducer,
 });
 
 const middleware = applyMiddleware(thunk);

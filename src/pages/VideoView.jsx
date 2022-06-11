@@ -1,16 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-import Video from '../components/Video';
 import VideoList from '../components/VideoList';
 import VideoComments from '../components/VideoComments';
+import {
+  fetchAllVideos,
+  fetchVideoDetail,
+} from '../store/reducers/Video.reducer';
+import EmbeddedVideo from '../components/EmbeddedVideo';
 
 const VideoView = () => {
+  const dispatch = useDispatch();
+  const { videoId } = useParams();
+
+  useEffect(() => {
+    dispatch(fetchVideoDetail(videoId));
+    dispatch(fetchAllVideos());
+  }, [videoId, dispatch]);
+
   return (
     <div className="videoview">
       <div className="videoview__container">
         <div className="videoview__content">
           <div className="videoview__video">
-            <Video />
+            <EmbeddedVideo />
           </div>
           <div className="videoview__coments">
             <VideoComments />

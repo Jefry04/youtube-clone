@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+
 import Cards from './Cards';
 import ButtonAction from './ButtonAction';
+import { fetchAllVideos } from '../store/reducers/Video.reducer';
 
 const fetchData = async () => {
   try {
@@ -22,12 +25,7 @@ const fetchFilters = async () => {
 };
 
 function VideoGrid() {
-  const [cardData, setCardData] = useState([]);
   const [filtersName, setFilterName] = useState([]);
-
-  useEffect(() => {
-    fetchData().then((response) => setCardData(response));
-  }, []);
 
   useEffect(() => {
     fetchFilters().then((response) => setFilterName(response));
@@ -46,7 +44,7 @@ function VideoGrid() {
           ))}
         </div>
       </div>
-      <Cards data={cardData} className="card__container" />
+      <Cards className="card__container" />
     </>
   );
 }
