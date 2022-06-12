@@ -1,45 +1,47 @@
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable global-require */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
+import { useSelector } from 'react-redux';
 
-const Cards = ({ data = [], className }) => {
+const Cards = ({ className }) => {
+  const { videos, loading } = useSelector((state) => state.VideoReducer);
+
   return (
     <div className={`${className}`}>
-      {data?.map((user) => (
-        <Link key={user.id} to={`/videoview/${user.id}`} className="card__link">
-          <div className="card" key={user.id}>
-            <header className="card__video">
-              <ReactPlayer
-                url={user.videoSrc}
-                light={user.imagePreview}
-                height="100%"
-                width="100%"
-              />
-            </header>
-            <div className="card__body">
-              <div className="card__avatar">
-                <img
-                  src={require(`../assets/images/${user.avatarSrc}.png`)}
-                  alt="perfil"
+      {loading ? (
+        <div> cargando</div>
+      ) : (
+        videos?.map((video) => (
+          <Link
+            key={video.id}
+            to={`/videoview/${video.id}`}
+            className="card__link"
+          >
+            <div className="card" key={video.id}>
+              <header className="card__video">
+                <ReactPlayer
+                  url={video.videoUrl}
+                  light={video.imageUrl}
+                  height="100%"
+                  width="100%"
                 />
-              </div>
-              <div className="card__text">
-                <h3>{user.title}</h3>
-                <div className="card__name">
-                  <span id="name">{user.name}</span>
-                  <img
-                    src={require(`../assets/images/${user.checkSrc}.png`)}
-                    alt="vector"
-                  />
+              </header>
+              <div className="card__body">
+                <div className="card__avatar">
+                  <img src={video.userId.avatarUrl} alt="perfil" />
                 </div>
-                <span>{user.visitas}</span>
+                <div className="card__text">
+                  <h3>{video.title}</h3>
+                  <div className="card__name">
+                    <span id="name">{video.userId.firstName}</span>
+                  </div>
+                  <span>1 M de visitas en 15 horas</span>
+                </div>
               </div>
             </div>
-          </div>
-        </Link>
-      ))}
+          </Link>
+        ))
+      )}
     </div>
   );
 };
