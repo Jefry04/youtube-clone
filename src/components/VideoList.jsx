@@ -1,8 +1,16 @@
 import React from 'react';
-import Cards from './Cards';
+import { useSelector } from 'react-redux';
+import Card from './Card';
 
 function VideoList() {
-  return <Cards className="card__container-row" />;
+  const { videos, loading } = useSelector((state) => state.VideoReducer);
+  return loading ? (
+    <div> cargando</div>
+  ) : (
+    <div className="card__container-row">
+      {videos && videos.map((video) => <Card key={video.id} video={video} />)}
+    </div>
+  );
 }
 
 export default VideoList;

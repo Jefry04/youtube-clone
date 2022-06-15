@@ -1,4 +1,6 @@
+/* eslint-disable no-underscore-dangle */
 import axios from 'axios';
+import { showFormAction } from './Modals.reducer';
 
 const GET_VIDEO_SUCCESS = 'GET_VIDEO_SUCCESS';
 const GET_VIDEO_ERROR = 'GET_VIDEO_ERROR';
@@ -7,17 +9,36 @@ const VIDEO_DETAIL_SUCCESS = 'VIDEO_DETAIL_SUCCESS';
 const VIDEO_FILTER_SUCCESS = 'VIDEO_FILTER_SUCCESS';
 const SEARCH_DATA = 'SEARCH_DATA';
 const HAS_FILTER_VIDEO = 'HAS_FILTER_VIDEO';
-
+const UPLOAD_VIDEO_SUCCESS = 'UPLOAD_VIDEO_SUCCESS';
 const url = process.env.REACT_APP_BACKEND_URI;
 
 const initialState = {
   videos: [],
+  uploadedVideo: {},
   loading: false,
   error: null,
   videoDetail: {},
   filtersVideo: [],
   searchData: '',
   hasFilterVideos: false,
+};
+export const postVideo = (uploadData) => {
+  const token = localStorage.getItem('token');
+  return async (dispatch) => {
+    try {
+      dispatch({ type: GET_VIDEO_LOADING, payload: true });
+      const response = await axios.post(`${url}videos`, uploadData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `bearer ${token}`,
+        },
+      });
+      if (response.status === 201) dispatch(showFormAction());
+      dispatch({ type: UPLOAD_VIDEO_SUCCESS, payload: response.data.video });
+    } catch (error) {
+      dispatch({ type: GET_VIDEO_ERROR, payload: error });
+    }
+  };
 };
 export const fetchAllVideos = () => {
   return async (dispatch) => {
@@ -35,7 +56,7 @@ export const fetchFilterVideos = (searchData) => {
   const paramsObject = {
     search: searchData,
     page: 1,
-    limit: 2,
+    limit: 10,
   };
   return async (dispatch) => {
     try {
@@ -89,6 +110,15 @@ function VideoReducer(state = initialState, action = null) {
       ...state,
       loading: false,
       videos: action.payload,
+      hasFilterVideos: false,
+      error: null,
+    };
+  if (action.type === UPLOAD_VIDEO_SUCCESS)
+    return {
+      ...state,
+      loading: false,
+      uploadedVideo: action.payload,
+      hasFilterVideos: false,
       error: null,
     };
   if (action.type === GET_VIDEO_ERROR)

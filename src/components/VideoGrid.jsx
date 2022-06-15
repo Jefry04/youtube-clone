@@ -3,7 +3,7 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Cards from './Cards';
+import Card from './Card';
 import ButtonAction from './ButtonAction';
 import {
   actionHasFilterVideo,
@@ -12,7 +12,7 @@ import {
 
 function VideoGrid() {
   const { labels } = useSelector((state) => state.LayoutReducer);
-  const { hasFilterVideos, filtersVideo } = useSelector(
+  const { hasFilterVideos, filtersVideo, videos, loading } = useSelector(
     (state) => state.VideoReducer
   );
   const dispatch = useDispatch();
@@ -36,10 +36,9 @@ function VideoGrid() {
           ))}
         </div>
       </div>
-      <ul> Encontramos los videos:</ul>
-      {filtersVideo.map((video) => (
-        <li>{video.title}</li>
-      ))}
+      <div className="card__container">
+        {filtersVideo && filtersVideo.map((video) => <Card video={video} />)}
+      </div>
     </>
   ) : (
     <>
@@ -55,7 +54,14 @@ function VideoGrid() {
           ))}
         </div>
       </div>
-      <Cards className="card__container" />
+      {loading ? (
+        <div> cargando</div>
+      ) : (
+        <div className="card__container">
+          {videos &&
+            videos.map((video) => <Card key={video.id} video={video} />)}
+        </div>
+      )}
     </>
   );
 }

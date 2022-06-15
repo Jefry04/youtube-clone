@@ -46,7 +46,7 @@ const EmbeddedVideo = () => {
           <div className="secundaryinfo__scope">
             <div className="scope__user">
               <div className="user__image">
-                <img src={videos?.userId?.avatarUrl} alt="perfil" />
+                <img src={videos?.user?.avatarUrl} alt="perfil" />
               </div>
               <div className="user__profile">
                 <p className="profile__name">

@@ -7,7 +7,7 @@ import VideoView from './pages/VideoView';
 import UserView from './pages/UserView';
 import NotFound from './pages/NotFound';
 import { getUerData } from './store/reducers/Auth.reducer';
-import VideoResults from './components/VideoResults';
+import VideoResults from './pages/VideoResults';
 
 function App() {
   const dispatch = useDispatch();

@@ -22,15 +22,17 @@ function SearchHeader(props) {
         state: searchInput,
       });
     }
+    setSearchInput('');
   };
 
   return (
-    <form onSubmit={handleSearch}>
+    <form onSubmit={handleSearch} className="search__form">
       <input
         className="search__input"
         type="text"
         placeholder={wordkey}
         onChange={onChange}
+        value={searchInput}
       />
     </form>
   );

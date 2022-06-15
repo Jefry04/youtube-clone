@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import Card from '../components/Card';
 import { fetchFilterVideos } from '../store/reducers/Video.reducer';
 
 const VideoResults = () => {
@@ -16,10 +17,14 @@ const VideoResults = () => {
 
   return (
     filtersVideo && (
-      <div>
-        <ul> Encontramos los videos de la barra debusqueda:</ul>
-        {filtersVideo.map((video) => (
-          <li>{video.title}</li>
+      <div className="videofilter__wrapper">
+        {filtersVideo.map((filtervideo) => (
+          <Card
+            key={filtervideo.id}
+            video={filtervideo}
+            className="videofilter__container"
+            isSearch
+          />
         ))}
       </div>
     )
