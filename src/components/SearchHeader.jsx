@@ -1,9 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+import { actionSearchData } from '../store/reducers/Video.reducer';
 import '../styles/components/SearchHeader.scss';
 
 function SearchHeader(props) {
   const { wordkey } = props;
-  return <input className="search__input" type="text" placeholder={wordkey} />;
+  const [searchInput, setSearchInput] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onChange = (event) => {
+    setSearchInput(event.target.value);
+  };
+  const handleSearch = (event) => {
+    event.preventDefault();
+    if (searchInput.length > 0) {
+      dispatch(actionSearchData(searchInput));
+      navigate('videos/results', {
+        state: searchInput,
+      });
+    }
+  };
+
+  return (
+    <form onSubmit={handleSearch}>
+      <input
+        className="search__input"
+        type="text"
+        placeholder={wordkey}
+        onChange={onChange}
+      />
+    </form>
+  );
 }
 
 export default SearchHeader;

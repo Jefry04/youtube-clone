@@ -28,7 +28,7 @@ const Cards = ({ className }) => {
               </header>
               <div className="card__body">
                 <div className="card__avatar">
-                  <img src={video.userId.avatarUrl} alt="perfil" />
+                  <img src={video.user.avatarUrl} alt="perfil" />
                 </div>
                 <div className="card__text">
                   <h3>{video.title}</h3>

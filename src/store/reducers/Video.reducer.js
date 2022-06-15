@@ -3,8 +3,10 @@ import axios from 'axios';
 const GET_VIDEO_SUCCESS = 'GET_VIDEO_SUCCESS';
 const GET_VIDEO_ERROR = 'GET_VIDEO_ERROR';
 const GET_VIDEO_LOADING = 'GET_VIDEO_LOADING';
-const VIDEO_DETAIL_ERROR = 'VIDEO_DETAIL_ERROR';
 const VIDEO_DETAIL_SUCCESS = 'VIDEO_DETAIL_SUCCESS';
+const VIDEO_FILTER_SUCCESS = 'VIDEO_FILTER_SUCCESS';
+const SEARCH_DATA = 'SEARCH_DATA';
+const HAS_FILTER_VIDEO = 'HAS_FILTER_VIDEO';
 
 const url = process.env.REACT_APP_BACKEND_URI;
 
@@ -13,6 +15,9 @@ const initialState = {
   loading: false,
   error: null,
   videoDetail: {},
+  filtersVideo: [],
+  searchData: '',
+  hasFilterVideos: false,
 };
 export const fetchAllVideos = () => {
   return async (dispatch) => {
@@ -26,6 +31,24 @@ export const fetchAllVideos = () => {
   };
 };
 
+export const fetchFilterVideos = (searchData) => {
+  const paramsObject = {
+    search: searchData,
+    page: 1,
+    limit: 2,
+  };
+  return async (dispatch) => {
+    try {
+      dispatch({ type: GET_VIDEO_LOADING, payload: true });
+      const { data } = await axios.get(`${url}videos/results`, {
+        params: paramsObject,
+      });
+      dispatch({ type: VIDEO_FILTER_SUCCESS, payload: data.results });
+    } catch (error) {
+      dispatch({ type: GET_VIDEO_ERROR, payload: error });
+    }
+  };
+};
 export const fetchVideoDetail = (videoId) => {
   return async (dispatch) => {
     try {
@@ -33,11 +56,29 @@ export const fetchVideoDetail = (videoId) => {
       const { data } = await axios.get(`${url}videos/${videoId}`);
       dispatch({ type: VIDEO_DETAIL_SUCCESS, payload: data.video });
     } catch (error) {
-      dispatch({ type: VIDEO_DETAIL_ERROR, payload: error });
+      dispatch({ type: GET_VIDEO_ERROR, payload: error });
     }
   };
 };
+
+export function actionSearchData(payload) {
+  return { type: SEARCH_DATA, payload };
+}
+
+export function actionHasFilterVideo(payload) {
+  return { type: HAS_FILTER_VIDEO, payload };
+}
 function VideoReducer(state = initialState, action = null) {
+  if (action.type === SEARCH_DATA)
+    return {
+      ...state,
+      searchData: action.payload,
+    };
+  if (action.type === HAS_FILTER_VIDEO)
+    return {
+      ...state,
+      hasFilterVideos: action.payload,
+    };
   if (action.type === GET_VIDEO_LOADING)
     return {
       ...state,
@@ -55,9 +96,10 @@ function VideoReducer(state = initialState, action = null) {
       ...state,
       loading: false,
       videos: null,
+      filtersVideo: null,
+      videoDetail: null,
       error: action.payload,
     };
-
   if (action.type === VIDEO_DETAIL_SUCCESS)
     return {
       ...state,
@@ -65,12 +107,12 @@ function VideoReducer(state = initialState, action = null) {
       videoDetail: action.payload,
       error: null,
     };
-  if (action.type === VIDEO_DETAIL_ERROR)
+  if (action.type === VIDEO_FILTER_SUCCESS)
     return {
       ...state,
       loading: false,
-      videoDetail: null,
-      error: action.payload,
+      filtersVideo: action.payload,
+      error: null,
     };
   return state;
 }

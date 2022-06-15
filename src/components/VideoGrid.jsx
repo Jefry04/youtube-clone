@@ -1,45 +1,56 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+/* eslint-disable no-underscore-dangle */
+import React from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import Cards from './Cards';
 import ButtonAction from './ButtonAction';
-import { fetchAllVideos } from '../store/reducers/Video.reducer';
-
-const fetchData = async () => {
-  try {
-    const response = await axios.get('/mocks/data.json');
-    return response.data;
-  } catch (error) {
-    return error;
-  }
-};
-
-const fetchFilters = async () => {
-  try {
-    const response = await axios.get('/mocks/filters.json');
-    return response.data;
-  } catch (error) {
-    return error;
-  }
-};
+import {
+  actionHasFilterVideo,
+  fetchFilterVideos,
+} from '../store/reducers/Video.reducer';
 
 function VideoGrid() {
-  const [filtersName, setFilterName] = useState([]);
+  const { labels } = useSelector((state) => state.LayoutReducer);
+  const { hasFilterVideos, filtersVideo } = useSelector(
+    (state) => state.VideoReducer
+  );
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    fetchFilters().then((response) => setFilterName(response));
-  }, []);
+  const handleCLick = (labelName) => {
+    dispatch(fetchFilterVideos(labelName));
+    dispatch(actionHasFilterVideo(true));
+  };
 
-  return (
+  return hasFilterVideos ? (
     <>
       <div className="filter">
         <div className="filter__container">
-          {filtersName.map((filter) => (
+          {labels.map((label) => (
             <ButtonAction
-              key={filter.id}
-              content={filter.filterName}
+              key={label._id}
+              content={label.name}
               className="btn-action--filter"
+              handleClick={() => handleCLick(label.name)}
+            />
+          ))}
+        </div>
+      </div>
+      <ul> Encontramos los videos:</ul>
+      {filtersVideo.map((video) => (
+        <li>{video.title}</li>
+      ))}
+    </>
+  ) : (
+    <>
+      <div className="filter">
+        <div className="filter__container">
+          {labels.map((label) => (
+            <ButtonAction
+              key={label._id}
+              content={label.name}
+              className="btn-action--filter"
+              handleClick={() => handleCLick(label.name)}
             />
           ))}
         </div>

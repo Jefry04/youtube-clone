@@ -7,6 +7,7 @@ import VideoView from './pages/VideoView';
 import UserView from './pages/UserView';
 import NotFound from './pages/NotFound';
 import { getUerData } from './store/reducers/Auth.reducer';
+import VideoResults from './components/VideoResults';
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function App() {
           <Route path="videoview/:videoId" element={<VideoView />} />
           <Route path="/" element={<Home />} />
           <Route path="/user" element={<UserView />} />
+          <Route path="/videos/results" element={<VideoResults />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
