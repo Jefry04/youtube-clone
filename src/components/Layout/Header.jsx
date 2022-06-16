@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { sidebarToggle } from '../../store/reducers/Layout.reducer';
 
-import Buttonaction from '../ButtonAction';
+import ButtonAction from '../ButtonAction';
 import SearchHeader from '../SearchHeader';
 
 import iconYoutube from '../../images/brand/icon.png';
@@ -31,7 +31,7 @@ function Header() {
     <nav className="header">
       <div className="header__group">
         <div className="group__hamburger">
-          <Buttonaction
+          <ButtonAction
             className="btn-action--toggle"
             prependIcon={<BarsIcon />}
             handleClick={() => dispatch(sidebarToggle())}
@@ -48,26 +48,26 @@ function Header() {
       </div>
       <div className="header__search">
         <SearchHeader />
-        <Buttonaction
+        <ButtonAction
           className="btn-action--search"
           prependIcon={<SearchIcon />}
         />
-        <Buttonaction
+        <ButtonAction
           className="btn-action--voice"
           prependIcon={<VoiceIcon />}
         />
       </div>
       <div className="header__user">
-        <Buttonaction
+        <ButtonAction
           className="btn-action--appsconf"
           prependIcon={<AppsIcon />}
         />
-        <Buttonaction
+        <ButtonAction
           className="btn-action--appsconf"
           prependIcon={<VerticalDotsIcon />}
         />
         {isAuth ? (
-          <Buttonaction
+          <ButtonAction
             className="btn-action--login"
             content="LOGOUT"
             prependIcon={<UserIcon />}

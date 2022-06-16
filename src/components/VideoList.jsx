@@ -1,24 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Cards from './Cards';
-
-const fetchData = async () => {
-  try {
-    const response = await axios.get('/mocks/data.json');
-    return response.data;
-  } catch (error) {
-    return error;
-  }
-};
+import React from 'react';
+import { useSelector } from 'react-redux';
+import Card from './Card';
 
 function VideoList() {
-  const [cardData, setCardData] = useState([]);
-
-  useEffect(() => {
-    fetchData().then((response) => setCardData(response));
-  }, []);
-
-  return <Cards data={cardData} className="card__container-row" />;
+  const { videos, loading } = useSelector((state) => state.VideoReducer);
+  return loading ? (
+    <div> cargando</div>
+  ) : (
+    <div className="card__container-row">
+      {videos && videos.map((video) => <Card key={video.id} video={video} />)}
+    </div>
+  );
 }
 
 export default VideoList;
