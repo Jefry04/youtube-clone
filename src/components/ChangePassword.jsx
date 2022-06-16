@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import Buttonaction from './ButtonAction';
 import InputValidator from './InputValidator';
@@ -8,6 +7,7 @@ import Icon from '../images/brand/icon.png';
 import Letter from '../images/brand/letter.png';
 import '../styles/components/Login.scss';
 import { putNewPasswordData } from '../store/reducers/Auth.reducer';
+import { hiddeChangePasswordForm } from '../store/reducers/ChangePassword.reducer';
 
 function ChangePassword() {
   const [formData, setFormData] = useState({
@@ -16,7 +16,6 @@ function ChangePassword() {
     confirmPassword: '',
   });
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const onChange = (event) => {
     setFormData({
@@ -34,7 +33,7 @@ function ChangePassword() {
         confirmPassword: formData.confirmPassword,
       })
     );
-    navigate('/');
+    dispatch(hiddeChangePasswordForm());
   };
 
   return (

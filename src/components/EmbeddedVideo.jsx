@@ -1,16 +1,26 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPlayer from 'react-player';
+import { useParams } from 'react-router-dom';
 
 import ButtonAction from './ButtonAction';
 import '../styles/components/EmbeddedVideo.scss';
 import LikeIcon from '../assets/icons/LikeIcon';
 import ShareIcon from '../assets/icons/ShareIcon';
 import { showRegisterForm } from '../store/reducers/Modals.reducer';
+import { getLikeData } from '../store/reducers/Auth.reducer';
 
 const EmbeddedVideo = () => {
   const { videoDetail, videos } = useSelector((state) => state.VideoReducer);
   const dispatch = useDispatch();
+  const { videoId } = useParams();
+  console.log('token en el embedded', videoId);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    dispatch(getLikeData({ videoId }));
+  };
 
   return (
     videoDetail && (
@@ -34,6 +44,8 @@ const EmbeddedVideo = () => {
               <ButtonAction
                 className="btn-action--like"
                 prependIcon={<LikeIcon />}
+                type="submit"
+                handleClick={handleSubmit}
               />
               <ButtonAction
                 className="btn-action--toshare"

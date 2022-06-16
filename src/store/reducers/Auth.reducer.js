@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { hiddeLoginForm, hiddeRegisterForm } from './Modals.reducer';
-import { hiddeChangePasswordForm } from './ChangePassword.reducer';
 
 const AUTH_SUCCESS = 'AUTH_SUCCESS';
 const AUTH_ERROR = 'AUTH_ERROR';
@@ -59,7 +58,24 @@ export const getUerData = (token) => {
           Authorization: `bearer ${token}`,
         },
       });
-      dispatch(hiddeChangePasswordForm());
+
+      dispatch({ type: USER_SUCCESS, payload: response.data.user });
+    } catch (error) {
+      dispatch({ type: AUTH_ERROR, payload: error.response });
+    }
+  };
+};
+
+export const getLikeData = ({ token, videoId }) => {
+  return async (dispatch) => {
+    try {
+      console.log('envio info', videoId);
+      const response = await axios.get(`${url}${videoId}/new-like`, {
+        headers: {
+          Authorization: `bearer ${token}`,
+        },
+      });
+
       dispatch({ type: USER_SUCCESS, payload: response.data.user });
     } catch (error) {
       dispatch({ type: AUTH_ERROR, payload: error.response });
