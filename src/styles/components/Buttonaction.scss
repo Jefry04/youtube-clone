@@ -119,7 +119,10 @@
   border-radius: 100px;
   white-space: nowrap;
 }
-
+.btn-action--filter:focus {
+  background-color: var(--filter-bg-3);
+  color: var(--text-filter);
+}
 .btn-action--form {
   justify-content: center;
   width: 30%;

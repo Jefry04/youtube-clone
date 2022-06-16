@@ -1,12 +1,14 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 import ReactPlayer from 'react-player';
-import { useParams } from 'react-router-dom';
 
 import ButtonAction from './ButtonAction';
 import '../styles/components/EmbeddedVideo.scss';
 import LikeIcon from '../assets/icons/LikeIcon';
 import ShareIcon from '../assets/icons/ShareIcon';
+import { actionSearchData } from '../store/reducers/Video.reducer';
 import { showRegisterForm } from '../store/reducers/Modals.reducer';
 import { getLikeData } from '../store/reducers/Auth.reducer';
 
@@ -14,6 +16,7 @@ const EmbeddedVideo = () => {
   const { videoDetail, videos } = useSelector((state) => state.VideoReducer);
   const dispatch = useDispatch();
   const { videoId } = useParams();
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -21,6 +24,12 @@ const EmbeddedVideo = () => {
     dispatch(getLikeData({ videoId }));
   };
 
+  const handleClick = (labelName) => {
+    dispatch(actionSearchData(labelName));
+    navigate('/videos/results', {
+      state: labelName,
+    });
+  };
   return (
     videoDetail && (
       <div className="container__userandvideo">
@@ -33,6 +42,18 @@ const EmbeddedVideo = () => {
             controls
           />
         </div>
+        <div className="userandvideo__labels">
+          {videoDetail?.labels?.map((label) => (
+            <button
+              type="button"
+              onClick={() => handleClick(label.name)}
+              key={label._id}
+            >
+              #{label.name}
+            </button>
+          ))}
+        </div>
+
         <div className="userandvideo__primaryinfo">
           <div className="primaryinfo__title">
             <h2>{videoDetail.title}</h2>

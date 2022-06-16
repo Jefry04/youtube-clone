@@ -69,6 +69,16 @@ const VideoUploadForm = () => {
     dispatch(postVideo(data));
   };
 
+  const handleVideo = (files) => {
+    setVideoData(files[0]);
+    readFile(files[0]);
+    setUploadVideoState({ ...uploadVideoState, accepted: true });
+  };
+  const handleImage = (files) => {
+    setImageData(files[0]);
+    readFile(files[0]);
+    setUploadImageState({ ...uploadImageState, accepted: true });
+  };
   return (
     <form className="video-upload-form">
       <header className="video-upload-form__header">
@@ -76,9 +86,7 @@ const VideoUploadForm = () => {
           <div className="video-upload-form__media__container">
             <Dropzone
               onDrop={(files) => {
-                setVideoData(files[0]);
-                readFile(files[0]);
-                setUploadVideoState({ ...uploadVideoState, accepted: true });
+                handleVideo(files);
               }}
               onReject={() =>
                 setUploadVideoState({ ...uploadVideoState, rejected: true })
@@ -100,9 +108,7 @@ const VideoUploadForm = () => {
             <Dropzone
               accept={IMAGE_MIME_TYPE}
               onDrop={(files) => {
-                setImageData(files[0]);
-                readFile(files[0]);
-                setUploadImageState({ ...uploadImageState, accepted: true });
+                handleImage(files);
               }}
               onReject={() =>
                 setUploadImageState({ ...uploadImageState, rejected: true })
