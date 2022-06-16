@@ -7,20 +7,20 @@ import InputValidator from './InputValidator';
 import Icon from '../images/brand/icon.png';
 import Letter from '../images/brand/letter.png';
 import '../styles/components/Login.scss';
-import { authUser } from '../store/reducers/Auth.reducer';
-import { showRecoverPassword } from '../store/reducers/Modals.reducer';
+import { putNewPasswordData } from '../store/reducers/Auth.reducer';
 
-function Login() {
-  const [loginData, setLoginData] = useState({
-    email: '',
+function ChangePassword() {
+  const [formData, setFormData] = useState({
     password: '',
+    newpassword: '',
+    confirmPassword: '',
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onChange = (event) => {
-    setLoginData({
-      ...loginData,
+    setFormData({
+      ...formData,
       [event.target.name]: event.target.value,
     });
   };
@@ -28,12 +28,13 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     dispatch(
-      authUser({
-        email: loginData.email,
-        password: loginData.password,
+      putNewPasswordData({
+        password: formData.password,
+        newpassword: formData.newpassword,
+        confirmPassword: formData.confirmPassword,
       })
     );
-    navigate('/user');
+    navigate('/');
   };
 
   return (
@@ -43,39 +44,44 @@ function Login() {
           <img src={Icon} alt="logoYoutube" className="brand__icon" />
           <img src={Letter} alt="letterYoutube" className="brand__letter" />
         </div>
-        <p className="form__subtitle"> Login </p>
+        <p className="form__subtitle"> Change Password </p>
       </header>
-      <div className="form__content">
-        <InputValidator
-          name="email"
-          type="email"
-          value={loginData.name}
-          onChange={onChange}
-          classname="input__Login --span"
-          placeholder="email"
-          errorMessage="Mensaje de email"
-          required
-        />
+      <div className="form__content_change">
         <InputValidator
           name="password"
           type="password"
-          value={loginData.name}
+          value={formData.name}
           onChange={onChange}
           classname="input__Login --span"
-          placeholder="password"
+          placeholder="Password"
           errorMessage="Minimo 8 caracteres e incluir 1 numero y 1 caracter especial"
+          pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
+          required
+        />
+        <InputValidator
+          name="newpassword"
+          value={formData.name}
+          type="password"
+          classname="input__Login --span"
+          placeholder="New password"
+          onChange={onChange}
+          errorMessage="Minimo 8 caracteres e incluir 1 numero y 1 caracter especial"
+          pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
+          required
+        />
+        <InputValidator
+          name="confirmPassword"
+          value={formData.name}
+          type="password"
+          classname="input__Login --span"
+          placeholder="Confirm pasword"
+          onChange={onChange}
+          errorMessage="NO coinciden las claves"
           pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
           required
         />
       </div>
       <div className="form__footer">
-        <button
-          type="button"
-          className="form__link"
-          onClick={() => dispatch(showRecoverPassword())}
-        >
-          Olvidaste la contraseña
-        </button>
         <Buttonaction
           className="btn-action--form"
           content="Next"
@@ -87,4 +93,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default ChangePassword;

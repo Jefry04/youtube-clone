@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { hiddeLoginForm, hiddeRegisterForm } from './Modals.reducer';
+import { hiddeChangePasswordForm } from './ChangePassword.reducer';
 
 const AUTH_SUCCESS = 'AUTH_SUCCESS';
 const AUTH_ERROR = 'AUTH_ERROR';
@@ -58,6 +59,31 @@ export const getUerData = (token) => {
           Authorization: `bearer ${token}`,
         },
       });
+      dispatch(hiddeChangePasswordForm());
+      dispatch({ type: USER_SUCCESS, payload: response.data.user });
+    } catch (error) {
+      dispatch({ type: AUTH_ERROR, payload: error.response });
+    }
+  };
+};
+
+export const putNewPasswordData = ({
+  password,
+  newpassword,
+  confirmPassword,
+}) => {
+  return async (dispatch) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.put(
+        `${url}user/changepassword`,
+        { password, newpassword, confirmPassword },
+        {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        }
+      );
       dispatch({ type: USER_SUCCESS, payload: response.data.user });
     } catch (error) {
       dispatch({ type: AUTH_ERROR, payload: error.response });
