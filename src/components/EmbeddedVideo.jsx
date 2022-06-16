@@ -14,7 +14,6 @@ const EmbeddedVideo = () => {
   const { videoDetail, videos } = useSelector((state) => state.VideoReducer);
   const dispatch = useDispatch();
   const { videoId } = useParams();
-  console.log('token en el embedded', videoId);
 
   const handleSubmit = (event) => {
     event.preventDefault();

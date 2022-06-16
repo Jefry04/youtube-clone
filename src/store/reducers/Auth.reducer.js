@@ -66,15 +66,19 @@ export const getUerData = (token) => {
   };
 };
 
-export const getLikeData = ({ token, videoId }) => {
+export const getLikeData = ({ videoId }) => {
   return async (dispatch) => {
     try {
-      console.log('envio info', videoId);
-      const response = await axios.get(`${url}${videoId}/new-like`, {
-        headers: {
-          Authorization: `bearer ${token}`,
-        },
-      });
+      const token = localStorage.getItem('token');
+      const response = await axios.post(
+        `${url}video/${videoId}/new-like`,
+        {},
+        {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        }
+      );
 
       dispatch({ type: USER_SUCCESS, payload: response.data.user });
     } catch (error) {
