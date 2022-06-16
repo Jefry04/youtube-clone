@@ -33,7 +33,7 @@ function VideoGrid() {
             className="btn-action--filter"
             handleClick={handleAllVideos}
           />
-          {labels.map((label) => (
+          {labels?.map((label) => (
             <ButtonAction
               key={label._id}
               content={label.name}
@@ -51,7 +51,7 @@ function VideoGrid() {
     <>
       <div className="filter">
         <div className="filter__container">
-          {labels.map((label) => (
+          {labels?.map((label) => (
             <ButtonAction
               key={label._id}
               content={label.name}

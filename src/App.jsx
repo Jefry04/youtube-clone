@@ -8,6 +8,7 @@ import UserView from './pages/UserView';
 import NotFound from './pages/NotFound';
 import { getUerData } from './store/reducers/Auth.reducer';
 import VideoResults from './pages/VideoResults';
+import RecoverPassword from './components/RecoverPassword';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,10 @@ function App() {
           <Route path="/user" element={<UserView />} />
           <Route path="/videos/results" element={<VideoResults />} />
           <Route path="*" element={<NotFound />} />
+          <Route
+            path="/recover-password/:token"
+            element={<RecoverPassword />}
+          />
         </Routes>
       </Layout>
     </BrowserRouter>

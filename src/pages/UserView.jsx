@@ -9,12 +9,19 @@ import pic from '../assets/images/perfil5.png';
 import PublicModal from '../components/PublicModal';
 import VideoUploadForm from '../components/VideoUploadForm';
 import { showFormAction } from '../store/reducers/Modals.reducer';
+import {
+  showChangePasswordForm,
+  hiddeChangePasswordForm,
+} from '../store/reducers/ChangePassword.reducer';
+import ChangePassword from '../components/ChangePassword';
 
 function UserView() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.AuthReducer);
   const { showForm } = useSelector((state) => state.ModalsReducer);
-
+  const { showingChangePasswordForm } = useSelector(
+    (state) => state.ChangePasswordReducer
+  );
   return (
     user && (
       <div className="page">
@@ -36,6 +43,11 @@ function UserView() {
               </div>
             </div>
             <div className="container__button">
+              <ButtonAction
+                className="btn-action--videoup"
+                content="CHANGE PASSWORD"
+                handleClick={() => dispatch(showChangePasswordForm())}
+              />
               <ButtonAction
                 className="btn-action--videoup"
                 content="SUBIR VIDEO"
@@ -65,6 +77,13 @@ function UserView() {
           size="50%"
         >
           <VideoUploadForm />
+        </PublicModal>
+        <PublicModal
+          opened={showingChangePasswordForm}
+          onClose={() => dispatch(hiddeChangePasswordForm())}
+          size="50%"
+        >
+          <ChangePassword />
         </PublicModal>
       </div>
     )
