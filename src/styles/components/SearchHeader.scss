@@ -1,5 +1,8 @@
 @import '../abstract/mixins';
 
+.search__form {
+  width: 80%;
+}
 .search__input {
   display: none;
   width: 100%;

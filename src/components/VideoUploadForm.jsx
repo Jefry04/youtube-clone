@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { Dropzone, MIME_TYPES, IMAGE_MIME_TYPE } from '@mantine/dropzone';
 
 import ButtonAction from './ButtonAction';
 import InputValidator from './InputValidator';
 import DropzonePreview from './DropzonePreview';
-import { showFormAction } from '../store/reducers/Modals.reducer';
+import { postVideo } from '../store/reducers/Video.reducer';
 
 export const dropzoneChildren = (uploadVideoState, mediaUrl, isImage) => (
   <DropzonePreview
@@ -35,8 +34,6 @@ const VideoUploadForm = () => {
     labels: '',
   });
   const dispatch = useDispatch();
-  const token = localStorage.getItem('token');
-  const url = process.env.REACT_APP_BACKEND_URI;
 
   const onChange = (e) => {
     setVideoFormData({
@@ -69,16 +66,7 @@ const VideoUploadForm = () => {
 
     data.append('video', videoData);
     data.append('image', imageData);
-
-    const response = await axios.post(`${url}videos`, data, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization: `bearer ${token}`,
-      },
-    });
-    if (response.status === 201) {
-      dispatch(showFormAction());
-    } else console.log('no subio el video');
+    dispatch(postVideo(data));
   };
 
   return (
