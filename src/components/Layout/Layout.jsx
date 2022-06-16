@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   hiddeRegisterForm,
   hiddeLoginForm,
+  hiddeRecoverPassword,
 } from '../../store/reducers/Modals.reducer';
 
 //  COMPONENTS
@@ -13,12 +14,12 @@ import PublicModal from '../PublicModal';
 import Register from '../Register';
 import Login from '../Login';
 import '../../styles/components/Layout/Layout.scss';
+import GetEmail from '../GetEmail';
 
 function Layout(props) {
   const { children } = props;
-  const { showingRegisterForm, showingLoginForm } = useSelector(
-    ({ ModalsReducer }) => ModalsReducer
-  );
+  const { showingRegisterForm, showingLoginForm, showRecoverPassword } =
+    useSelector(({ ModalsReducer }) => ModalsReducer);
 
   const dispatch = useDispatch();
 
@@ -39,8 +40,15 @@ function Layout(props) {
           <PublicModal
             opened={showingLoginForm}
             onClose={() => dispatch(hiddeLoginForm())}
+            size="50%"
           >
             <Login />
+          </PublicModal>
+          <PublicModal
+            opened={showRecoverPassword}
+            onClose={() => dispatch(hiddeRecoverPassword())}
+          >
+            <GetEmail />
           </PublicModal>
         </main>
       </div>

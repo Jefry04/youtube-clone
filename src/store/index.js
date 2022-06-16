@@ -9,12 +9,14 @@ import AuthReducer from './reducers/Auth.reducer';
 import LayoutReducer from './reducers/Layout.reducer';
 import ModalsReducer from './reducers/Modals.reducer';
 import VideoReducer from './reducers/Video.reducer';
+import ChangePasswordReducer from './reducers/ChangePassword.reducer';
 
 const rootReducer = combineReducers({
   AuthReducer,
   LayoutReducer,
   ModalsReducer,
   VideoReducer,
+  ChangePasswordReducer,
 });
 
 const middleware = applyMiddleware(thunk);
