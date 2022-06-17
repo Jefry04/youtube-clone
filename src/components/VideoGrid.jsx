@@ -8,7 +8,7 @@ import ButtonAction from './ButtonAction';
 import {
   actionHasFilterVideo,
   fetchFilterVideos,
-} from '../store/reducers/Video.reducer';
+} from '../store/reducers/Video.actionCreators';
 
 function VideoGrid() {
   const { labels } = useSelector((state) => state.LayoutReducer);

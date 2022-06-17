@@ -1,0 +1,95 @@
+@import '../abstract/mixins';
+
+.new-comment {
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  padding: 0.5rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid black;
+}
+
+.new-comment__avatar {
+  flex-shrink: 0;
+  margin: 0;
+  width: 40px;
+  height: 40px;
+  @include tabletAndDesktop() {
+    width: 54px;
+    height: 54px;
+  }
+}
+
+.new-comment__avatar__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.new-comment__body {
+  flex-grow: 1;
+}
+
+.new-comment__input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  border-width: 1px;
+  border-color: var(--text-paragrap-2);
+  border-style: solid;
+  border-radius: 0.25rem;
+  color: var(--text-paragrap);
+  outline: none;
+  resize: none;
+}
+
+.new-comment__actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.new-comment__loading {
+  position: absolute;
+  left: 0.25rem;
+  color: var(--text-paragrap-2);
+  font-size: 0.8rem;
+}
+
+.new-comment__btn {
+  padding: 0.25rem 0.5rem;
+  text-transform: uppercase;
+  color: var(--text-paragrap-2);
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: none;
+  transition-property: opacity;
+  transition-duration: 200ms;
+
+  @include tabletAndDesktop() {
+    cursor: pointer;
+  }
+}
+
+.new-comment__btn:hover,
+.new-comment__btn:disabled {
+  opacity: 0.6;
+}
+
+.new-comment__btn--cancel {
+  background-color: transparent;
+}
+
+.new-comment__btn--done {
+  padding: 0.5rem;
+  background-color: #60606052;
+  border-radius: 0.1rem;
+  color: var(--text-paragrap);
+}

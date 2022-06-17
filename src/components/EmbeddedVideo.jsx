@@ -8,7 +8,7 @@ import ButtonAction from './ButtonAction';
 import '../styles/components/EmbeddedVideo.scss';
 import LikeIcon from '../assets/icons/LikeIcon';
 import ShareIcon from '../assets/icons/ShareIcon';
-import { actionSearchData } from '../store/reducers/Video.reducer';
+import { actionSearchData } from '../store/reducers/Video.actionCreators';
 import { showRegisterForm } from '../store/reducers/Modals.reducer';
 
 const EmbeddedVideo = () => {
