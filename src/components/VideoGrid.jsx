@@ -24,7 +24,7 @@ function VideoGrid() {
 
   const handleAllVideos = () => dispatch(actionHasFilterVideo(false));
 
-  return hasFilterVideos ? (
+  return (
     <>
       <div className="filter">
         <div className="filter__container">
@@ -43,26 +43,10 @@ function VideoGrid() {
           ))}
         </div>
       </div>
-      <div className="card__container">
-        {filtersVideo && filtersVideo.map((video) => <Card video={video} />)}
-      </div>
-    </>
-  ) : (
-    <>
-      <div className="filter">
-        <div className="filter__container">
-          {labels?.map((label) => (
-            <ButtonAction
-              key={label._id}
-              content={label.name}
-              className="btn-action--filter"
-              handleClick={() => handleCLick(label.name)}
-            />
-          ))}
+      {hasFilterVideos ? (
+        <div className="card__container">
+          {filtersVideo && filtersVideo.map((video) => <Card video={video} />)}
         </div>
-      </div>
-      {loading ? (
-        <div> cargando</div>
       ) : (
         <div className="card__container">
           {videos &&
