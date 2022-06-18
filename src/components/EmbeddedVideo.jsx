@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 
 import ButtonAction from './ButtonAction';
@@ -9,18 +9,28 @@ import '../styles/components/EmbeddedVideo.scss';
 import LikeIcon from '../assets/icons/LikeIcon';
 import ShareIcon from '../assets/icons/ShareIcon';
 import { actionSearchData } from '../store/reducers/Video.actionCreators';
-import { showRegisterForm } from '../store/reducers/Modals.reducer';
+import {
+  showFormAction,
+  showRegisterForm,
+} from '../store/reducers/Modals.reducer';
+import PublicModal from './PublicModal';
 
 const EmbeddedVideo = () => {
   const { videoDetail } = useSelector((state) => state.VideoReducer);
+  const { showForm } = useSelector((state) => state.ModalsReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleClick = (labelName) => {
     dispatch(actionSearchData(labelName));
     navigate('/videos/results', {
       state: labelName,
     });
+  };
+
+  const onclickShare = () => {
+    dispatch(showFormAction());
   };
   return (
     videoDetail && (
@@ -60,6 +70,7 @@ const EmbeddedVideo = () => {
               <ButtonAction
                 className="btn-action--toshare"
                 prependIcon={<ShareIcon />}
+                handleClick={onclickShare}
               />
             </div>
           </div>
@@ -91,6 +102,13 @@ const EmbeddedVideo = () => {
             {videoDetail.descriptions}
           </div>
         </div>
+        <PublicModal
+          opened={showForm}
+          onClose={() => dispatch(showFormAction())}
+          title="Compartir"
+        >
+          <textarea className="textarea-action--toshare">{`http://localhost:3000${location.pathname}`}</textarea>
+        </PublicModal>
       </div>
     )
   );
