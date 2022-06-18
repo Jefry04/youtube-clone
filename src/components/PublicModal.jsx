@@ -1,9 +1,9 @@
 import React from 'react';
 import { Modal } from '@mantine/core';
 
-const PublicModal = ({ opened, children, onClose, size }) => {
+const PublicModal = ({ opened, children, onClose, size, title }) => {
   return (
-    <Modal opened={opened} onClose={onClose} size={size} centered>
+    <Modal opened={opened} onClose={onClose} size={size} title={title} centered>
       {children}
     </Modal>
   );
