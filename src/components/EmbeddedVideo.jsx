@@ -1,24 +1,29 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import ReactPlayer from 'react-player';
-
 import ButtonAction from './ButtonAction';
 import '../styles/components/EmbeddedVideo.scss';
 import LikeIcon from '../assets/icons/LikeIcon';
 import ShareIcon from '../assets/icons/ShareIcon';
-import { actionSearchData } from '../store/reducers/Video.reducer';
-import { showRegisterForm } from '../store/reducers/Modals.reducer';
+import { actionSearchData } from '../store/reducers/Video.actionCreators';
+import {
+  showFormAction,
+  showRegisterForm,
+} from '../store/reducers/Modals.reducer';
 import { getLikeData, getLikeDatarest } from '../store/reducers/Auth.reducer';
 import LikeIconOn from '../assets/icons/LikeIconOn';
+import PublicModal from './PublicModal';
 
 const EmbeddedVideo = () => {
-  const { videoDetail, videos } = useSelector((state) => state.VideoReducer);
+  const { videoDetail } = useSelector((state) => state.VideoReducer);
   const { user } = useSelector((state) => state.AuthReducer);
+  const { showForm } = useSelector((state) => state.ModalsReducer);
   const dispatch = useDispatch();
   const { videoId } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const token = localStorage.getItem('token');
   const [stateLike, setStateLike] = useState({
     like: false,
@@ -46,6 +51,7 @@ const EmbeddedVideo = () => {
       state: labelName,
     });
   };
+
   const initialLoading = useRef(false);
   useEffect(() => {
     if (!initialLoading.current) {
@@ -76,6 +82,10 @@ const EmbeddedVideo = () => {
       initialLoading.current = true;
     }
   }, [user, videoDetail, initialLoading]);
+
+  const onclickShare = () => {
+    dispatch(showFormAction());
+  };
 
   return (
     videoDetail && (
@@ -121,6 +131,7 @@ const EmbeddedVideo = () => {
               <ButtonAction
                 className="btn-action--toshare"
                 prependIcon={<ShareIcon />}
+                handleClick={onclickShare}
               />
             </div>
           </div>
@@ -129,12 +140,10 @@ const EmbeddedVideo = () => {
           <div className="secundaryinfo__scope">
             <div className="scope__user">
               <div className="user__image">
-                <img src={videos?.user?.avatarUrl} alt="perfil" />
+                <img src={videoDetail?.user?.avatarUrl} alt="perfil" />
               </div>
               <div className="user__profile">
-                <p className="profile__name">
-                  {videoDetail?.userId?.firstName}
-                </p>
+                <p className="profile__name">{videoDetail?.user?.fullName}</p>
                 <p className="profile__subscribers">334,000 suscriptiores</p>
               </div>
             </div>
@@ -154,6 +163,13 @@ const EmbeddedVideo = () => {
             {videoDetail.descriptions}
           </div>
         </div>
+        <PublicModal
+          opened={showForm}
+          onClose={() => dispatch(showFormAction())}
+          title="Compartir"
+        >
+          <textarea className="textarea-action--toshare">{`http://localhost:3000${location.pathname}`}</textarea>
+        </PublicModal>
       </div>
     )
   );
