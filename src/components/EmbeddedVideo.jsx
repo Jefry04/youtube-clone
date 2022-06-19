@@ -8,7 +8,7 @@ import ButtonAction from './ButtonAction';
 import '../styles/components/EmbeddedVideo.scss';
 import LikeIcon from '../assets/icons/LikeIcon';
 import ShareIcon from '../assets/icons/ShareIcon';
-import { actionSearchData } from '../store/reducers/Video.reducer';
+import { actionSearchData } from '../store/reducers/Video.actionCreators';
 import {
   showFormAction,
   showRegisterForm,
@@ -16,7 +16,7 @@ import {
 import PublicModal from './PublicModal';
 
 const EmbeddedVideo = () => {
-  const { videoDetail, videos } = useSelector((state) => state.VideoReducer);
+  const { videoDetail } = useSelector((state) => state.VideoReducer);
   const { showForm } = useSelector((state) => state.ModalsReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -79,12 +79,10 @@ const EmbeddedVideo = () => {
           <div className="secundaryinfo__scope">
             <div className="scope__user">
               <div className="user__image">
-                <img src={videos?.user?.avatarUrl} alt="perfil" />
+                <img src={videoDetail?.user?.avatarUrl} alt="perfil" />
               </div>
               <div className="user__profile">
-                <p className="profile__name">
-                  {videoDetail?.userId?.firstName}
-                </p>
+                <p className="profile__name">{videoDetail?.user?.fullName}</p>
                 <p className="profile__subscribers">334,000 suscriptiores</p>
               </div>
             </div>

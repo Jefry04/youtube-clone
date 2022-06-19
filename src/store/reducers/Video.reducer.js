@@ -1,94 +1,33 @@
 /* eslint-disable no-underscore-dangle */
-import axios from 'axios';
-import { showFormAction } from './Modals.reducer';
-
-const GET_VIDEO_SUCCESS = 'GET_VIDEO_SUCCESS';
-const GET_VIDEO_ERROR = 'GET_VIDEO_ERROR';
-const GET_VIDEO_LOADING = 'GET_VIDEO_LOADING';
-const VIDEO_DETAIL_SUCCESS = 'VIDEO_DETAIL_SUCCESS';
-const VIDEO_FILTER_SUCCESS = 'VIDEO_FILTER_SUCCESS';
-const SEARCH_DATA = 'SEARCH_DATA';
-const HAS_FILTER_VIDEO = 'HAS_FILTER_VIDEO';
-const UPLOAD_VIDEO_SUCCESS = 'UPLOAD_VIDEO_SUCCESS';
-const url = process.env.REACT_APP_BACKEND_URI;
+import {
+  GET_VIDEO_SUCCESS,
+  GET_VIDEO_LOADING,
+  GET_VIDEO_ERROR,
+  VIDEO_DETAIL_SUCCESS,
+  VIDEO_FILTER_SUCCESS,
+  SEARCH_DATA,
+  HAS_FILTER_VIDEO,
+  UPLOAD_VIDEO_SUCCESS,
+  VIDEO_COMMENTS_LOADING,
+  VIDEO_COMMENTS_SUCCESS,
+  POST_NEW_COMMENT_LOADING,
+  ADD_NEW_COMMENT,
+} from './Video.actions';
 
 const initialState = {
   videos: [],
-  uploadedVideo: {},
   loading: false,
+  uploadedVideo: {},
   error: null,
-  videoDetail: {},
+  hasFilterVideos: false,
   filtersVideo: [],
   searchData: '',
-  hasFilterVideos: false,
-};
-export const postVideo = (uploadData) => {
-  const token = localStorage.getItem('token');
-  return async (dispatch) => {
-    try {
-      dispatch({ type: GET_VIDEO_LOADING, payload: true });
-      const response = await axios.post(`${url}videos`, uploadData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `bearer ${token}`,
-        },
-      });
-      if (response.status === 201) dispatch(showFormAction());
-      dispatch({ type: UPLOAD_VIDEO_SUCCESS, payload: response.data.video });
-    } catch (error) {
-      dispatch({ type: GET_VIDEO_ERROR, payload: error });
-    }
-  };
-};
-export const fetchAllVideos = () => {
-  return async (dispatch) => {
-    try {
-      dispatch({ type: GET_VIDEO_LOADING, payload: true });
-      const { data } = await axios.get(`${url}videos`);
-      dispatch({ type: GET_VIDEO_SUCCESS, payload: data.videos });
-    } catch (error) {
-      dispatch({ type: GET_VIDEO_ERROR, payload: error });
-    }
-  };
+  videoDetail: {},
+  loadingVideoComments: false,
+  comments: [],
+  postingNewComment: false,
 };
 
-export const fetchFilterVideos = (searchData) => {
-  const paramsObject = {
-    search: searchData,
-    page: 1,
-    limit: 10,
-  };
-  return async (dispatch) => {
-    try {
-      dispatch({ type: GET_VIDEO_LOADING, payload: true });
-      const { data } = await axios.get(`${url}videos/results`, {
-        params: paramsObject,
-      });
-      dispatch({ type: VIDEO_FILTER_SUCCESS, payload: data.results });
-    } catch (error) {
-      dispatch({ type: GET_VIDEO_ERROR, payload: error });
-    }
-  };
-};
-export const fetchVideoDetail = (videoId) => {
-  return async (dispatch) => {
-    try {
-      dispatch({ type: GET_VIDEO_LOADING, payload: true });
-      const { data } = await axios.get(`${url}videos/${videoId}`);
-      dispatch({ type: VIDEO_DETAIL_SUCCESS, payload: data.video });
-    } catch (error) {
-      dispatch({ type: GET_VIDEO_ERROR, payload: error });
-    }
-  };
-};
-
-export function actionSearchData(payload) {
-  return { type: SEARCH_DATA, payload };
-}
-
-export function actionHasFilterVideo(payload) {
-  return { type: HAS_FILTER_VIDEO, payload };
-}
 function VideoReducer(state = initialState, action = null) {
   if (action.type === SEARCH_DATA)
     return {
@@ -130,13 +69,15 @@ function VideoReducer(state = initialState, action = null) {
       videoDetail: null,
       error: action.payload,
     };
-  if (action.type === VIDEO_DETAIL_SUCCESS)
+  if (action.type === VIDEO_DETAIL_SUCCESS) {
+    const video = action.payload;
     return {
       ...state,
       loading: false,
-      videoDetail: action.payload,
+      videoDetail: video,
       error: null,
     };
+  }
   if (action.type === VIDEO_FILTER_SUCCESS)
     return {
       ...state,
@@ -144,6 +85,33 @@ function VideoReducer(state = initialState, action = null) {
       filtersVideo: action.payload,
       error: null,
     };
+  if (action.type === VIDEO_COMMENTS_LOADING) {
+    return {
+      ...state,
+      loadingVideoComments: action.payload,
+    };
+  }
+  if (action.type === VIDEO_COMMENTS_SUCCESS) {
+    const comments = action.payload;
+    return {
+      ...state,
+      comments,
+    };
+  }
+  if (action.type === POST_NEW_COMMENT_LOADING) {
+    return {
+      ...state,
+      postingNewComment: action.payload,
+    };
+  }
+  if (action.type === ADD_NEW_COMMENT) {
+    const newComment = action.payload;
+
+    return {
+      ...state,
+      comments: [newComment, ...state.comments],
+    };
+  }
   return state;
 }
 

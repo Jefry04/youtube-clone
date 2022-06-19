@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { actionSearchData } from '../store/reducers/Video.reducer';
+import { actionSearchData } from '../store/reducers/Video.actionCreators';
 import '../styles/components/SearchHeader.scss';
 
 function SearchHeader(props) {
