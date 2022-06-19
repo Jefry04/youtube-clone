@@ -24,7 +24,6 @@ const EmbeddedVideo = () => {
     like: false,
     numerLike: 0,
   });
-  console.log('este es el USER', user);
 
   const handleSubmit = (event) => {
     event.preventDefault();
