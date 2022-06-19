@@ -23,6 +23,7 @@ export const authUser = ({ email, password }) => {
       const { token, message, ...user } = response.data;
       localStorage.setItem('token', token);
       dispatch(hiddeLoginForm());
+
       dispatch({ type: AUTH_SUCCESS, payload: user });
     } catch (error) {
       dispatch({ type: AUTH_ERROR, payload: error });
@@ -73,6 +74,26 @@ export const getLikeData = ({ videoId }) => {
       const response = await axios.post(
         `${url}video/${videoId}/new-like`,
         {},
+        {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        }
+      );
+
+      dispatch({ type: USER_SUCCESS, payload: response.data.user });
+    } catch (error) {
+      dispatch({ type: AUTH_ERROR, payload: error.response });
+    }
+  };
+};
+
+export const getLikeDatarest = ({ videoId }) => {
+  return async (dispatch) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.delete(
+        `${url}video/${videoId}/remove-like`,
         {
           headers: {
             Authorization: `bearer ${token}`,
