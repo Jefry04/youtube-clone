@@ -5,7 +5,7 @@ import { Dropzone, MIME_TYPES, IMAGE_MIME_TYPE } from '@mantine/dropzone';
 import ButtonAction from './ButtonAction';
 import InputValidator from './InputValidator';
 import DropzonePreview from './DropzonePreview';
-import { postVideo } from '../store/reducers/Video.reducer';
+import { postVideo } from '../store/reducers/Video.actionCreators';
 
 export const dropzoneChildren = (uploadVideoState, mediaUrl, isImage) => (
   <DropzonePreview

@@ -80,7 +80,6 @@ export const getLikeData = ({ videoId }) => {
           },
         }
       );
-
       dispatch({ type: USER_SUCCESS, payload: response.data.user });
     } catch (error) {
       dispatch({ type: AUTH_ERROR, payload: error.response });
@@ -100,7 +99,6 @@ export const getLikeDatarest = ({ videoId }) => {
           },
         }
       );
-
       dispatch({ type: USER_SUCCESS, payload: response.data.user });
     } catch (error) {
       dispatch({ type: AUTH_ERROR, payload: error.response });

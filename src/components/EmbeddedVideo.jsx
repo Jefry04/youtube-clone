@@ -29,6 +29,7 @@ const EmbeddedVideo = () => {
     like: false,
     numerLike: 0,
   });
+  const shareLink = `http://localhost:3000${location.pathname}`;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -36,11 +37,9 @@ const EmbeddedVideo = () => {
       if (stateLike.like === true) {
         setStateLike({ like: false, numerLike: stateLike.numerLike - 1 });
         dispatch(getLikeDatarest({ videoId }));
-        console.log(stateLike);
       } else {
         setStateLike({ like: true, numerLike: stateLike.numerLike + 1 });
         dispatch(getLikeData({ videoId }));
-        console.log(stateLike);
       }
     }
   };
@@ -86,7 +85,6 @@ const EmbeddedVideo = () => {
   const onclickShare = () => {
     dispatch(showFormAction());
   };
-
   return (
     videoDetail && (
       <div className="container__userandvideo">
@@ -110,7 +108,6 @@ const EmbeddedVideo = () => {
             </button>
           ))}
         </div>
-
         <div className="userandvideo__primaryinfo">
           <div className="primaryinfo__title">
             <h2>{videoDetail.title}</h2>
@@ -168,7 +165,10 @@ const EmbeddedVideo = () => {
           onClose={() => dispatch(showFormAction())}
           title="Compartir"
         >
-          <textarea className="textarea-action--toshare">{`http://localhost:3000${location.pathname}`}</textarea>
+          <textarea
+            className="textarea-action--toshare"
+            defaultValue={shareLink}
+          />
         </PublicModal>
       </div>
     )

@@ -7,7 +7,8 @@ import VideoComments from '../components/VideoComments';
 import {
   fetchAllVideos,
   fetchVideoDetail,
-} from '../store/reducers/Video.reducer';
+  getVideoComments,
+} from '../store/reducers/Video.actionCreators';
 import EmbeddedVideo from '../components/EmbeddedVideo';
 
 const VideoView = () => {
@@ -16,6 +17,7 @@ const VideoView = () => {
 
   useEffect(() => {
     dispatch(fetchVideoDetail(videoId));
+    dispatch(getVideoComments(videoId));
     dispatch(fetchAllVideos());
   }, [videoId, dispatch]);
 
