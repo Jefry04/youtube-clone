@@ -112,6 +112,7 @@ function VideoReducer(state = initialState, action = null) {
       comments: [newComment, ...state.comments],
     };
   }
+
   return state;
 }
 

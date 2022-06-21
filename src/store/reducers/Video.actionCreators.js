@@ -20,6 +20,16 @@ import {
 const url = process.env.REACT_APP_BACKEND_URI;
 const actionBody = (type, payload) => ({ type, payload });
 
+export const postView = ({ viwer, videoId }) => {
+  return async () => {
+    try {
+      await axios.post(`${url}videos/${videoId}/view`, viwer);
+    } catch (error) {
+      alertify.notify(error.message, 'error', 5);
+    }
+  };
+};
+
 export const postVideo = (uploadData) => {
   const token = localStorage.getItem('token');
   return async (dispatch) => {

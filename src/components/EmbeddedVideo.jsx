@@ -1,3 +1,4 @@
+/* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +8,10 @@ import ButtonAction from './ButtonAction';
 import '../styles/components/EmbeddedVideo.scss';
 import LikeIcon from '../assets/icons/LikeIcon';
 import ShareIcon from '../assets/icons/ShareIcon';
-import { actionSearchData } from '../store/reducers/Video.actionCreators';
+import {
+  actionSearchData,
+  postView,
+} from '../store/reducers/Video.actionCreators';
 import {
   showFormAction,
   showRegisterForm,
@@ -78,10 +82,11 @@ const EmbeddedVideo = () => {
         }
       };
       sendData();
+      dispatch(postView({ videoId, user }));
       initialLoading.current = true;
     }
   }, [user, videoDetail, initialLoading]);
-
+  const views = Math.round(videoDetail.visits?.length / 2);
   const onclickShare = () => {
     dispatch(showFormAction());
   };
@@ -113,7 +118,7 @@ const EmbeddedVideo = () => {
             <h2>{videoDetail.title}</h2>
           </div>
           <div className="primaryinfo__scope">
-            <div className="scope__views">1 M de visitas en 15 horas</div>
+            <div className="scope__views">{`Visitas a este video ${views}`}</div>
             <div className="scope__buttons">
               <p>{stateLike.numerLike}</p>
               <div className="buttons__like">

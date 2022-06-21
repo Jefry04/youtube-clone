@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { sidebarToggle } from '../../store/reducers/Layout.reducer';
 
 import ButtonAction from '../ButtonAction';
@@ -37,14 +37,16 @@ function Header() {
             handleClick={() => dispatch(sidebarToggle())}
           />
         </div>
-        <div className="hamburger__logo">
-          <img src={iconYoutube} alt="icon youtube" className="brand__icon" />
-          <img
-            src={letterYoutube}
-            alt="letter youtube"
-            className="brand__letter"
-          />
-        </div>
+        <Link to="/">
+          <div className="hamburger__logo">
+            <img src={iconYoutube} alt="icon youtube" className="brand__icon" />
+            <img
+              src={letterYoutube}
+              alt="letter youtube"
+              className="brand__letter"
+            />
+          </div>
+        </Link>
       </div>
       <div className="header__search">
         <SearchHeader />
