@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { hiddeLoginForm, hiddeRegisterForm } from './Modals.reducer';
-import { hiddeChangePasswordForm } from './ChangePassword.reducer';
 
 const AUTH_SUCCESS = 'AUTH_SUCCESS';
 const AUTH_ERROR = 'AUTH_ERROR';
@@ -24,6 +23,7 @@ export const authUser = ({ email, password }) => {
       const { token, message, ...user } = response.data;
       localStorage.setItem('token', token);
       dispatch(hiddeLoginForm());
+
       dispatch({ type: AUTH_SUCCESS, payload: user });
     } catch (error) {
       dispatch({ type: AUTH_ERROR, payload: error });
@@ -59,7 +59,46 @@ export const getUerData = (token) => {
           Authorization: `bearer ${token}`,
         },
       });
-      dispatch(hiddeChangePasswordForm());
+
+      dispatch({ type: USER_SUCCESS, payload: response.data.user });
+    } catch (error) {
+      dispatch({ type: AUTH_ERROR, payload: error.response });
+    }
+  };
+};
+
+export const getLikeData = ({ videoId }) => {
+  return async (dispatch) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post(
+        `${url}video/${videoId}/new-like`,
+        {},
+        {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        }
+      );
+      dispatch({ type: USER_SUCCESS, payload: response.data.user });
+    } catch (error) {
+      dispatch({ type: AUTH_ERROR, payload: error.response });
+    }
+  };
+};
+
+export const getLikeDatarest = ({ videoId }) => {
+  return async (dispatch) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.delete(
+        `${url}video/${videoId}/remove-like`,
+        {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        }
+      );
       dispatch({ type: USER_SUCCESS, payload: response.data.user });
     } catch (error) {
       dispatch({ type: AUTH_ERROR, payload: error.response });

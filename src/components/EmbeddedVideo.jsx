@@ -1,9 +1,8 @@
 /* eslint-disable no-underscore-dangle */
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import ReactPlayer from 'react-player';
-
 import ButtonAction from './ButtonAction';
 import '../styles/components/EmbeddedVideo.scss';
 import LikeIcon from '../assets/icons/LikeIcon';
@@ -13,14 +12,37 @@ import {
   showFormAction,
   showRegisterForm,
 } from '../store/reducers/Modals.reducer';
+import { getLikeData, getLikeDatarest } from '../store/reducers/Auth.reducer';
+import LikeIconOn from '../assets/icons/LikeIconOn';
 import PublicModal from './PublicModal';
 
 const EmbeddedVideo = () => {
   const { videoDetail } = useSelector((state) => state.VideoReducer);
+  const { user } = useSelector((state) => state.AuthReducer);
   const { showForm } = useSelector((state) => state.ModalsReducer);
   const dispatch = useDispatch();
+  const { videoId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
+  const token = localStorage.getItem('token');
+  const [stateLike, setStateLike] = useState({
+    like: false,
+    numerLike: 0,
+  });
+  const shareLink = `http://localhost:3000${location.pathname}`;
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (token !== null) {
+      if (stateLike.like === true) {
+        setStateLike({ like: false, numerLike: stateLike.numerLike - 1 });
+        dispatch(getLikeDatarest({ videoId }));
+      } else {
+        setStateLike({ like: true, numerLike: stateLike.numerLike + 1 });
+        dispatch(getLikeData({ videoId }));
+      }
+    }
+  };
 
   const handleClick = (labelName) => {
     dispatch(actionSearchData(labelName));
@@ -28,6 +50,37 @@ const EmbeddedVideo = () => {
       state: labelName,
     });
   };
+
+  const initialLoading = useRef(false);
+  useEffect(() => {
+    if (!initialLoading.current) {
+      const sendData = () => {
+        try {
+          if (token === null) {
+            setStateLike({ like: false, numerLike: videoDetail.likes });
+          } else if (user && videoDetail) {
+            const equal = user.likes?.filter((element) =>
+              videoDetail.likesIds?.some((like) => like === element)
+            );
+            if (equal?.length !== 0 || equal !== undefined) {
+              setStateLike({ like: true, numerLike: videoDetail.likes });
+              if (videoDetail.likes === 0 || equal.length === 0) {
+                setStateLike({ numerLike: videoDetail.likes, like: false });
+              }
+            } else if (videoDetail) {
+              setStateLike({ ...stateLike, numerLike: videoDetail.likes });
+            }
+          } else {
+            console.log('error en el iff de use efect');
+          }
+        } catch (error) {
+          console.log('error en el useEffect', error);
+        }
+      };
+      sendData();
+      initialLoading.current = true;
+    }
+  }, [user, videoDetail, initialLoading]);
 
   const onclickShare = () => {
     dispatch(showFormAction());
@@ -55,7 +108,6 @@ const EmbeddedVideo = () => {
             </button>
           ))}
         </div>
-
         <div className="userandvideo__primaryinfo">
           <div className="primaryinfo__title">
             <h2>{videoDetail.title}</h2>
@@ -63,10 +115,16 @@ const EmbeddedVideo = () => {
           <div className="primaryinfo__scope">
             <div className="scope__views">1 M de visitas en 15 horas</div>
             <div className="scope__buttons">
-              <ButtonAction
-                className="btn-action--like"
-                prependIcon={<LikeIcon />}
-              />
+              <p>{stateLike.numerLike}</p>
+              <div className="buttons__like">
+                <ButtonAction
+                  className="btn-action--like"
+                  prependIcon={stateLike.like ? <LikeIconOn /> : <LikeIcon />}
+                  type="submit"
+                  np
+                  handleClick={handleSubmit}
+                />
+              </div>
               <ButtonAction
                 className="btn-action--toshare"
                 prependIcon={<ShareIcon />}
@@ -107,7 +165,10 @@ const EmbeddedVideo = () => {
           onClose={() => dispatch(showFormAction())}
           title="Compartir"
         >
-          <textarea className="textarea-action--toshare">{`http://localhost:3000${location.pathname}`}</textarea>
+          <textarea
+            className="textarea-action--toshare"
+            defaultValue={shareLink}
+          />
         </PublicModal>
       </div>
     )
