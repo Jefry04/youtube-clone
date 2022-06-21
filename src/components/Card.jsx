@@ -1,9 +1,11 @@
+/* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 
 const Card = ({ video, className, isSearch }) => {
+  const views = Math.round(video.visits?.length / 2);
   return (
     <div className={`${className}`}>
       <Link to={`/videoview/${video._id}`} className="card__link">
@@ -19,7 +21,7 @@ const Card = ({ video, className, isSearch }) => {
           {isSearch ? (
             <div className="card__body">
               <h3>{video?.title}</h3>
-              <span>1 M de visitas en 15 horas</span>
+              <span>{`Visitas a este video ${views}`}</span>
               <div>
                 <img src={video?.user?.avatarUrl} alt="perfil" />
                 <span>{video?.user?.firstName}</span>
@@ -36,7 +38,7 @@ const Card = ({ video, className, isSearch }) => {
                 <div className="card__name">
                   <span id="name">{video?.user?.firstName}</span>
                 </div>
-                <span>1 M de visitas en 15 horas</span>
+                <span>{`Visitas a este video ${views}`}</span>
               </div>
             </div>
           )}
