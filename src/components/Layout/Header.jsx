@@ -6,8 +6,8 @@ import { sidebarToggle } from '../../store/reducers/Layout.reducer';
 import ButtonAction from '../ButtonAction';
 import SearchHeader from '../SearchHeader';
 
-import iconYoutube from '../../images/brand/icon.png';
-import letterYoutube from '../../images/brand/letter.png';
+import iconYoutube from '../../assets/images/brand/icon.png';
+import letterYoutube from '../../assets/images/brand/letter.png';
 import BarsIcon from '../../assets/icons/BarsIcon';
 import SearchIcon from '../../assets/icons/SearchIcon';
 import VoiceIcon from '../../assets/icons/VoiceIcon';

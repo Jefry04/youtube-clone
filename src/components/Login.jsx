@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 import Buttonaction from './ButtonAction';
 import InputValidator from './InputValidator';
-import Icon from '../images/brand/icon.png';
-import Letter from '../images/brand/letter.png';
+import Icon from '../assets/images/brand/icon.png';
+import Letter from '../assets/images/brand/letter.png';
 import '../styles/components/Login.scss';
 import { authUser } from '../store/reducers/Auth.reducer';
 import { showRecoverPassword } from '../store/reducers/Modals.reducer';

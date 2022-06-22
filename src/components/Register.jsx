@@ -5,8 +5,8 @@ import { showLoginForm } from '../store/reducers/Modals.reducer';
 import ButtonAction from './ButtonAction';
 import InputValidator from './InputValidator';
 
-import Icon from '../images/brand/icon.png';
-import Letter from '../images/brand/letter.png';
+import Icon from '../assets/images/brand/icon.png';
+import Letter from '../assets/images/brand/letter.png';
 import '../styles/components/Login.scss';
 import { register } from '../store/reducers/Auth.reducer';
 
