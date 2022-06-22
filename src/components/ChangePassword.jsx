@@ -6,8 +6,8 @@ import InputValidator from './InputValidator';
 import Icon from '../assets/images/brand/icon.png';
 import Letter from '../assets/images/brand/letter.png';
 import '../styles/components/Login.scss';
-import { putNewPasswordData } from '../store/reducers/Auth.reducer';
-import { hiddeChangePasswordForm } from '../store/reducers/ChangePassword.reducer';
+import { putNewPasswordData } from '../store/reducers/Auth.actionCreator';
+import { hiddeChangePasswordForm } from '../store/reducers/ChangePassword.actionCreator';
 
 function ChangePassword() {
   const [formData, setFormData] = useState({

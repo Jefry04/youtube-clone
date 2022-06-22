@@ -15,8 +15,11 @@ import {
 import {
   showFormAction,
   showRegisterForm,
-} from '../store/reducers/Modals.reducer';
-import { getLikeData, getLikeDatarest } from '../store/reducers/Auth.reducer';
+} from '../store/reducers/Modals.actionCreator';
+import {
+  getLikeData,
+  getLikeDatarest,
+} from '../store/reducers/Auth.actionCreator';
 import LikeIconOn from '../assets/icons/LikeIconOn';
 import PublicModal from './PublicModal';
 

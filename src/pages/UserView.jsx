@@ -8,11 +8,11 @@ import '../styles/pages/UserView.scss';
 import pic from '../assets/images/perfil5.png';
 import PublicModal from '../components/PublicModal';
 import VideoUploadForm from '../components/VideoUploadForm';
-import { showFormAction } from '../store/reducers/Modals.reducer';
+import { showFormAction } from '../store/reducers/Modals.actionCreator';
 import {
   showChangePasswordForm,
   hiddeChangePasswordForm,
-} from '../store/reducers/ChangePassword.reducer';
+} from '../store/reducers/ChangePassword.actionCreator';
 import ChangePassword from '../components/ChangePassword';
 
 function UserView() {

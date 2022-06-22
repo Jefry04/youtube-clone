@@ -7,8 +7,8 @@ import InputValidator from './InputValidator';
 import Icon from '../assets/images/brand/icon.png';
 import Letter from '../assets/images/brand/letter.png';
 import '../styles/components/Login.scss';
-import { authUser } from '../store/reducers/Auth.reducer';
-import { showRecoverPassword } from '../store/reducers/Modals.reducer';
+import { authUser } from '../store/reducers/Auth.actionCreator';
+import { showRecoverPassword } from '../store/reducers/Modals.actionCreator';
 
 function Login() {
   const [loginData, setLoginData] = useState({

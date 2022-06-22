@@ -8,7 +8,7 @@ import InputValidator from './InputValidator';
 import Icon from '../assets/images/brand/icon.png';
 import Letter from '../assets/images/brand/letter.png';
 import '../styles/components/Login.scss';
-import { hiddeRecoverPassword } from '../store/reducers/Modals.reducer';
+import { hiddeRecoverPassword } from '../store/reducers/Modals.actionCreator';
 
 function GetEmail() {
   const url = process.env.REACT_APP_BACKEND_URI;

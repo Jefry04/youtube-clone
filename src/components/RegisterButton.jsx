@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { showRegisterForm } from '../store/reducers/Modals.reducer';
+import { showRegisterForm } from '../store/reducers/Modals.actionCreator';
 
 import ButtonAction from './ButtonAction';
 import UserIcon from '../assets/icons/UserIcon';

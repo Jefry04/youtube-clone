@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { sidebarToggle } from '../../store/reducers/Layout.reducer';
+import { sidebarToggle } from '../../store/reducers/Layout.actionCreator';
 
 import ButtonAction from '../ButtonAction';
 import SearchHeader from '../SearchHeader';
@@ -15,7 +15,7 @@ import AppsIcon from '../../assets/icons/AppsIcon';
 import VerticalDotsIcon from '../../assets/icons/VerticalDotsIcon';
 import RegisterButton from '../RegisterButton';
 import UserIcon from '../../assets/icons/UserIcon';
-import { logout } from '../../store/reducers/Auth.reducer';
+import { logout } from '../../store/reducers/Auth.actionCreator';
 
 function Header() {
   const dispatch = useDispatch();
