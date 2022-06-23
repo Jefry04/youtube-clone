@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { showLoginForm } from '../store/reducers/Modals.reducer';
+import { showLoginForm } from '../store/reducers/Modals.actionCreator';
 import ButtonAction from './ButtonAction';
 import InputValidator from './InputValidator';
 
-import Icon from '../images/brand/icon.png';
-import Letter from '../images/brand/letter.png';
+import Icon from '../assets/images/brand/icon.png';
+import Letter from '../assets/images/brand/letter.png';
 import '../styles/components/Login.scss';
-import { register } from '../store/reducers/Auth.reducer';
+import { register } from '../store/reducers/Auth.actionCreator';
 
 function Register() {
   const [formData, setFormData] = useState({

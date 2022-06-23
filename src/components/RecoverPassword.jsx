@@ -4,8 +4,8 @@ import axios from 'axios';
 
 import Buttonaction from './ButtonAction';
 import InputValidator from './InputValidator';
-import Icon from '../images/brand/icon.png';
-import Letter from '../images/brand/letter.png';
+import Icon from '../assets/images/brand/icon.png';
+import Letter from '../assets/images/brand/letter.png';
 import '../styles/components/RecoverPassword.scss';
 
 function RecoverPassword() {

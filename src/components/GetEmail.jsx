@@ -5,10 +5,10 @@ import axios from 'axios';
 
 import Buttonaction from './ButtonAction';
 import InputValidator from './InputValidator';
-import Icon from '../images/brand/icon.png';
-import Letter from '../images/brand/letter.png';
+import Icon from '../assets/images/brand/icon.png';
+import Letter from '../assets/images/brand/letter.png';
 import '../styles/components/Login.scss';
-import { hiddeRecoverPassword } from '../store/reducers/Modals.reducer';
+import { hiddeRecoverPassword } from '../store/reducers/Modals.actionCreator';
 
 function GetEmail() {
   const url = process.env.REACT_APP_BACKEND_URI;

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import alertify from 'alertifyjs';
-import { showFormAction } from './Modals.reducer';
+import { showFormAction } from './Modals.actionCreator';
 
 import {
   GET_VIDEO_SUCCESS,

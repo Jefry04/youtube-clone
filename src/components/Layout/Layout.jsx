@@ -4,7 +4,7 @@ import {
   hiddeRegisterForm,
   hiddeLoginForm,
   hiddeRecoverPassword,
-} from '../../store/reducers/Modals.reducer';
+} from '../../store/reducers/Modals.actionCreator';
 
 //  COMPONENTS
 import Header from './Header';
