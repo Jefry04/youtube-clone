@@ -28,7 +28,7 @@ function GetEmail() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const { email } = formData;
-    const response = await axios.post(`${url}user/getemail`, { email });
+    const response = await axios.post(`${url}/user/getemail`, { email });
     if (response.status === 201) {
       dispatch(hiddeRecoverPassword());
     }

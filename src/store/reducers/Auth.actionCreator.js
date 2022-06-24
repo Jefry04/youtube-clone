@@ -63,7 +63,7 @@ export const getLikeData = ({ videoId }) => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        `${url}video/${videoId}/new-like`,
+        `${url}/video/${videoId}/new-like`,
         {},
         {
           headers: {
@@ -83,7 +83,7 @@ export const getLikeDatarest = ({ videoId }) => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.delete(
-        `${url}video/${videoId}/remove-like`,
+        `${url}/video/${videoId}/remove-like`,
         {
           headers: {
             Authorization: `bearer ${token}`,
@@ -106,7 +106,7 @@ export const putNewPasswordData = ({
     try {
       const token = localStorage.getItem('token');
       const response = await axios.put(
-        `${url}user/changepassword`,
+        `${url}/user/changepassword`,
         { password, newpassword, confirmPassword },
         {
           headers: {

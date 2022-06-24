@@ -28,7 +28,7 @@ function RecoverPassword() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await axios.put(
-      `${url}user/recover-password`,
+      `${url}/user/recover-password`,
       {
         email: formData.email,
         password: formData.newpassword,

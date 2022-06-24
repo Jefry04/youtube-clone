@@ -23,7 +23,7 @@ const actionBody = (type, payload) => ({ type, payload });
 export const postView = ({ viwer, videoId }) => {
   return async () => {
     try {
-      await axios.post(`${url}videos/${videoId}/view`, viwer);
+      await axios.post(`${url}/videos/${videoId}/view`, viwer);
     } catch (error) {
       alertify.notify(error.message, 'error', 5);
     }
@@ -35,7 +35,7 @@ export const postVideo = (uploadData) => {
   return async (dispatch) => {
     try {
       dispatch({ type: GET_VIDEO_LOADING, payload: true });
-      const response = await axios.post(`${url}videos`, uploadData, {
+      const response = await axios.post(`${url}/videos`, uploadData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `bearer ${token}`,
@@ -51,7 +51,7 @@ export const postVideo = (uploadData) => {
 
 export const postComment = (videoId, comment) => {
   const token = localStorage.getItem('token');
-  const commentUrl = `${url}videos/${videoId}/comments`;
+  const commentUrl = `${url}/videos/${videoId}/comments`;
   const commentData = { commentBody: comment };
 
   return async (dispatch) => {
@@ -81,7 +81,7 @@ export const fetchAllVideos = () => {
   return async (dispatch) => {
     try {
       dispatch({ type: GET_VIDEO_LOADING, payload: true });
-      const { data } = await axios.get(`${url}videos`);
+      const { data } = await axios.get(`${url}/videos`);
       dispatch({ type: GET_VIDEO_SUCCESS, payload: data.videos });
     } catch (error) {
       dispatch({ type: GET_VIDEO_ERROR, payload: error });
@@ -98,7 +98,7 @@ export const fetchFilterVideos = (searchData) => {
   return async (dispatch) => {
     try {
       dispatch({ type: GET_VIDEO_LOADING, payload: true });
-      const { data } = await axios.get(`${url}videos/results`, {
+      const { data } = await axios.get(`${url}/videos/results`, {
         params: paramsObject,
       });
       dispatch({ type: VIDEO_FILTER_SUCCESS, payload: data.results });
@@ -109,7 +109,7 @@ export const fetchFilterVideos = (searchData) => {
 };
 
 export const getVideoComments = (videoId) => {
-  const commentUrl = `${url}videos/${videoId}/comments`;
+  const commentUrl = `${url}/videos/${videoId}/comments`;
   return async (dispatch) => {
     try {
       dispatch(actionBody(VIDEO_COMMENTS_LOADING, true));
@@ -131,7 +131,7 @@ export const fetchVideoDetail = (videoId) => {
   return async (dispatch) => {
     try {
       dispatch(actionBody(GET_VIDEO_LOADING, true));
-      const { data } = await axios.get(`${url}videos/${videoId}`);
+      const { data } = await axios.get(`${url}/videos/${videoId}`);
       dispatch(actionBody(VIDEO_DETAIL_SUCCESS, data.video));
     } catch (error) {
       dispatch({ type: GET_VIDEO_ERROR, payload: error });
