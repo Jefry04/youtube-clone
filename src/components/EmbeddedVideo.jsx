@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import ReactPlayer from 'react-player';
 import ButtonAction from './ButtonAction';
 import '../styles/components/EmbeddedVideo.scss';
@@ -12,10 +13,7 @@ import {
   actionSearchData,
   postView,
 } from '../store/reducers/Video.actionCreators';
-import {
-  showFormAction,
-  showRegisterForm,
-} from '../store/reducers/Modals.actionCreator';
+import { showFormAction } from '../store/reducers/Modals.actionCreator';
 import {
   getLikeData,
   getLikeDatarest,
@@ -38,6 +36,11 @@ const EmbeddedVideo = () => {
   });
   const shareLink = `http://localhost:3000${location.pathname}`;
 
+  const handler = window.ePayco.checkout.configure({
+    key: process.env.REACT_APP_EPAYCO_PUBLIC_KEY,
+    test: true,
+  });
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (token !== null) {
@@ -58,6 +61,31 @@ const EmbeddedVideo = () => {
     });
   };
 
+  const handleDonation = () => {
+    handler.open({
+      external: 'false',
+
+      name: `donacion por el video: ${videoDetail.title}`,
+      description: 'Donacion',
+      invoice: uuidv4(),
+      currency: 'cop',
+      amount: '5000',
+      tax_base: '0',
+      tax: '0',
+      country: 'co',
+      lang: 'es',
+
+      response: `${process.env.REACT_APP_BASE_URL}/videoview/${videoDetail._id}`,
+
+      name_billing: user.name,
+      address_billing: 'Calle false #1-2-3',
+      type_doc_billing: 'cc',
+      mobilephone_billing: '3050000000',
+      number_doc_billing: '123456',
+
+      methodsDisable: ['PSE', 'SP', 'CASH', 'DP'],
+    });
+  };
   const initialLoading = useRef(false);
   useEffect(() => {
     if (!initialLoading.current) {
@@ -155,8 +183,8 @@ const EmbeddedVideo = () => {
             <div className="profile__buttons">
               <ButtonAction
                 className="btn-action--join"
-                content="UNIRSE"
-                handleClick={() => dispatch(showRegisterForm())}
+                content="DONAR"
+                handleClick={handleDonation}
               />
               <ButtonAction
                 className="btn-action--subscription"

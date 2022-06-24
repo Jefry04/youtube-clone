@@ -24,9 +24,12 @@ function App() {
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path="videoview/:videoId" element={<VideoView />} />
+          <Route path="videoview/:videoId" element={<VideoView />}>
+            <Route path=":redirect" component={<VideoView />} />
+          </Route>
           <Route path="/" element={<Home />} />
           <Route path="/user" element={<UserView />} />
+
           <Route path="/videos/results" element={<VideoResults />} />
           <Route path="*" element={<NotFound />} />
           <Route

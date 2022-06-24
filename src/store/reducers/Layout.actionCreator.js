@@ -15,7 +15,7 @@ export const fetchLabels = () => {
   };
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`${url}labels`, {
+      const { data } = await axios.get(`${url}/labels`, {
         params: paramsObject,
       });
       dispatch({ type: GET_LABELS_NAME, payload: data.labels });
