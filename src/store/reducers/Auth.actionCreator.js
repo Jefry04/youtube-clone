@@ -7,7 +7,7 @@ const url = process.env.REACT_APP_BACKEND_URI;
 export const authUser = ({ email, password }) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post(`${url}user/signin`, {
+      const response = await axios.post(`${url}/auth/local/login`, {
         email,
         password,
       });
@@ -25,7 +25,7 @@ export const authUser = ({ email, password }) => {
 export const register = (body) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post(`${url}user/signup`, body);
+      const response = await axios.post(`${url}/auth/local/signup`, body);
       const { token, message, ...user } = response.data;
       localStorage.setItem('token', token);
       dispatch(hiddeRegisterForm());
@@ -45,7 +45,7 @@ export const logout = () => {
 export const getUerData = (token) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`${url}user/profile`, {
+      const response = await axios.get(`${url}/user/profile`, {
         headers: {
           Authorization: `bearer ${token}`,
         },
