@@ -13,6 +13,7 @@ export const authUser = ({ email, password }) => {
       });
       const { token, message, ...user } = response.data;
       localStorage.setItem('token', token);
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
       dispatch(hiddeLoginForm());
 
       dispatch({ type: AUTH_SUCCESS, payload: user });
@@ -26,8 +27,11 @@ export const register = (body) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(`${url}/auth/local/signup`, body);
+
       const { token, message, ...user } = response.data;
       localStorage.setItem('token', token);
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+
       dispatch(hiddeRegisterForm());
       dispatch({ type: AUTH_SUCCESS, payload: user });
     } catch (error) {
@@ -38,6 +42,7 @@ export const register = (body) => {
 export const logout = () => {
   return async (dispatch) => {
     localStorage.removeItem('token');
+    axios.defaults.headers.common.Authorization = '';
     dispatch({ type: LOGOUT });
   };
 };

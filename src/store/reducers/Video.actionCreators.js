@@ -82,12 +82,9 @@ export const fetchAllVideos = () => {
   return async (dispatch) => {
     try {
       dispatch({ type: GET_VIDEO_LOADING, payload: true });
-      console.log('Before fetch');
       const res = await axios.get(`${url}/videos`);
-      console.log(res.status, res.data);
       dispatch({ type: GET_VIDEO_SUCCESS, payload: res.data.videos });
     } catch (error) {
-      console.log(error);
       dispatch({ type: GET_VIDEO_ERROR, payload: error });
     }
   };
@@ -135,12 +132,9 @@ export const fetchVideoDetail = (videoId) => {
   return async (dispatch) => {
     try {
       dispatch(actionBody(GET_VIDEO_LOADING, true));
-      console.log('before fetch detail');
       const { data } = await axios.get(`${url}/videos/${videoId}`);
-      console.log('after fetch detail');
       dispatch(actionBody(VIDEO_DETAIL_SUCCESS, data.video));
     } catch (error) {
-      console.log(error);
       dispatch({ type: GET_VIDEO_ERROR, payload: error });
     }
   };
