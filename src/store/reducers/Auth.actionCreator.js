@@ -120,3 +120,5 @@ export const putNewPasswordData = ({
     }
   };
 };
+
+export const updateUser = (user) => ({ type: USER_SUCCESS, payload: user });
