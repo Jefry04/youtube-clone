@@ -32,7 +32,7 @@ function App() {
             <Route path=":redirect" component={<VideoView />} />
           </Route>
           <Route path="/" element={<Home />} />
-          <Route path="/user" element={<UserProfile />} />
+          <Route path="/profile" element={<UserProfile />} />
 
           <Route path="/videos/results" element={<VideoResults />} />
           <Route path="*" element={<NotFound />} />

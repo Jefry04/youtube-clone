@@ -85,7 +85,7 @@ function Header() {
             <Menu.Item icon={<Home size={14} />}>Home</Menu.Item>
           </Link>
           {isAuth && (
-            <Link to="/user" className="header__link">
+            <Link to="/profile" className="header__link">
               <Menu.Item icon={<User size={14} />}>Ir a perfil</Menu.Item>
             </Link>
           )}
