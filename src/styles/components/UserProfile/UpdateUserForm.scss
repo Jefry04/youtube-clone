@@ -1,0 +1,92 @@
+@import '../../abstract/mixins';
+
+.update-user-form {
+  flex-grow: 0.6;
+  border-radius: 0.25rem;
+  background-color: var(--gray-200);
+}
+
+.update-user-form__header,
+.update-user-form__footer,
+.update-user-form__body {
+  padding: 0.8rem 0.5rem;
+  @include tabletAndDesktop() {
+    padding: 1.5rem 1rem;
+  }
+}
+
+.update-user-form__header,
+.update-user-form__footer {
+  background-color: var(--dark);
+  color: var(--light);
+}
+
+.update-user-form__header {
+  border-start-start-radius: 0.5rem;
+  border-start-end-radius: 0.5rem;
+}
+
+.update-user-form__body {
+  @include tabletAndDesktop() {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    row-gap: 0.5rem;
+    justify-content: space-between;
+  }
+}
+
+.update-user-form__footer {
+  border-end-end-radius: 0.5rem;
+  border-end-start-radius: 0.5rem;
+}
+
+.update-user-form__title,
+.update-user-form__paragraph,
+.update-user-form__error {
+  margin: 0;
+}
+
+.update-user-form__title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.update-user-form__paragraph {
+  font-size: 0.8rem;
+  color: var(--gray-400);
+}
+
+.update-user-form__form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  @include tabletAndDesktop() {
+    margin-bottom: 0;
+  }
+}
+
+.update-user-form__label {
+  margin-bottom: 0.5rem;
+  color: var(--gray-dark);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.update-user-form__input {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.85rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--gray-400);
+  border-radius: 0.25rem;
+  color: var(--gray-dark);
+  outline-color: var(--blue);
+}
+
+.update-user-form__error {
+  margin-top: 0.5rem;
+  color: var(--red);
+  font-size: 0.8rem;
+}
