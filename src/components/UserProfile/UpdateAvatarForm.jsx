@@ -13,13 +13,6 @@ export default function UpdateAvatarForm({ user }) {
   const [avatarData, setAvatarData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const backUri = process.env.REACT_APP_BACKEND_URI;
-  const token = localStorage.getItem('token');
-  const headers = {
-    'Content-Type': 'multipart/form-data',
-    Authorization: `Bearer ${token}`,
-  };
-
   const avatarInput = useRef(null);
   const dispatch = useDispatch();
 
@@ -57,13 +50,15 @@ export default function UpdateAvatarForm({ user }) {
     e.preventDefault();
     setLoading(true);
 
-    const url = `${backUri}/user/update-avatar`;
+    const url = `/user/update-avatar`;
 
     const data = new FormData();
     data.append('image', avatarData);
 
     try {
-      const res = await axios.put(url, data, { headers });
+      const res = await axios.put(url, data, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
       const { user: userUpdated } = res.data;
 
       dispatch(updateUser(userUpdated));
@@ -78,12 +73,11 @@ export default function UpdateAvatarForm({ user }) {
   };
 
   const removeAvatar = async () => {
-    const url = `${backUri}/user/remove-avatar`;
-
+    const url = `/user/remove-avatar`;
     setLoading(true);
 
     try {
-      const res = await axios.delete(url, { headers });
+      const res = await axios.delete(url);
       const { user: userUpdated } = res.data;
 
       dispatch(updateUser(userUpdated));
