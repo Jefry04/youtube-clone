@@ -1,0 +1,15 @@
+@import '../../abstract/mixins';
+
+.user-profile__form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 4rem;
+
+  @include tabletAndDesktop() {
+    gap: 2rem;
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: 1280px;
+  }
+}
