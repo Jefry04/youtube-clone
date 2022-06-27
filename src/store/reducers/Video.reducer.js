@@ -26,6 +26,7 @@ const initialState = {
   loadingVideoComments: false,
   comments: [],
   postingNewComment: false,
+  hasMore: false,
 };
 
 function VideoReducer(state = initialState, action = null) {
@@ -48,7 +49,8 @@ function VideoReducer(state = initialState, action = null) {
     return {
       ...state,
       loading: false,
-      videos: action.payload,
+      videos: action.payload.videos,
+      hasMore: action.payload.next,
       hasFilterVideos: false,
       error: null,
     };
