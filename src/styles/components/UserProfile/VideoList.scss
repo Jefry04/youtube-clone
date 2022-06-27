@@ -1,0 +1,92 @@
+@import '../../abstract/mixins';
+
+.user-profile__videos__title {
+  margin: 0;
+  margin-bottom: 1.2rem;
+  color: var(--dark);
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.user-profile__videos__loading {
+  margin: 0.5rem 0;
+  text-align: center;
+  color: var(--gray-dark);
+  font-size: 0.85rem;
+}
+
+.user-profile__videos__list {
+  list-style: none;
+  padding: 0.5rem 0.8rem;
+  border-width: 1px;
+  border-color: var(--blue);
+  border-style: solid;
+  border-radius: 0.25rem;
+  background-color: rgba(13, 109, 253, 0.2);
+  transition-property: background-color;
+  transition-duration: 200ms;
+}
+
+.user-profile__videos__list:hover {
+  background-color: rgba(13, 109, 253, 0.5);
+}
+
+.user-profile__video {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: flex-start;
+  gap: 0.5rem;
+  width: 100%;
+  @include tabletAndDesktop() {
+    grid-template-columns: 1fr 2fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+}
+
+.user-profile__video__fig {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding-bottom: 56.25%;
+}
+
+.user-profile__video__img {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.user-profile__video__content {
+  background-color: var(--light);
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.user-profile__video__title,
+.user-profile__video__info {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.user-profile__video__title {
+  font-size: 1rem;
+  color: var(--gray-dark);
+  @include tabletAndDesktop() {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.user-profile__video__info {
+  font-size: 0.85rem;
+  color: var(--gray-700);
+  @include tabletAndDesktop() {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+}
