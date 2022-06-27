@@ -1,17 +1,15 @@
 import React from 'react';
 import '../styles/components/Buttonaction.scss';
 
-function ButtonAction(props) {
-  const {
-    prependIcon,
-    content,
-    appendIcon,
-    isSubmit,
-    className,
-    handleClick,
-    isDisabled,
-  } = props;
-
+function ButtonAction({
+  prependIcon,
+  content,
+  appendIcon,
+  isSubmit,
+  className,
+  handleClick,
+  isDisabled,
+}) {
   return (
     <button
       type={isSubmit ? 'submit' : 'button'}
