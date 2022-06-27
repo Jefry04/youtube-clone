@@ -12,6 +12,7 @@ import {
   VIDEO_COMMENTS_SUCCESS,
   POST_NEW_COMMENT_LOADING,
   ADD_NEW_COMMENT,
+  RESET_INITIAL_STATE,
 } from './Video.actions';
 
 const initialState = {
@@ -29,6 +30,10 @@ const initialState = {
 };
 
 function VideoReducer(state = initialState, action = null) {
+  if (action.type === RESET_INITIAL_STATE)
+    return {
+      ...initialState,
+    };
   if (action.type === SEARCH_DATA)
     return {
       ...state,

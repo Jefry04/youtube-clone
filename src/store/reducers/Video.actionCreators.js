@@ -15,6 +15,7 @@ import {
   VIDEO_COMMENTS_SUCCESS,
   POST_NEW_COMMENT_LOADING,
   ADD_NEW_COMMENT,
+  RESET_INITIAL_STATE,
 } from './Video.actions';
 
 const url = process.env.REACT_APP_BACKEND_URI;
@@ -81,8 +82,8 @@ export const fetchAllVideos = () => {
   return async (dispatch) => {
     try {
       dispatch({ type: GET_VIDEO_LOADING, payload: true });
-      const { data } = await axios.get(`${url}/videos`);
-      dispatch({ type: GET_VIDEO_SUCCESS, payload: data.videos });
+      const res = await axios.get(`${url}/videos`);
+      dispatch({ type: GET_VIDEO_SUCCESS, payload: res.data.videos });
     } catch (error) {
       dispatch({ type: GET_VIDEO_ERROR, payload: error });
     }
@@ -138,9 +139,12 @@ export const fetchVideoDetail = (videoId) => {
     }
   };
 };
-
 export function actionSearchData(payload) {
   return { type: SEARCH_DATA, payload };
+}
+
+export function resetState(payload) {
+  return { type: RESET_INITIAL_STATE, payload };
 }
 
 export function actionHasFilterVideo(payload) {

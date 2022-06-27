@@ -45,7 +45,8 @@ function VideoGrid() {
       </div>
       {hasFilterVideos ? (
         <div className="card__container">
-          {filtersVideo && filtersVideo.map((video) => <Card video={video} />)}
+          {filtersVideo &&
+            filtersVideo.map((video) => <Card video={video} key={video.id} />)}
         </div>
       ) : (
         <div className="card__container">
