@@ -174,9 +174,13 @@ const EmbeddedVideo = () => {
         <div className="userandvideo__secundaryinfo">
           <div className="secundaryinfo__scope">
             <div className="scope__user">
-              <div className="user__image">
-                <img src={videoDetail?.user?.avatarUrl} alt="perfil" />
-              </div>
+              <figure className="scope__user__avatar">
+                <img
+                  src={videoDetail?.user?.avatarUrl}
+                  alt="perfil"
+                  className="scope__user__img"
+                />
+              </figure>
               <div className="user__profile">
                 <p className="profile__name">{videoDetail?.user?.fullName}</p>
                 <p className="profile__subscribers">334,000 suscriptiores</p>
