@@ -33,7 +33,7 @@ function Login() {
         password: loginData.password,
       })
     );
-    navigate('/user');
+    navigate('/');
   };
 
   return (
