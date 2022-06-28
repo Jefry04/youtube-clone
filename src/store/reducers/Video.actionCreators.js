@@ -44,8 +44,10 @@ export const postVideo = (uploadData) => {
       });
       if (response.status === 201) dispatch(showFormAction());
       dispatch({ type: UPLOAD_VIDEO_SUCCESS, payload: response.data.video });
+      alertify.notify('Video subido con exito', 'success', 5);
     } catch (error) {
       dispatch({ type: GET_VIDEO_ERROR, payload: error });
+      alertify.notify(error.message, 'error', 5);
     }
   };
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Dropzone, MIME_TYPES, IMAGE_MIME_TYPE } from '@mantine/dropzone';
+import { Loader } from '@mantine/core';
 
 import ButtonAction from './ButtonAction';
 import InputValidator from './InputValidator';
@@ -16,6 +17,7 @@ export const dropzoneChildren = (uploadVideoState, mediaUrl, isImage) => (
 );
 
 const VideoUploadForm = () => {
+  const { loading } = useSelector((state) => state.VideoReducer);
   const [videoData, setVideoData] = useState(null);
   const [imageData, setImageData] = useState(null);
   const [videoPreview, setVideoPreview] = useState(null);
@@ -79,6 +81,16 @@ const VideoUploadForm = () => {
     readFile(files[0]);
     setUploadImageState({ ...uploadImageState, accepted: true });
   };
+
+  if (loading) {
+    return (
+      <div className="loading">
+        <Loader color="red" size={100} />
+        <h2>Uploading...</h2>
+      </div>
+    );
+  }
+
   return (
     <form className="video-upload-form">
       <header className="video-upload-form__header">
