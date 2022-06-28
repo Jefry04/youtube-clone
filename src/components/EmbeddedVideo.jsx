@@ -87,6 +87,7 @@ const EmbeddedVideo = () => {
     });
   };
   const initialLoading = useRef(false);
+
   useEffect(() => {
     if (!initialLoading.current) {
       const sendData = () => {
@@ -117,6 +118,7 @@ const EmbeddedVideo = () => {
       initialLoading.current = true;
     }
   }, [user, videoDetail, initialLoading]);
+
   const views = Math.round(videoDetail.visits?.length / 2);
   const onclickShare = () => {
     dispatch(showFormAction());
