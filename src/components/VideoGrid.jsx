@@ -1,8 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
-
 import Card from './Card';
 import ButtonAction from './ButtonAction';
 import {
@@ -10,11 +8,16 @@ import {
   fetchFilterVideos,
 } from '../store/reducers/Video.actionCreators';
 
-function VideoGrid() {
+function VideoGrid({ page, setPage }) {
   const { labels } = useSelector((state) => state.LayoutReducer);
-  const { hasFilterVideos, filtersVideo, videos, loading } = useSelector(
-    (state) => state.VideoReducer
-  );
+  const {
+    hasFilterVideos,
+    filtersVideo,
+    videos,
+    loading,
+    hasMore,
+    hasPrevious,
+  } = useSelector((state) => state.VideoReducer);
   const dispatch = useDispatch();
 
   const handleCLick = (labelName) => {
@@ -22,7 +25,10 @@ function VideoGrid() {
     dispatch(actionHasFilterVideo(true));
   };
 
-  const handleAllVideos = () => dispatch(actionHasFilterVideo(false));
+  const handleAllVideos = () => {
+    setPage(1);
+    dispatch(actionHasFilterVideo(false));
+  };
 
   return (
     <>
@@ -49,10 +55,28 @@ function VideoGrid() {
             filtersVideo.map((video) => <Card video={video} key={video.id} />)}
         </div>
       ) : (
-        <div className="card__container">
-          {videos &&
-            videos.map((video) => <Card key={video.id} video={video} />)}
-        </div>
+        <>
+          <div className="card__container">
+            {videos &&
+              videos.map((video) => <Card key={video.id} video={video} />)}
+          </div>
+          <div className="button__pagination">
+            <button
+              type="button"
+              className={!hasPrevious ? 'button__disabled' : ''}
+              onClick={() => setPage(page - 1)}
+            >
+              ❮
+            </button>
+            <button
+              type="button"
+              className={!hasMore ? 'button__disabled' : ''}
+              onClick={() => setPage(page + 1)}
+            >
+              ❯
+            </button>
+          </div>
+        </>
       )}
     </>
   );

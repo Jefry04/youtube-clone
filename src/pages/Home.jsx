@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Loader } from '@mantine/core';
 
@@ -7,16 +7,15 @@ import { fetchLabels } from '../store/reducers/Layout.actionCreator';
 import { fetchAllVideos } from '../store/reducers/Video.actionCreators';
 
 function Home() {
+  const [page, setPage] = useState(1);
   const { loading } = useSelector((state) => state.VideoReducer);
   const dispatch = useDispatch();
   const initialLoading = useRef(false);
+
   useEffect(() => {
-    if (!initialLoading.current) {
-      dispatch(fetchAllVideos());
-      dispatch(fetchLabels());
-      initialLoading.current = true;
-    }
-  }, [dispatch, initialLoading]);
+    dispatch(fetchAllVideos(page, 12));
+    dispatch(fetchLabels());
+  }, [dispatch, initialLoading, page]);
 
   if (loading) {
     return (
@@ -27,7 +26,7 @@ function Home() {
     );
   }
 
-  return <VideoGrid />;
+  return <VideoGrid page={page} setPage={setPage} />;
 }
 
 export default Home;

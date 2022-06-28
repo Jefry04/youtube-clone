@@ -80,12 +80,18 @@ export const postComment = (videoId, comment) => {
   };
 };
 
-export const fetchAllVideos = () => {
+export const fetchAllVideos = (page = 1, limit = 12) => {
+  const paramsObject = {
+    page,
+    limit,
+  };
   return async (dispatch) => {
     try {
       dispatch({ type: GET_VIDEO_LOADING, payload: true });
-      const res = await axios.get(`${url}/videos`);
-      dispatch({ type: GET_VIDEO_SUCCESS, payload: res.data.videos });
+      const { data } = await axios.get(`${url}/videos`, {
+        params: paramsObject,
+      });
+      dispatch({ type: GET_VIDEO_SUCCESS, payload: data });
     } catch (error) {
       dispatch({ type: GET_VIDEO_ERROR, payload: error });
     }
