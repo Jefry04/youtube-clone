@@ -11,7 +11,7 @@ function Home() {
   const initialLoading = useRef(false);
 
   useEffect(() => {
-    dispatch(fetchAllVideos(page, 4));
+    dispatch(fetchAllVideos(page, 12));
     dispatch(fetchLabels());
   }, [dispatch, initialLoading, page]);
 
