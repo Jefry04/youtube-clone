@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Layout from './components/Layout/Layout';
 import { getUerData } from './store/reducers/Auth.actionCreator';
@@ -32,7 +32,10 @@ function App() {
             <Route path=":redirect" component={<VideoView />} />
           </Route>
           <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<UserProfile />} />
+          <Route
+            path="/profile"
+            element={token !== null ? <UserProfile /> : <Navigate to="/" />}
+          />
 
           <Route path="/videos/results" element={<VideoResults />} />
           <Route path="*" element={<NotFound />} />
