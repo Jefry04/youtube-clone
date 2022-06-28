@@ -1,31 +1,50 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { sidebarToggle } from '../../store/reducers/Layout.actionCreator';
+import '../../styles/components/Layout/Header.scss';
 
+import { Menu, Divider } from '@mantine/core';
+import { User, UserCircle, Login, Logout, Home } from 'tabler-icons-react';
 import ButtonAction from '../ButtonAction';
 import SearchHeader from '../SearchHeader';
+
+import {
+  showLoginForm,
+  showRegisterForm,
+} from '../../store/reducers/Modals.actionCreator';
+import { sidebarToggle } from '../../store/reducers/Layout.actionCreator';
+import { logout } from '../../store/reducers/Auth.actionCreator';
 
 import iconYoutube from '../../assets/images/brand/icon.png';
 import letterYoutube from '../../assets/images/brand/letter.png';
 import BarsIcon from '../../assets/icons/BarsIcon';
 import SearchIcon from '../../assets/icons/SearchIcon';
 import VoiceIcon from '../../assets/icons/VoiceIcon';
-import AppsIcon from '../../assets/icons/AppsIcon';
-import VerticalDotsIcon from '../../assets/icons/VerticalDotsIcon';
-import RegisterButton from '../RegisterButton';
-import UserIcon from '../../assets/icons/UserIcon';
-import { logout } from '../../store/reducers/Auth.actionCreator';
 
 function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isAuth } = useSelector((state) => state.AuthReducer);
+  const { isAuth, user } = useSelector((state) => state.AuthReducer);
 
   const handleLogout = () => {
     dispatch(logout());
     navigate('/');
   };
+
+  const avatar = (
+    <div className="header__avatar">
+      <figure className="header__avatar__fig">
+        {isAuth && (
+          <img
+            src={user.avatar}
+            alt={user.fullName}
+            className="header__avatar__img"
+          />
+        )}
+        {!isAuth && <UserCircle size={48} strokeWidth={1} color="#065fd4" />}
+      </figure>
+    </div>
+  );
 
   return (
     <nav className="header">
@@ -60,24 +79,40 @@ function Header() {
         />
       </div>
       <div className="header__user">
-        <ButtonAction
-          className="btn-action--appsconf"
-          prependIcon={<AppsIcon />}
-        />
-        <ButtonAction
-          className="btn-action--appsconf"
-          prependIcon={<VerticalDotsIcon />}
-        />
-        {isAuth ? (
-          <ButtonAction
-            className="btn-action--login"
-            content="LOGOUT"
-            prependIcon={<UserIcon />}
-            handleClick={handleLogout}
-          />
-        ) : (
-          <RegisterButton />
-        )}
+        <Menu control={avatar}>
+          <Menu.Label>App</Menu.Label>
+          <Link to="/" className="header__link">
+            <Menu.Item icon={<Home size={14} />}>Home</Menu.Item>
+          </Link>
+          {isAuth && (
+            <Link to="/profile" className="header__link">
+              <Menu.Item icon={<User size={14} />}>Ir a perfil</Menu.Item>
+            </Link>
+          )}
+          <Divider />
+
+          {!isAuth && (
+            <>
+              <Menu.Item
+                icon={<Login size={14} />}
+                onClick={() => dispatch(showLoginForm())}
+              >
+                Iniciar Sesión
+              </Menu.Item>
+              <Menu.Item
+                icon={<User size={14} />}
+                onClick={() => dispatch(showRegisterForm())}
+              >
+                Registrarse
+              </Menu.Item>
+            </>
+          )}
+          {isAuth && (
+            <Menu.Item icon={<Logout size={14} />} onClick={handleLogout}>
+              Cerrar Sesión
+            </Menu.Item>
+          )}
+        </Menu>
       </div>
     </nav>
   );

@@ -23,6 +23,17 @@
   }
 }
 
+.sidebar__tablet {
+  display: none;
+  @include tablet() {
+    display: block;
+  }
+
+  @include desktop() {
+    display: none;
+  }
+}
+
 .sidebar__content {
   position: absolute;
   left: 0;

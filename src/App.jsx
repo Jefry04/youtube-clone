@@ -1,14 +1,18 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import Home from './pages/Home';
 import Layout from './components/Layout/Layout';
-import VideoView from './pages/VideoView';
-import UserView from './pages/UserView';
-import NotFound from './pages/NotFound';
 import { getUerData } from './store/reducers/Auth.actionCreator';
-import VideoResults from './pages/VideoResults';
 import RecoverPassword from './components/RecoverPassword';
+
+//--------------------------------------------------
+// PAGES
+//--------------------------------------------------
+import Home from './pages/Home';
+import UserProfile from './pages/UserProfile';
+import NotFound from './pages/NotFound';
+import VideoView from './pages/VideoView';
+import VideoResults from './pages/VideoResults';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +32,7 @@ function App() {
             <Route path=":redirect" component={<VideoView />} />
           </Route>
           <Route path="/" element={<Home />} />
-          <Route path="/user" element={<UserView />} />
+          <Route path="/profile" element={<UserProfile />} />
 
           <Route path="/videos/results" element={<VideoResults />} />
           <Route path="*" element={<NotFound />} />

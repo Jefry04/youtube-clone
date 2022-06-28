@@ -8,6 +8,7 @@ import {
   fetchAllVideos,
   fetchVideoDetail,
   getVideoComments,
+  resetState,
 } from '../store/reducers/Video.actionCreators';
 import EmbeddedVideo from '../components/EmbeddedVideo';
 
@@ -20,6 +21,12 @@ const VideoView = () => {
     dispatch(getVideoComments(videoId));
     dispatch(fetchAllVideos());
   }, [videoId, dispatch]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetState());
+    };
+  }, []);
 
   return (
     <div className="videoview">
