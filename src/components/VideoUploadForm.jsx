@@ -172,7 +172,7 @@ const VideoUploadForm = () => {
       </div>
       <div className="video-upload-form__footer">
         <ButtonAction
-          className="btn-action--videoup"
+          className="btn-action--profile"
           content="SUBIR VIDEO"
           type="submit"
           handleClick={handleSubmit}
