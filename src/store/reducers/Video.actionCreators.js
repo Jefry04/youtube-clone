@@ -77,7 +77,7 @@ export const postComment = (videoId, comment) => {
   };
 };
 
-export const fetchAllVideos = (page = 1, limit = 10) => {
+export const fetchAllVideos = (page = 1, limit = 3) => {
   const paramsObject = {
     page,
     limit,

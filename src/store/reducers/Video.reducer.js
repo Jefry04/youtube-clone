@@ -27,6 +27,7 @@ const initialState = {
   comments: [],
   postingNewComment: false,
   hasMore: false,
+  hasPrevious: false,
 };
 
 function VideoReducer(state = initialState, action = null) {
@@ -51,6 +52,7 @@ function VideoReducer(state = initialState, action = null) {
       loading: false,
       videos: action.payload.videos,
       hasMore: action.payload.next,
+      hasPrevious: action.payload.previous,
       hasFilterVideos: false,
       error: null,
     };

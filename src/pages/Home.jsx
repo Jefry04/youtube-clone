@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 import VideoGrid from '../components/VideoGrid';
@@ -6,18 +6,16 @@ import { fetchLabels } from '../store/reducers/Layout.actionCreator';
 import { fetchAllVideos } from '../store/reducers/Video.actionCreators';
 
 function Home() {
+  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   const initialLoading = useRef(false);
 
   useEffect(() => {
-    if (!initialLoading.current) {
-      dispatch(fetchAllVideos());
-      dispatch(fetchLabels());
-      initialLoading.current = true;
-    }
-  }, [dispatch, initialLoading]);
+    dispatch(fetchAllVideos(page, 4));
+    dispatch(fetchLabels());
+  }, [dispatch, initialLoading, page]);
 
-  return <VideoGrid />;
+  return <VideoGrid page={page} setPage={setPage} />;
 }
 
 export default Home;
