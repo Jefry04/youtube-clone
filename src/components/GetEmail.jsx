@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import alertify from 'alertifyjs';
 
 import Buttonaction from './ButtonAction';
 import InputValidator from './InputValidator';
@@ -31,6 +32,7 @@ function GetEmail() {
     const response = await axios.post(`${url}/user/getemail`, { email });
     if (response.status === 201) {
       dispatch(hiddeRecoverPassword());
+      alertify.notify('Correo enviado con exito', 'success', 5);
     }
     navigate('/');
   };

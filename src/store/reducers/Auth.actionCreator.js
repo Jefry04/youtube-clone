@@ -1,4 +1,6 @@
 import axios from 'axios';
+import alertify from 'alertifyjs';
+
 import { hiddeLoginForm, hiddeRegisterForm } from './Modals.actionCreator';
 import { AUTH_SUCCESS, AUTH_ERROR, LOGOUT, USER_SUCCESS } from './Auth.actions';
 
@@ -120,8 +122,10 @@ export const putNewPasswordData = ({
         }
       );
       dispatch({ type: USER_SUCCESS, payload: response.data.user });
+      alertify.notify('Cambio de password con exito', 'success', 5);
     } catch (error) {
       dispatch({ type: AUTH_ERROR, payload: error.response });
+      alertify.notify(error.message, 'error', 5);
     }
   };
 };
