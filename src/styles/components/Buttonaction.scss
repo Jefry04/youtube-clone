@@ -1,0 +1,243 @@
+@import '../abstract/mixins';
+
+.btn-action {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px 11px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+}
+
+.btn-action__prepend,
+.btn-action__append {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.btn-action__prepend {
+  margin-right: 8px;
+}
+
+.btn-action__append {
+  margin-left: 8px;
+}
+
+.btn-action--login {
+  background-color: #ffffff;
+
+  .btn-action__content {
+    display: none;
+  }
+
+  @include tabletAndDesktop() {
+    padding: 8px 11px;
+    margin: 0px 10px;
+    border: 1px solid #065fd4;
+    border-radius: 2px;
+    color: #065fd4;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 16px;
+    letter-spacing: 0.5px;
+
+    .btn-action__content {
+      display: block;
+    }
+  }
+}
+
+.btn-action--toggle {
+  display: none;
+
+  @include tabletAndDesktop() {
+    display: flex;
+
+    .btn-action__prepend {
+      margin: 0;
+    }
+  }
+}
+
+.btn-action--search {
+  width: 64px;
+
+  .btn-action__prepend {
+    margin: 0;
+  }
+
+  @include tabletAndDesktop() {
+    background: #f0f0f0;
+    border: 1px solid #c6c6c6;
+
+    .btn-action__prepend {
+      margin: 0;
+    }
+  }
+}
+
+.btn-action--voice {
+  display: none;
+
+  @include tabletAndDesktop() {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: #f9f9f9;
+    background: #f9f9f9;
+    margin-left: 10px;
+
+    .btn-action__prepend {
+      margin: 0;
+    }
+  }
+}
+
+.btn-action--appsconf {
+  display: none;
+
+  @include tabletAndDesktop() {
+    display: flex;
+
+    .btn-action__prepend {
+      margin: 0;
+    }
+  }
+}
+
+.btn-action--filter {
+  padding: 6px;
+  margin-right: 12px;
+  color: var(--filter-bg-3);
+  border: solid var(--filter-bg-1) 1px;
+  background-color: var(--filter-bg-1);
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.btn-action--filter:focus {
+  background-color: var(--filter-bg-3);
+  color: var(--text-filter);
+}
+.btn-action--form {
+  justify-content: center;
+  width: 30%;
+  padding: 6px 10px;
+  margin: 0px 10px;
+  border: 1px solid var(--text-link);
+  border-radius: 2px;
+  color: white;
+  background-color: var(--text-link);
+}
+
+.btn-action--join {
+  display: none;
+
+  @include tabletAndDesktop() {
+    display: flex;
+    background-color: transparent;
+    border: 1px solid #065fd4;
+    border-radius: 2px;
+    color: #065fd4;
+    padding: 0.7em 0.57em;
+    margin-left: 5px;
+    font-weight: bold;
+  }
+}
+
+.btn-action--subscription {
+  background-color: transparent;
+  color: var(--logo-bg);
+  font-weight: bold;
+  margin-right: 20px;
+
+  @include tabletAndDesktop() {
+    background-color: var(--logo-bg);
+    color: white;
+    border-radius: 3px;
+    padding: 0.7em 0.57em;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+    margin-left: 10px;
+  }
+}
+
+/* ----------------------------------------------------- */
+/* BUTTON PROFILE STYLES */
+/* ----------------------------------------------------- */
+
+.btn-action--profile {
+  display: flex;
+  flex-grow: 1;
+  text-align: center;
+  justify-content: center;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #065fd4;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition-property: opacity;
+  transition-duration: 200ms;
+
+  @include tabletAndDesktop() {
+    font-size: 1rem;
+  }
+}
+
+.btn-action--profile--delete {
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--red);
+  background-color: var(--light);
+  color: var(--red);
+}
+
+.btn-action--profile:disabled {
+  opacity: 0.5;
+}
+
+.btn-action--tabsContainer {
+  border: none;
+  background-color: none;
+  font-size: 14px;
+  width: 15%;
+  padding-bottom: 0;
+  color: var(--text-paragrap-2 #606060);
+}
+
+.container__button {
+  display: flex;
+  gap: 20px;
+}
+
+.button__pagination {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 10px;
+
+  button {
+    cursor: pointer;
+    background-color: #e31f1f;
+    margin: auto 5px;
+    width: 40px;
+    color: #fff;
+    font-weight: bold;
+    border: 3px solid #e31f1f;
+  }
+
+  button:hover {
+    background-color: #fff;
+    color: #e31f1f;
+  }
+  .button__disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

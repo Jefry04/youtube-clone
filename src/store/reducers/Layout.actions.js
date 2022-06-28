@@ -1,0 +1,3 @@
+export const SIDEBAR__TOGGLE = 'SIDEBAR__TOGLE';
+export const GET_LABELS_NAME = 'GET_LABELS_NAME';
+export const GET_LABELS_ERROR = 'GET_LABELS_ERROR';

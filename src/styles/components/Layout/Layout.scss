@@ -1,0 +1,24 @@
+@import '../../abstract/mixins';
+
+.layout {
+  position: relative;
+  height: 100vh;
+  overflow: auto;
+}
+
+.layout__container {
+  position: relative;
+  margin-top: var(--header-height);
+  margin-bottom: var(--footer-height);
+  @include desktop() {
+    display: flex;
+    margin-bottom: 0;
+  }
+}
+
+.layout__content {
+  flex-grow: 1;
+  height: calc(100vh - var(--header-height));
+  overflow-y: auto;
+  margin-left: 1%;
+}

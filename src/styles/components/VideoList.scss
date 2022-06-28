@@ -1,0 +1,16 @@
+.videogrid {
+  color: var(--text-link);
+}
+
+.filter {
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  overflow-x: auto;
+
+  .filter__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}

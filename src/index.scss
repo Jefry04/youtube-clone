@@ -1,0 +1,17 @@
+/* Abstracts */
+@import './styles/abstract/variables';
+@import './styles/abstract/mixins';
+
+/* base */
+@import './styles/base/reset';
+@import './styles/base/base';
+@import '../node_modules/alertifyjs/build/css/alertify.css';
+
+/* components */
+@import './styles/components/VideoList.scss';
+@import './styles/components/Cards.scss';
+@import './styles/components/InputValidator.scss';
+@import './styles/components/VideoUploadForm.scss';
+@import './styles/pages/VideoView.scss';
+@import './styles/pages/NotFound.scss';
+@import './styles/pages/VideoResults.scss';

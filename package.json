@@ -4,14 +4,27 @@
   "private": true,
   "dependencies": {
     "-": "0.0.1",
+    "@mantine/core": "^4.2.5",
+    "@mantine/dropzone": "^4.2.8",
+    "@mantine/hooks": "^4.2.5",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
+    "alertifyjs": "^1.13.1",
+    "axios": "^0.27.2",
     "D": "^1.0.0",
+    "dayjs": "^1.11.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-player": "^2.10.1",
+    "react-redux": "^8.0.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1",
+    "sass": "^1.51.0",
+    "tabler-icons-react": "^1.48.1",
+    "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -46,6 +59,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
     "husky": "^8.0.1",
@@ -53,7 +67,7 @@
     "prettier": "^2.6.2"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
+    "*.(js|jsx)": "eslint --cache --fix",
+    "*.{js,jsx,css,md}": "prettier --write"
   }
 }

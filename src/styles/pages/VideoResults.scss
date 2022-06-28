@@ -1,0 +1,30 @@
+.videofilter__wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  .card {
+    display: flex;
+    width: 70%;
+    margin-bottom: 10px;
+
+    .card__video {
+      width: 40%;
+      height: 150px;
+    }
+    .card__body {
+      padding-left: 2%;
+      width: 60%;
+
+      h3 {
+        margin: 0;
+      }
+      div {
+        margin: 10px 0 6px 0;
+
+        span {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+}

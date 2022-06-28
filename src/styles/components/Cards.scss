@@ -1,0 +1,149 @@
+.card__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+  margin-top: 2%;
+  @include tablet {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    margin-top: 2%;
+    padding-right: 16px;
+  }
+
+  @include desktop {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 2%;
+    padding-right: 16px;
+  }
+
+  .card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+
+  .card__header {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .card__header::after {
+    content: '';
+    display: block;
+    padding-bottom: 56.25%;
+  }
+
+  .card__video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .card__body {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    gap: 0.5rem;
+    align-items: flex-start;
+
+    .card__avatar {
+      position: relative;
+      display: block;
+      width: 100%;
+      img {
+        display: block;
+        position: absolute;
+        border-radius: 100%;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .card__avatar::after {
+      content: '';
+      display: block;
+      padding-bottom: 100%;
+    }
+    .card__text {
+      display: flex;
+      flex-direction: column;
+      h3 {
+        font-size: 16px;
+        margin: 0px;
+      }
+      span {
+        color: var(--text-paragrap-2);
+        margin-top: 5px;
+        font-size: 14px;
+      }
+    }
+    .card__name {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      img {
+        margin-left: 10px;
+        margin-top: 7px;
+      }
+    }
+  }
+}
+
+.card__container-row {
+  @include desktop {
+    display: flex;
+    flex-direction: column;
+    width: 38%;
+  }
+  .card {
+    display: flex;
+    margin-bottom: 5px;
+
+    @include desktop {
+      display: flex;
+      flex-direction: row;
+      padding-bottom: 1%;
+      width: 410px;
+      height: 98px;
+    }
+    .card__video {
+      height: 94px;
+      width: 168px;
+    }
+    .card__body {
+      padding-left: 2%;
+      margin-top: 2%;
+      width: 80%;
+
+      .card__avatar {
+        display: none;
+      }
+      .card__text {
+        display: flex;
+        flex-direction: column;
+        h3 {
+          font-size: 16px;
+          margin: 0px;
+        }
+        span {
+          color: var(--text-paragrap-2);
+          margin-top: 5px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+.card__link {
+  text-decoration: none;
+  color: black;
+}

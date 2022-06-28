@@ -1,0 +1,170 @@
+@import '../../abstract/mixins';
+
+.sidebar {
+  display: none;
+  @include desktop() {
+    position: relative;
+    flex-shrink: 0;
+    height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+    width: var(--sidebar-width);
+  }
+}
+
+.sidebar.show {
+  @include desktop() {
+    display: block;
+  }
+}
+
+.sidebar.hidden {
+  @include desktop() {
+    display: none;
+  }
+}
+
+.sidebar__tablet {
+  display: none;
+  @include tablet() {
+    display: block;
+  }
+
+  @include desktop() {
+    display: none;
+  }
+}
+
+.sidebar__content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  width: var(--sidebar-width);
+}
+
+.sidebar__divider {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0.1);
+  margin: 8px 0;
+}
+
+.sidebar__section {
+  width: 100%;
+  overflow: hidden;
+}
+
+.sidebar__section__title {
+  padding: 8px 24px;
+  margin: 0;
+  color: var(--text-paragrap-2);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.sidebar__section__description {
+  padding: 8px 24px;
+  margin: 0;
+  color: #000;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.sidebar__tab {
+  width: 100%;
+  overflow: hidden;
+  transition-property: background-color;
+  transition-duration: 200ms;
+}
+
+.sidebar__tab.active {
+  background-color: #e6e6e6;
+}
+
+.sidebar__tab:hover {
+  background-color: #f2f2f2;
+}
+
+.sidebar__tab.active:hover {
+  background-color: #d6d6d6;
+}
+
+.sidebar__tab__link {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 24px;
+  align-items: center;
+  padding: 8px 24px;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.sidebar__tab__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  color: #000;
+}
+
+.sidebar__tab__icon--rounded-full {
+  border-radius: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.sidebar__tab__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sidebar__tab__name {
+  font-size: 14px;
+  line-height: 1.17;
+  font-weight: 500;
+  color: var(--text-paragrap);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.sidebar__actions {
+  display: flex;
+  padding: 8px 24px;
+}
+
+.sidebar__section__links {
+  padding: 8px 24px;
+}
+
+.sidebar__link {
+  margin-right: 2px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  text-decoration: none;
+  color: var(--text-paragrap-2);
+}
+
+.sidebar__link:hover {
+  opacity: 0.8;
+}
+
+.sidebar__footer {
+  margin: 10px 0;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #909090;
+  text-align: center;
+}
