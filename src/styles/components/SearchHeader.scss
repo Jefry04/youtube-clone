@@ -7,16 +7,23 @@
   display: none;
   width: 100%;
   height: 40px;
-  background: #ffffff;
   border: 1px solid #cccccc;
-  box-sizing: border-box;
+  padding: 0 1rem;
+  color: var(--gray-dark);
+  line-height: 1.5;
+  letter-spacing: 0.05rem;
+  background: #ffffff;
   box-shadow: inset 0px 1px 2px #eeeeee;
+  outline: none;
+  transition-property: border-color;
+  transition-duration: 100ms;
+  transform-origin: left;
 
-  @include tablet() {
-    display: flex;
+  @include tabletAndDesktop() {
+    display: block;
   }
+}
 
-  @include desktop() {
-    display: flex;
-  }
+.search__input:focus {
+  border-color: var(--blue);
 }
