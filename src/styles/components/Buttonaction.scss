@@ -111,18 +111,21 @@
 }
 
 .btn-action--filter {
-  padding: 6px;
+  padding: 8px 10px;
   margin-right: 12px;
-  color: var(--filter-bg-3);
+  color: #030303;
   border: solid var(--filter-bg-1) 1px;
-  background-color: var(--filter-bg-1);
+  background-color: #0000000d;
   border-radius: 100px;
   white-space: nowrap;
+  border-top: 100px;
+  border-bottom: 100px;
 }
 .btn-action--filter:focus {
-  background-color: var(--filter-bg-3);
+  background-color: #030303;
   color: var(--text-filter);
 }
+
 .btn-action--form {
   justify-content: center;
   width: 30%;
