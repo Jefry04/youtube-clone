@@ -3,23 +3,26 @@
 .sidebar {
   display: none;
   @include desktop() {
+    display: block;
     position: relative;
     flex-shrink: 0;
     height: calc(100vh - var(--header-height));
     overflow-y: auto;
-    width: var(--sidebar-width);
+    overflow-x: hidden;
+    transition-property: width;
+    transition-duration: 200ms;
   }
 }
 
 .sidebar.show {
   @include desktop() {
-    display: block;
+    width: var(--sidebar-width);
   }
 }
 
 .sidebar.hidden {
   @include desktop() {
-    display: none;
+    width: 0;
   }
 }
 
