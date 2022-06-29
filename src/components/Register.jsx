@@ -32,7 +32,7 @@ function Register() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     dispatch(register(formData));
-    navigate('/user');
+    navigate('/');
   };
 
   return (
