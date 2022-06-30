@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import alertify from 'alertifyjs';
+import { Loader } from '@mantine/core';
 
 import Buttonaction from './ButtonAction';
 import InputValidator from './InputValidator';
@@ -12,6 +13,7 @@ import '../styles/components/Login.scss';
 import { hiddeRecoverPassword } from '../store/reducers/Modals.actionCreator';
 
 function GetEmail() {
+  const [loading, setloading] = useState(false);
   const url = process.env.REACT_APP_BACKEND_URI;
   const [formData, setFormData] = useState({
     email: '',
@@ -28,6 +30,7 @@ function GetEmail() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setloading(true);
     const { email } = formData;
     const response = await axios.post(`${url}/user/getemail`, { email });
     if (response.status === 201) {
@@ -36,6 +39,15 @@ function GetEmail() {
     }
     navigate('/');
   };
+
+  if (loading) {
+    return (
+      <div className="loading">
+        <Loader color="red" size={100} />
+        <h2>Sending email...</h2>
+      </div>
+    );
+  }
 
   return (
     <form>

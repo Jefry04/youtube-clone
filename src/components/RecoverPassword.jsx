@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import alertify from 'alertifyjs';
+import { Loader } from '@mantine/core';
 
 import Buttonaction from './ButtonAction';
 import InputValidator from './InputValidator';
@@ -11,6 +13,7 @@ import '../styles/components/RecoverPassword.scss';
 function RecoverPassword() {
   const { token } = useParams();
   const url = process.env.REACT_APP_BACKEND_URI;
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -27,23 +30,39 @@ function RecoverPassword() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await axios.put(
-      `${url}/user/recover-password`,
-      {
-        email: formData.email,
-        password: formData.newpassword,
-        confirmPassword: formData.confirmPassword,
-      },
-      {
-        headers: {
-          Authorization: `bearer ${token}`,
+    setLoading(true);
+    try {
+      const response = await axios.put(
+        `${url}/user/recover-password`,
+        {
+          email: formData.email,
+          password: formData.newpassword,
+          confirmPassword: formData.confirmPassword,
         },
+        {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        }
+      );
+      if (response.status === 201) {
+        alertify.notify('Cambio de contraseña exitoso', 'success', 5);
+        navigate('/');
       }
-    );
-    if (response.status === 201) {
-      navigate('/');
+    } catch (error) {
+      setLoading(false);
+      alertify.notify('Credenciales vencidas', 'error', 5);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="loading">
+        <Loader color="red" size={100} />
+        <h2>Cambiando contraseña...</h2>
+      </div>
+    );
+  }
 
   return (
     <div className="container">

@@ -33,7 +33,7 @@ export const register = (body) => {
       const { token, message, ...user } = response.data;
       localStorage.setItem('token', token);
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-
+      alertify.notify('Usuario registrado con exito', 'success', 5);
       dispatch(hiddeRegisterForm());
       dispatch({ type: AUTH_SUCCESS, payload: user });
     } catch (error) {
