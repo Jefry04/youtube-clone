@@ -7,7 +7,6 @@
   margin-right: auto;
 
   @include tabletAndDesktop() {
-    justify-content: center;
     flex-direction: row;
     gap: 20px;
   }
@@ -28,12 +27,17 @@
 //area lista de videos
 .videoView__list {
   display: flex;
-  flex-shrink: 0;
   justify-content: center;
+  min-width: 240px;
+  flex-grow: 0;
 
   @include tabletAndDesktop() {
     padding: 24px 24px 0 0;
   }
+}
+
+.viewview__list {
+  min-width: 240px;
 }
 
 .loading {
