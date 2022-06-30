@@ -28,7 +28,7 @@ export default function NewComment() {
   return (
     isAuth && (
       <form action="" className="new-comment">
-        <Avatar src={user.avatarUrl} alt={user.fullName} width="30" />
+        <Avatar src={user.avatar} alt={user.fullName} width="30" />
         <div className="new-comment__body">
           <textarea
             name="newcomment"
