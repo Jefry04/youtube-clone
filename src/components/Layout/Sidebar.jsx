@@ -13,6 +13,7 @@ import sidebarTabs from './sidebarTabs/sidebarTabs';
 
 function Sidebar() {
   const show = useSelector(({ LayoutReducer }) => LayoutReducer.showSidebar);
+  const { isAuth } = useSelector((state) => state.AuthReducer);
   const dispatch = useDispatch();
   const {
     explorerTabs,
@@ -35,12 +36,16 @@ function Sidebar() {
           <SidebarSection tabs={libraryTabs} />
           <div className="sidebar__divider" />
 
-          <SidebarSection description='Connectez-vous à YouTube pour cliquer sur "J&apos;aime", ajouter un commentaire et vous abonner.'>
-            <div className="sidebar__actions">
-              <RegisterButton />
-            </div>
-          </SidebarSection>
-          <div className="sidebar__divider" />
+          {!isAuth && (
+            <>
+              <SidebarSection description='Inicie sesión en YouTube para hacer clic en "Me gusta", agregar un comentario y subir videos.'>
+                <div className="sidebar__actions">
+                  <RegisterButton />
+                </div>
+              </SidebarSection>
+              <div className="sidebar__divider" />
+            </>
+          )}
 
           {/* <!-- Categories --> */}
           <SidebarSection title="Lo mejor de YouTube">
@@ -107,12 +112,16 @@ function Sidebar() {
           <SidebarSection tabs={libraryTabs} />
           <div className="sidebar__divider" />
 
-          <SidebarSection description='Connectez-vous à YouTube pour cliquer sur "J&apos;aime", ajouter un commentaire et vous abonner.'>
-            <div className="sidebar__actions">
-              <RegisterButton />
-            </div>
-          </SidebarSection>
-          <div className="sidebar__divider" />
+          {!isAuth && (
+            <>
+              <SidebarSection description='Inicie sesión en YouTube para hacer clic en "Me gusta", agregar un comentario y subir videos.'>
+                <div className="sidebar__actions">
+                  <RegisterButton />
+                </div>
+              </SidebarSection>
+              <div className="sidebar__divider" />
+            </>
+          )}
 
           {/* <!-- Categories --> */}
           <SidebarSection title="Lo mejor de YouTube">
