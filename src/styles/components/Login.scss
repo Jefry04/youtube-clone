@@ -79,6 +79,10 @@
   color: var(--text-link);
   border: none;
   background-color: white;
+  font-size: 0.8rem;
+  @include desktop() {
+    font-size: 1rem;
+  }
 }
 
 .form__login {
