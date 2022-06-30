@@ -10,14 +10,8 @@ import {
 
 function VideoGrid({ page, setPage }) {
   const { labels } = useSelector((state) => state.LayoutReducer);
-  const {
-    hasFilterVideos,
-    filtersVideo,
-    videos,
-    loading,
-    hasMore,
-    hasPrevious,
-  } = useSelector((state) => state.VideoReducer);
+  const { hasFilterVideos, filtersVideo, videos, hasMore, hasPrevious } =
+    useSelector((state) => state.VideoReducer);
   const dispatch = useDispatch();
 
   const handleCLick = (labelName) => {
