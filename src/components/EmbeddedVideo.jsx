@@ -120,9 +120,7 @@ const EmbeddedVideo = () => {
     }
   }, [user, videoDetail, initialLoading]);
 
-  const views = videoDetail.visits
-    ? videoDetail.visits?.length 
-    : 0;
+  const views = videoDetail.visits ? videoDetail.visits?.length : 0;
   const onclickShare = () => {
     dispatch(showFormAction());
   };
