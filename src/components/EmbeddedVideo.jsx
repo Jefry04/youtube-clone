@@ -20,6 +20,7 @@ import {
 } from '../store/reducers/Auth.actionCreator';
 import LikeIconOn from '../assets/icons/LikeIconOn';
 import PublicModal from './PublicModal';
+import Avatar from './Avatar';
 
 const EmbeddedVideo = () => {
   const { videoDetail } = useSelector((state) => state.VideoReducer);
@@ -174,13 +175,10 @@ const EmbeddedVideo = () => {
         <div className="userandvideo__secundaryinfo">
           <div className="secundaryinfo__scope">
             <div className="scope__user">
-              <figure className="scope__user__avatar">
-                <img
-                  src={videoDetail?.user?.avatarUrl}
-                  alt="perfil"
-                  className="scope__user__img"
-                />
-              </figure>
+              <Avatar
+                src={videoDetail?.user?.avatarUrl}
+                alt={videoDetail?.user?.fullName}
+              />
               <div className="user__profile">
                 <p className="profile__name">{videoDetail?.user?.fullName}</p>
                 <p className="profile__subscribers">334,000 suscriptiores</p>

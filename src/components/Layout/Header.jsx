@@ -41,7 +41,7 @@ function Header() {
             className="header__avatar__img"
           />
         )}
-        {!isAuth && <UserCircle size={48} strokeWidth={1} color="#065fd4" />}
+        {!isAuth && <UserCircle size={40} strokeWidth={1} color="#065fd4" />}
       </figure>
     </div>
   );

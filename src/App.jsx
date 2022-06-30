@@ -34,11 +34,11 @@ function App() {
             <Route path="/profile" element={<UserProfile />} />
           </Route>
           <Route path="/videos/results" element={<VideoResults />} />
-          <Route path="*" element={<NotFound />} />
           <Route
             path="/recover-password/:token"
             element={<RecoverPassword />}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
     </BrowserRouter>

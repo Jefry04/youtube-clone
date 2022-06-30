@@ -1,3 +1,5 @@
+@import '../abstract/mixins';
+
 .video-upload-form {
   padding: 1rem 0.5rem;
   border-style: dashed;
@@ -7,11 +9,14 @@
 
 .video-upload-form__header {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
   align-items: center;
   padding: 1rem 0.5rem;
   margin-bottom: 1rem;
+  @include tabletAndDesktop() {
+    grid-template-columns: 2fr 1fr;
+  }
 }
 
 .video-upload-form__media {

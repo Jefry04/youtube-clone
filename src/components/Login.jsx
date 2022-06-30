@@ -62,7 +62,7 @@ function Login() {
           value={loginData.name}
           onChange={onChange}
           classname="input__Login --span"
-          placeholder="password"
+          placeholder="Contraseña"
           errorMessage="Minimo 8 caracteres e incluir 1 numero y 1 caracter especial"
           pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
           required
@@ -78,7 +78,7 @@ function Login() {
         </button>
         <Buttonaction
           className="btn-action--form"
-          content="Next"
+          content="Acceder"
           type="submit"
           handleClick={handleSubmit}
         />

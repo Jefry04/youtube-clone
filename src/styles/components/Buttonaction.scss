@@ -53,14 +53,27 @@
 
 .btn-action--toggle {
   display: none;
+  padding: 8px;
 
   @include tabletAndDesktop() {
     display: flex;
+    background-color: transparent;
+    opacity: 1;
+    border-radius: 100%;
+    transition-property: background-color;
+    transition-duration: 200ms;
 
     .btn-action__prepend {
       margin: 0;
     }
   }
+}
+
+.btn-action--toggle:hover {
+  background-color: var(--gray-200);
+}
+.btn-action--toggle:active {
+  background-color: transparent;
 }
 
 .btn-action--search {
@@ -128,7 +141,7 @@
 
 .btn-action--form {
   justify-content: center;
-  width: 30%;
+  flex-grow: 0.5;
   padding: 6px 10px;
   margin: 0px 10px;
   border: 1px solid var(--text-link);
