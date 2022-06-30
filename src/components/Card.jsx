@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import Avatar from './Avatar';
 
-const Card = ({ video }) => {
+const Card = ({ video, showAvatar = true }) => {
   const views = Math.round(video.visits?.length / 2);
   return (
     <Link to={`/videoview/${video._id}`} className="card">
@@ -20,7 +20,9 @@ const Card = ({ video }) => {
         </div>
       </header>
       <div className="card__body">
-        <Avatar src={video?.user?.avatarUrl} alt={video?.user.fullName} />
+        {showAvatar && (
+          <Avatar src={video?.user?.avatarUrl} alt={video?.user.fullName} />
+        )}
         <div className="card__text">
           <h3>{video?.title}</h3>
           <div className="card__name">

@@ -107,6 +107,7 @@
   .card {
     display: flex;
     margin-bottom: 5px;
+    text-decoration: none;
 
     @include desktop {
       display: flex;
