@@ -38,11 +38,11 @@ function App() {
           />
 
           <Route path="/videos/results" element={<VideoResults />} />
-          <Route path="*" element={<NotFound />} />
           <Route
             path="/recover-password/:token"
             element={<RecoverPassword />}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
     </BrowserRouter>
