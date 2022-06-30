@@ -1,17 +1,22 @@
 @import '../../abstract/mixins';
 
 .header {
-  background-color: #ffffff;
-  display: flex;
   position: fixed;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
   left: 0px;
   right: 0px;
   height: var(--header-height);
+  padding: 0 0.5rem;
+  background-color: #ffffff;
   z-index: var(--z-fixed);
 
   @include tabletAndDesktop() {
-    padding: 0px 16px;
+    gap: 1rem;
+    padding-left: 1rem;
+    padding-right: 2rem;
   }
 }
 
@@ -50,17 +55,11 @@
 .header__search {
   display: flex;
   justify-content: flex-end;
-  width: 685px;
+  width: 80%;
+  flex-grow: 1;
 
-  @include tablet() {
-    margin: 10px;
-    justify-content: none;
-    height: 40px;
-  }
-
-  @include desktop() {
-    margin: 40px;
-    justify-content: none;
+  @include tabletAndDesktop() {
+    justify-content: center;
     height: 40px;
   }
 }
@@ -69,17 +68,16 @@
   display: flex;
   align-items: center;
   margin-right: 10px;
+  flex-grow: 0;
 
   @include tablet() {
     margin: 10px;
     justify-content: flex-end;
-    width: 242px;
     margin-right: 0;
   }
 
   @include desktop() {
     justify-content: flex-end;
-    width: 242px;
     margin-right: 0;
   }
 }
@@ -90,8 +88,8 @@
 }
 
 .header__avatar {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   @include tabletAndDesktop() {
     width: 45px;

@@ -1,5 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useMediaQuery } from '@mantine/hooks';
+
 import {
   hiddeRegisterForm,
   hiddeLoginForm,
@@ -20,7 +22,7 @@ function Layout(props) {
   const { children } = props;
   const { showingRegisterForm, showingLoginForm, showRecoverPassword } =
     useSelector(({ ModalsReducer }) => ModalsReducer);
-
+  const largeScreen = useMediaQuery('(min-width: 1024px)');
   const dispatch = useDispatch();
 
   return (
@@ -40,7 +42,7 @@ function Layout(props) {
           <PublicModal
             opened={showingLoginForm}
             onClose={() => dispatch(hiddeLoginForm())}
-            size="50%"
+            size={largeScreen ? '50%' : '90%'}
           >
             <Login />
           </PublicModal>

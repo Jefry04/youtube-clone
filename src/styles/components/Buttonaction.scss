@@ -53,14 +53,27 @@
 
 .btn-action--toggle {
   display: none;
+  padding: 8px;
 
   @include tabletAndDesktop() {
     display: flex;
+    background-color: transparent;
+    opacity: 1;
+    border-radius: 100%;
+    transition-property: background-color;
+    transition-duration: 200ms;
 
     .btn-action__prepend {
       margin: 0;
     }
   }
+}
+
+.btn-action--toggle:hover {
+  background-color: var(--gray-200);
+}
+.btn-action--toggle:active {
+  background-color: transparent;
 }
 
 .btn-action--search {
@@ -111,21 +124,24 @@
 }
 
 .btn-action--filter {
-  padding: 6px;
+  padding: 8px 10px;
   margin-right: 12px;
-  color: var(--filter-bg-3);
+  color: #030303;
   border: solid var(--filter-bg-1) 1px;
-  background-color: var(--filter-bg-1);
+  background-color: #0000000d;
   border-radius: 100px;
   white-space: nowrap;
+  border-top: 100px;
+  border-bottom: 100px;
 }
 .btn-action--filter:focus {
-  background-color: var(--filter-bg-3);
+  background-color: #030303;
   color: var(--text-filter);
 }
+
 .btn-action--form {
   justify-content: center;
-  width: 30%;
+  flex-grow: 0.5;
   padding: 6px 10px;
   margin: 0px 10px;
   border: 1px solid var(--text-link);

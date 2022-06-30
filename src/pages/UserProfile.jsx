@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Tabs } from '@mantine/core';
 import alertify from 'alertifyjs';
+import { useMediaQuery } from '@mantine/hooks';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { showFormAction } from '../store/reducers/Modals.actionCreator';
@@ -19,6 +20,7 @@ import '../styles/pages/UserProfile.scss';
 
 function UserView() {
   const dispatch = useDispatch();
+  const largeScreen = useMediaQuery('(min-width: 1024px)');
   const { user } = useSelector((state) => state.AuthReducer);
   const [videos, setVideos] = useState([]);
   const [loadingVideos, setLoadingVideos] = useState(false);
@@ -28,15 +30,11 @@ function UserView() {
   );
 
   const getVideos = async () => {
-    const backUri = process.env.REACT_APP_BACKEND_URI;
-    const token = localStorage.getItem('token');
-    const url = `${backUri}/user/profile/videos`;
+    const url = `/user/profile/videos`;
     setLoadingVideos(true);
 
     try {
-      const res = await axios.get(url, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.get(url);
       setVideos(res.data.videos);
     } catch (error) {
       alertify.notify('No se pudo recuperar el listado de videos.', 'error', 5);
@@ -62,22 +60,22 @@ function UserView() {
           <Tabs.Tab label="Videos" tabKey="videos">
             <VideoList videos={videos} loading={loadingVideos} />
           </Tabs.Tab>
-          <Tabs.Tab label="Comentarios" tabKey="comments">
+          {/* <Tabs.Tab label="Comentarios" tabKey="comments">
             Comentarios del usuario
-          </Tabs.Tab>
+          </Tabs.Tab> */}
         </Tabs>
 
         <PublicModal
           opened={showForm}
           onClose={() => dispatch(showFormAction())}
-          size="50%"
+          size={largeScreen ? '50%' : '90%'}
         >
           <VideoUploadForm />
         </PublicModal>
         <PublicModal
           opened={showingChangePasswordForm}
           onClose={() => dispatch(hiddeChangePasswordForm())}
-          size="50%"
+          size={largeScreen ? '50%' : '90%'}
         >
           <ChangePassword />
         </PublicModal>

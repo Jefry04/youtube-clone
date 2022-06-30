@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/es-do';
 import '../styles/components/UserComment.scss';
+import Avatar from './Avatar';
 
 dayjs.extend(relativeTime);
 dayjs.locale('es-do');
@@ -13,14 +14,7 @@ function UserComment({ comment }) {
 
   return (
     <div className="user-comment" key={comment.id}>
-      {/* Avatar */}
-      <figure className="user-comment__avatar">
-        <img
-          src={user.avatarUrl}
-          alt={user.fullName}
-          className="user-comment__avatar__img"
-        />
-      </figure>
+      <Avatar src={user.avatarUrl} alt={user.fullName} width="30" />
 
       {/* Content */}
       <div className="user-comment__content">

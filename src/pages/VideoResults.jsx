@@ -17,7 +17,7 @@ const VideoResults = () => {
 
   return (
     filtersVideo && (
-      <div className="videofilter__wrapper">
+      <div className="card__container">
         {filtersVideo.map((filtervideo) => (
           <Card
             key={filtervideo.id}

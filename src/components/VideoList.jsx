@@ -8,7 +8,10 @@ function VideoList() {
     <div> cargando</div>
   ) : (
     <div className="card__container-row">
-      {videos && videos.map((video) => <Card key={video.id} video={video} />)}
+      {videos &&
+        videos.map((video) => (
+          <Card key={video.id} video={video} showAvatar={false} />
+        ))}
     </div>
   );
 }

@@ -5,8 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { actionSearchData } from '../store/reducers/Video.actionCreators';
 import '../styles/components/SearchHeader.scss';
 
-function SearchHeader(props) {
-  const { wordkey } = props;
+function SearchHeader() {
   const [searchInput, setSearchInput] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,9 +29,10 @@ function SearchHeader(props) {
       <input
         className="search__input"
         type="text"
-        placeholder={wordkey}
+        placeholder="Buscar video"
         onChange={onChange}
         value={searchInput}
+        title="search video"
       />
     </form>
   );

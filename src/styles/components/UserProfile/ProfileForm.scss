@@ -7,8 +7,9 @@
   padding-bottom: 4rem;
 
   @include tabletAndDesktop() {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
     gap: 2rem;
-    flex-direction: row;
     align-items: flex-start;
     max-width: 1280px;
   }

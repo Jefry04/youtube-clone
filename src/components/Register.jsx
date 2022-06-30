@@ -32,7 +32,7 @@ function Register() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     dispatch(register(formData));
-    navigate('/user');
+    navigate('/');
   };
 
   return (
@@ -50,7 +50,7 @@ function Register() {
           value={formData.name}
           type="text"
           classname="input__Login"
-          placeholder="First name"
+          placeholder="Nombres"
           onChange={onChange}
           errorMessage="Nombre no debe estar vacio"
           required
@@ -60,7 +60,7 @@ function Register() {
           value={formData.name}
           type="text"
           classname="input__Login"
-          placeholder="Last name"
+          placeholder="Apellidos"
           onChange={onChange}
           errorMessage="Apellido no debe estar vacio"
           required
@@ -81,7 +81,7 @@ function Register() {
           value={formData.name}
           type="password"
           classname="input__Login"
-          placeholder="password"
+          placeholder="Contraseña"
           onChange={onChange}
           errorMessage="Minimo 8 caracteres e incluir 1 numero y 1 caracter especial"
           pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
@@ -92,7 +92,7 @@ function Register() {
           value={formData.name}
           type="password"
           classname="input__Login"
-          placeholder="Confirm pasword"
+          placeholder="Confirmar contraseña"
           onChange={onChange}
           errorMessage="NO coinciden las claves"
           pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
@@ -109,7 +109,7 @@ function Register() {
         </button>
         <ButtonAction
           className="btn-action--form"
-          content="Next"
+          content="Registrarse"
           type="submit"
           handleClick={handleSubmit}
         />

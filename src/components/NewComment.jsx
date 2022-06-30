@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { postComment } from '../store/reducers/Video.actionCreators';
+import Avatar from './Avatar';
 import '../styles/components/NewComment.scss';
 
 export default function NewComment() {
@@ -27,13 +28,7 @@ export default function NewComment() {
   return (
     isAuth && (
       <form action="" className="new-comment">
-        <figure className="new-comment__avatar">
-          <img
-            src={user.avatar}
-            alt={user.fullName}
-            className="new-comment__avatar__img"
-          />
-        </figure>
+        <Avatar src={user.avatar} alt={user.fullName} width="30" />
         <div className="new-comment__body">
           <textarea
             name="newcomment"
