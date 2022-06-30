@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Loader } from '@mantine/core';
 
 import Buttonaction from './ButtonAction';
 import InputValidator from './InputValidator';
@@ -10,6 +11,7 @@ import { putNewPasswordData } from '../store/reducers/Auth.actionCreator';
 import { hiddeChangePasswordForm } from '../store/reducers/ChangePassword.actionCreator';
 
 function ChangePassword() {
+  const [loading, setloading] = useState(false);
   const [formData, setFormData] = useState({
     password: '',
     newpassword: '',
@@ -26,6 +28,7 @@ function ChangePassword() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setloading(true);
     dispatch(
       putNewPasswordData({
         password: formData.password,
@@ -35,6 +38,15 @@ function ChangePassword() {
     );
     dispatch(hiddeChangePasswordForm());
   };
+
+  if (loading) {
+    return (
+      <div className="loading">
+        <Loader color="red" size={100} />
+        <h2>Sending request...</h2>
+      </div>
+    );
+  }
 
   return (
     <form>
