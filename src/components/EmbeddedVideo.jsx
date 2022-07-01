@@ -101,7 +101,7 @@ const EmbeddedVideo = () => {
             );
             if (equal?.length !== 0 || equal !== undefined) {
               setStateLike({ like: true, numerLike: videoDetail.likes });
-              if (videoDetail.likes === 0 || equal.length === 0) {
+              if (videoDetail.likes === 0 || equal?.length === 0) {
                 setStateLike({ numerLike: videoDetail.likes, like: false });
               }
             } else if (videoDetail) {
@@ -115,12 +115,14 @@ const EmbeddedVideo = () => {
         }
       };
       sendData();
-      dispatch(postView({ videoId, user }));
+      if (videoDetail?.videoUrl) {
+        dispatch(postView({ videoId, user }));
+      }
       initialLoading.current = true;
     }
   }, [user, videoDetail, initialLoading]);
 
-  const views = Math.round(videoDetail.visits?.length / 2);
+  const views = videoDetail.visits;
   const onclickShare = () => {
     dispatch(showFormAction());
   };

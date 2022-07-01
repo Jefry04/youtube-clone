@@ -8,6 +8,7 @@ import App from './App';
 
 const token = localStorage.getItem('token');
 axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = `*`;
 axios.defaults.baseURL = process.env.REACT_APP_BACKEND_URI;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
