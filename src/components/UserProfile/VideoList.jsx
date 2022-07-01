@@ -24,7 +24,7 @@ export default function VideoList({ videos, loading }) {
                 <div className="user-profile__video__content">
                   <h3 className="user-profile__video__title">{item.title}</h3>
                   <p className="user-profile__video__info">
-                    Visitas: <span className="bold">{item.visits?.length}</span>
+                    Visitas: <span className="bold">{item.visits}</span>
                   </p>
                   <p className="user-profile__video__info">
                     Comentarios:{' '}
