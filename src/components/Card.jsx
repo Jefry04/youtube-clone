@@ -6,7 +6,7 @@ import ReactPlayer from 'react-player';
 import Avatar from './Avatar';
 
 const Card = ({ video, showAvatar = true }) => {
-  const views = video.visits ? video.visits?.length : 0;
+  const views = video.visits;
   return (
     <Link to={`/videoview/${video._id}`} className="card">
       <header className="card__header">
