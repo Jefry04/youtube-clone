@@ -1,7 +1,20 @@
 @import '../abstract/mixins';
 
 .search__form {
+  position: relative;
   width: 80%;
+}
+.search__append {
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  bottom: 3px;
+  border: 0;
+  color: black;
+  outline: none;
+  margin: 0;
+  padding: 0 10px;
+  border-radius: 100px;
 }
 .search__input {
   display: none;

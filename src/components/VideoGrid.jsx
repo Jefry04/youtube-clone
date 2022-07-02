@@ -25,6 +25,7 @@ function VideoGrid({ page, setPage }) {
     dispatch(actionHasFilterVideo(false));
   };
   const randomVideos = shuffle(videos);
+  const randomLabels = shuffle(labels);
   return (
     <>
       <div className="filter">
@@ -34,7 +35,7 @@ function VideoGrid({ page, setPage }) {
             className="btn-action--filter"
             handleClick={handleAllVideos}
           />
-          {labels?.map((label) => (
+          {randomLabels?.map((label) => (
             <ButtonAction
               key={label._id}
               content={label.name}
@@ -47,7 +48,7 @@ function VideoGrid({ page, setPage }) {
       {hasFilterVideos ? (
         <div className="card__container">
           {filtersVideo &&
-            filtersVideo.map((video) => <Card video={video} key={video.id} />)}
+            filtersVideo.map((video) => <Card video={video} key={video._id} />)}
         </div>
       ) : (
         <>

@@ -1,8 +1,12 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import Card from '../components/Card';
-import { fetchFilterVideos } from '../store/reducers/Video.actionCreators';
+import {
+  fetchFilterVideos,
+  resetState,
+} from '../store/reducers/Video.actionCreators';
 
 const VideoResults = () => {
   const location = useLocation();
@@ -13,6 +17,10 @@ const VideoResults = () => {
 
   useEffect(() => {
     dispatch(fetchFilterVideos(searchInput));
+
+    return () => {
+      dispatch(resetState());
+    };
   }, [searchInput, dispatch]);
 
   return (
@@ -20,7 +28,7 @@ const VideoResults = () => {
       <div className="card__container">
         {filtersVideo.map((filtervideo) => (
           <Card
-            key={filtervideo.id}
+            key={filtervideo._id}
             video={filtervideo}
             className="videofilter__container"
             isSearch

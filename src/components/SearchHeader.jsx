@@ -7,6 +7,8 @@ import '../styles/components/SearchHeader.scss';
 
 function SearchHeader() {
   const [searchInput, setSearchInput] = useState('');
+  const [showResetinputIcon, setShowResetinputIcon] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -21,9 +23,12 @@ function SearchHeader() {
         state: searchInput,
       });
     }
-    setSearchInput('');
+    setShowResetinputIcon(true);
   };
-
+  const handleClick = () => {
+    setSearchInput('');
+    setShowResetinputIcon(false);
+  };
   return (
     <form onSubmit={handleSearch} className="search__form">
       <input
@@ -34,6 +39,11 @@ function SearchHeader() {
         value={searchInput}
         title="search video"
       />
+      {showResetinputIcon && (
+        <button type="button" className="search__append" onClick={handleClick}>
+          X
+        </button>
+      )}
     </form>
   );
 }
