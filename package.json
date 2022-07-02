@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "-": "0.0.1",
     "@mantine/core": "^4.2.5",
     "@mantine/dropzone": "^4.2.8",
     "@mantine/hooks": "^4.2.5",
@@ -12,7 +11,6 @@
     "@testing-library/user-event": "^13.5.0",
     "alertifyjs": "^1.13.1",
     "axios": "^0.27.2",
-    "D": "^1.0.0",
     "dayjs": "^1.11.3",
     "lodash": "^4.17.21",
     "react": "^18.1.0",
