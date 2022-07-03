@@ -1,0 +1,15 @@
+.response__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 30px;
+  padding: 15px;
+  width: 500px;
+  p {
+    margin: 3px;
+  }
+}
+
+.response__title {
+  margin: 5px;
+}
