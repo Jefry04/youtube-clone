@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import shuffle from 'lodash/shuffle';
 import Card from './Card';
 import ButtonAction from './ButtonAction';
 import {
@@ -23,7 +24,8 @@ function VideoGrid({ page, setPage }) {
     setPage(1);
     dispatch(actionHasFilterVideo(false));
   };
-
+  const randomVideos = shuffle(videos);
+  const randomLabels = shuffle(labels);
   return (
     <>
       <div className="filter">
@@ -33,7 +35,7 @@ function VideoGrid({ page, setPage }) {
             className="btn-action--filter"
             handleClick={handleAllVideos}
           />
-          {labels?.map((label) => (
+          {randomLabels?.map((label) => (
             <ButtonAction
               key={label._id}
               content={label.name}
@@ -46,13 +48,15 @@ function VideoGrid({ page, setPage }) {
       {hasFilterVideos ? (
         <div className="card__container">
           {filtersVideo &&
-            filtersVideo.map((video) => <Card video={video} key={video.id} />)}
+            filtersVideo.map((video) => <Card video={video} key={video._id} />)}
         </div>
       ) : (
         <>
           <div className="card__container">
-            {videos &&
-              videos.map((video) => <Card key={video.id} video={video} />)}
+            {randomVideos &&
+              randomVideos.map((video) => (
+                <Card key={video.id} video={video} />
+              ))}
           </div>
           <div className="button__pagination">
             <button
