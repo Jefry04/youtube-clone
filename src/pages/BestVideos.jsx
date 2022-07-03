@@ -1,27 +1,26 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import Card from '../components/Card';
 import {
   fetchFilterVideos,
   resetState,
 } from '../store/reducers/Video.actionCreators';
 
-const VideoResults = () => {
-  const location = useLocation();
-  const searchInput = location.state;
+const BestVideos = () => {
+  const { labelName } = useParams();
 
   const { filtersVideo } = useSelector((state) => state.VideoReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchFilterVideos(searchInput));
+    dispatch(fetchFilterVideos(labelName));
 
     return () => {
       dispatch(resetState());
     };
-  }, [searchInput, dispatch]);
+  }, [labelName, dispatch]);
 
   return filtersVideo.length > 0 ? (
     <div className="card__container">
@@ -36,9 +35,9 @@ const VideoResults = () => {
     </div>
   ) : (
     <div className="card__container">
-      No se encontraron videos con ete criterio de: {searchInput}
+      No se encontraron videos con ete criterio de: {labelName}
     </div>
   );
 };
 
-export default VideoResults;
+export default BestVideos;
