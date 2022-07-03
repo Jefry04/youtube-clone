@@ -11,6 +11,7 @@ import NotFound from './pages/NotFound';
 import VideoView from './pages/VideoView';
 import VideoResults from './pages/VideoResults';
 import ProtectedRoute from './components/ProtectedRoute';
+import Response from './pages/Response';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,9 @@ function App() {
             <Route path="/profile" element={<UserProfile />} />
           </Route>
           <Route path="/videos/results" element={<VideoResults />} />
+          <Route path="/response" element={<Response />}>
+            <Route path=":redirect" component={<Response />} />
+          </Route>
           <Route
             path="/recover-password/:token"
             element={<RecoverPassword />}
