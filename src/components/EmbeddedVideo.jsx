@@ -76,13 +76,13 @@ const EmbeddedVideo = () => {
       country: 'co',
       lang: 'es',
 
-      response: `${process.env.REACT_APP_BASE_URL}/videoview/${videoDetail._id}`,
+      response: 'https://youtubetopv22.netlify.app/response',
 
       name_billing: user.name,
       address_billing: 'Calle false #1-2-3',
       type_doc_billing: 'cc',
-      mobilephone_billing: '3050000000',
-      number_doc_billing: '123456',
+      mobilephone_billing: 'telefono',
+      number_doc_billing: 'Completar',
 
       methodsDisable: ['PSE', 'SP', 'CASH', 'DP'],
     });
