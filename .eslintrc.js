@@ -26,6 +26,7 @@ module.exports = {
   },
   plugins: ['react', 'jsx-a11y', 'react-hooks', 'prettier'],
   rules: {
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'prettier/prettier': RULES.ERROR,
     'arrow-body-style': RULES.OFF,
     'react/prop-types': RULES.OFF,

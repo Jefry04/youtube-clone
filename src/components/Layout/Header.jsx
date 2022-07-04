@@ -78,7 +78,7 @@ function Header() {
           prependIcon={<VoiceIcon />}
         />
       </div>
-      <div className="header__user">
+      <div className="header__user" data-cy="profile-icon">
         <Menu control={avatar}>
           <Menu.Label>App</Menu.Label>
           <Link to="/" className="header__link">
@@ -94,6 +94,7 @@ function Header() {
           {!isAuth && (
             <>
               <Menu.Item
+                data-cy="iniciar-sesion"
                 icon={<Login size={14} />}
                 onClick={() => dispatch(showLoginForm())}
               >

@@ -32,6 +32,7 @@ function SearchHeader() {
   return (
     <form onSubmit={handleSearch} className="search__form">
       <input
+        data-cy="search-video"
         className="search__input"
         type="text"
         placeholder="Buscar video"
