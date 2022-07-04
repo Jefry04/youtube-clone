@@ -22,8 +22,8 @@ import {
 const initialState = {
   videos: [],
   loading: false,
-  uploading: true,
-  uploadingPercentage: 50,
+  uploading: false,
+  uploadingPercentage: 0,
   uploadedVideo: {},
   error: null,
   hasFilterVideos: false,

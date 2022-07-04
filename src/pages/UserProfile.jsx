@@ -58,7 +58,11 @@ function UserView() {
             <ProfileForm user={user} />
           </Tabs.Tab>
           <Tabs.Tab label="Videos" tabKey="videos">
-            <VideoList videos={videos} loading={loadingVideos} />
+            <VideoList
+              videos={videos}
+              loading={loadingVideos}
+              getVideos={getVideos}
+            />
           </Tabs.Tab>
           {/* <Tabs.Tab label="Comentarios" tabKey="comments">
             Comentarios del usuario
