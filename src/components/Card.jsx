@@ -8,7 +8,7 @@ import Avatar from './Avatar';
 const Card = ({ video, showAvatar = true }) => {
   const views = video.visits;
   return (
-    <Link to={`/videoview/${video._id}`} className="card">
+    <Link to={`/watchvideo/${video._id}`} className="card">
       <header className="card__header">
         <div className="card__video">
           <ReactPlayer

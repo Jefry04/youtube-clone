@@ -51,6 +51,23 @@ const VideoResults = () => {
       )}
     </div>
   );
+
+  // filtersVideo.length > 0 ? (
+  //   <div className="card__container">
+  //     {filtersVideo.map((filtervideo) => (
+  //       <Card
+  //         key={filtervideo._id}
+  //         video={filtervideo}
+  //         className="videofilter__container"
+  //         isSearch
+  //       />
+  //     ))}
+  //   </div>
+  // ) : (
+  //   <div className="card__container">
+  //     No se encontraron videos con ete criterio de: {searchInput}
+  //   </div>
+  // );
 };
 
 export default VideoResults;

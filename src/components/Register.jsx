@@ -7,7 +7,7 @@ import InputValidator from './InputValidator';
 
 import Icon from '../assets/images/brand/icon.png';
 import Letter from '../assets/images/brand/letter.png';
-import '../styles/components/Login.scss';
+import '../styles/components/Register.scss';
 import { register } from '../store/reducers/Auth.actionCreator';
 
 function Register() {
@@ -36,20 +36,24 @@ function Register() {
   };
 
   return (
-    <form>
-      <header>
-        <div className="form__header">
-          <img src={Icon} alt="logoYoutube" className="brand__icon" />
-          <img src={Letter} alt="letterYoutube" className="brand__letter" />
+    <form className="register">
+      <header className="register__header">
+        <div className="register__brand">
+          <img src={Icon} alt="logoYoutube" className="register__brand__icon" />
+          <img
+            src={Letter}
+            alt="letterYoutube"
+            className="register__brand__letter"
+          />
         </div>
-        <p className="form__subtitle"> Crea tu cuenta </p>
+        <p className="register__title"> Crea tu cuenta </p>
       </header>
-      <div className="form__content">
+      <div className="register__content">
         <InputValidator
           name="firstName"
           value={formData.name}
           type="text"
-          classname="input__Login"
+          classname="register__input"
           placeholder="Nombres"
           onChange={onChange}
           errorMessage="Nombre no debe estar vacio"
@@ -59,28 +63,29 @@ function Register() {
           name="lastName"
           value={formData.name}
           type="text"
-          classname="input__Login"
+          classname="register__input"
           placeholder="Apellidos"
           onChange={onChange}
           errorMessage="Apellido no debe estar vacio"
           required
         />
-        <InputValidator
-          name="email"
-          classSpan="col-span-2"
-          value={formData.name}
-          type="email"
-          classname="input__Login"
-          placeholder="Email"
-          onChange={onChange}
-          errorMessage="Debe ser email valido"
-          required
-        />
+        <div className="register__input--span">
+          <InputValidator
+            name="email"
+            value={formData.name}
+            type="email"
+            classname="register__input"
+            placeholder="Email"
+            onChange={onChange}
+            errorMessage="Debe ser email valido"
+            required
+          />
+        </div>
         <InputValidator
           name="password"
           value={formData.name}
           type="password"
-          classname="input__Login"
+          classname="register__input"
           placeholder="Contraseña"
           onChange={onChange}
           errorMessage="Minimo 8 caracteres e incluir 1 numero y 1 caracter especial"
@@ -91,7 +96,7 @@ function Register() {
           name="confirmPassword"
           value={formData.name}
           type="password"
-          classname="input__Login"
+          classname="register__input"
           placeholder="Confirmar contraseña"
           onChange={onChange}
           errorMessage="NO coinciden las claves"
@@ -99,13 +104,13 @@ function Register() {
           required
         />
       </div>
-      <div className="form__footer">
+      <div className="register__footer">
         <button
           type="button"
-          className="form__link"
+          className="register__link"
           onClick={() => dispatch(showLoginForm())}
         >
-          Login si tienes cuenta
+          ¿Ya estas registrado?
         </button>
         <ButtonAction
           className="btn-action--form"

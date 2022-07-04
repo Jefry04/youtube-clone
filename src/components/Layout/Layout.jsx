@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMediaQuery } from '@mantine/hooks';
+import { ToastContainer } from 'react-toastify';
 
 import {
   hiddeRegisterForm,
@@ -42,16 +43,30 @@ function Layout(props) {
           <PublicModal
             opened={showingLoginForm}
             onClose={() => dispatch(hiddeLoginForm())}
-            size={largeScreen ? '50%' : '90%'}
+            size={largeScreen ? '30%' : '90%'}
           >
             <Login />
           </PublicModal>
+
           <PublicModal
             opened={showRecoverPassword}
             onClose={() => dispatch(hiddeRecoverPassword())}
           >
             <GetEmail />
           </PublicModal>
+
+          <ToastContainer
+            position="bottom-right"
+            theme="dark"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </main>
       </div>
       <MobileFooter />

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import alertify from 'alertifyjs';
+import { toast } from 'react-toastify';
 import { Loader } from '@mantine/core';
 
 import Buttonaction from './ButtonAction';
@@ -41,17 +41,17 @@ function RecoverPassword() {
         },
         {
           headers: {
-            Authorization: `bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
       if (response.status === 201) {
-        alertify.notify('Cambio de contraseña exitoso', 'success', 5);
+        toast.success('Cambio de contraseña exitoso');
         navigate('/');
       }
     } catch (error) {
       setLoading(false);
-      alertify.notify('Credenciales vencidas', 'error', 5);
+      toast.error('Credenciales vencidas.');
     }
   };
 
@@ -72,7 +72,7 @@ function RecoverPassword() {
             <img src={Icon} alt="logoYoutube" className="brand__icon" />
             <img src={Letter} alt="letterYoutube" className="brand__letter" />
           </div>
-          <p className="form__subtitle"> Change Password </p>
+          <p className="form__subtitle"> Cambiar Contraseña </p>
         </header>
         <div className="form__content_change">
           <InputValidator
@@ -104,7 +104,7 @@ function RecoverPassword() {
             classname="input__Login --span"
             placeholder="Confirm pasword"
             onChange={onChange}
-            errorMessage="NO coinciden las claves"
+            errorMessage="NO coinciden las contraseñas"
             pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
             required
           />
@@ -112,7 +112,7 @@ function RecoverPassword() {
         <div className="form__footer">
           <Buttonaction
             className="btn-action--form"
-            content="Next"
+            content="Cambiar Contraseña"
             type="submit"
             handleClick={handleSubmit}
           />

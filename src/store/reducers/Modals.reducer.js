@@ -21,7 +21,7 @@ function ModalsReducer(state = initialState, action = null) {
       return {
         ...state,
         showingRegisterForm: true,
-        showLoginForm: false,
+        showingLoginForm: false,
         showRecoverPassword: false,
       };
     case HIDDE_REGISTER_FORM:

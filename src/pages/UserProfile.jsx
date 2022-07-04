@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Tabs } from '@mantine/core';
-import alertify from 'alertifyjs';
+import { toast } from 'react-toastify';
 import { useMediaQuery } from '@mantine/hooks';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -37,7 +37,7 @@ function UserView() {
       const res = await axios.get(url);
       setVideos(res.data.videos);
     } catch (error) {
-      alertify.notify('No se pudo recuperar el listado de videos.', 'error', 5);
+      toast.error('No se pudo recuperar el listado de videos.');
     } finally {
       setLoadingVideos(false);
     }
@@ -58,7 +58,11 @@ function UserView() {
             <ProfileForm user={user} />
           </Tabs.Tab>
           <Tabs.Tab label="Videos" tabKey="videos">
-            <VideoList videos={videos} loading={loadingVideos} />
+            <VideoList
+              videos={videos}
+              loading={loadingVideos}
+              getVideos={getVideos}
+            />
           </Tabs.Tab>
           {/* <Tabs.Tab label="Comentarios" tabKey="comments">
             Comentarios del usuario
@@ -72,6 +76,7 @@ function UserView() {
         >
           <VideoUploadForm />
         </PublicModal>
+
         <PublicModal
           opened={showingChangePasswordForm}
           onClose={() => dispatch(hiddeChangePasswordForm())}

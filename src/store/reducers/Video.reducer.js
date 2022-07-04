@@ -13,11 +13,17 @@ import {
   POST_NEW_COMMENT_LOADING,
   ADD_NEW_COMMENT,
   RESET_INITIAL_STATE,
+  IS_UPLOADING_VIDEO,
+  SET_UPLOADING_PERCENTAGE,
+  SET_DELETE_COMMENT_LOADING,
+  REMOVE_COMMENT,
 } from './Video.actions';
 
 const initialState = {
   videos: [],
   loading: false,
+  uploading: false,
+  uploadingPercentage: 0,
   uploadedVideo: {},
   error: null,
   hasFilterVideos: false,
@@ -27,6 +33,7 @@ const initialState = {
   loadingVideoComments: false,
   comments: [],
   postingNewComment: false,
+  deleteCommentLoading: null,
   hasMore: false,
   hasPrevious: false,
 };
@@ -119,6 +126,34 @@ function VideoReducer(state = initialState, action = null) {
     return {
       ...state,
       comments: [newComment, ...state.comments],
+    };
+  }
+  if (action.type === REMOVE_COMMENT) {
+    const newComments = state.comments.filter(
+      (item) => item.id !== action.payload
+    );
+
+    return {
+      ...state,
+      comments: newComments,
+    };
+  }
+  if (action.type === IS_UPLOADING_VIDEO) {
+    return {
+      ...state,
+      uploading: action.payload,
+    };
+  }
+  if (action.type === SET_UPLOADING_PERCENTAGE) {
+    return {
+      ...state,
+      uploadingPercentage: action.payload,
+    };
+  }
+  if (action.type === SET_DELETE_COMMENT_LOADING) {
+    return {
+      ...state,
+      deleteCommentLoading: action.payload,
     };
   }
 

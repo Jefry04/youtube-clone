@@ -1,10 +1,10 @@
 @import '../abstract/mixins';
 
-.login__header {
+.register__header {
   padding: 1rem 0;
 }
 
-.login__brand {
+.register__brand {
   position: absolute;
   top: 25px;
   left: 24px;
@@ -14,32 +14,36 @@
   height: 20px;
 }
 
-.login__brand__icon {
+.register__brand__icon {
   display: block;
   height: 100%;
   transform: scale(1.5, 1.5);
 }
 
-.login__brand__letter {
+.register__brand__letter {
   display: block;
   height: 100%;
 }
 
-.login__title {
+.register__title {
   margin: 0;
   color: var(--gray-dark);
   font-weight: 700;
   font-size: 1rem;
 }
 
-.login__content {
-  display: flex;
-  flex-direction: column;
-  row-gap: 0.8rem;
+.register__content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
   margin-bottom: 2rem;
+
+  @include tabletAndDesktop() {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
-.login__input {
+.register__input {
   display: block;
   width: 100%;
   padding: 6px 8px;
@@ -47,11 +51,17 @@
   border-radius: 0.25rem;
 }
 
-.login__input:focus {
+.register__input:focus {
   outline-color: var(--blue);
 }
 
-.login__link {
+.register__input--span {
+  @include tabletAndDesktop() {
+    grid-column: span 2;
+  }
+}
+
+.register__link {
   border: none;
   color: var(--text-link);
   background-color: white;
@@ -62,13 +72,8 @@
   }
 }
 
-.login__footer {
+.register__footer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
-}
-
-.login__footer--span {
-  grid-column: span 2;
-  margin: 0;
 }

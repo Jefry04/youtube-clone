@@ -63,17 +63,20 @@
 
 .user-comment__action > .btn-action {
   width: auto;
-  padding: 4px;
+  padding: 0.25rem 0.5rem;
+  border-color: var(--red);
+  border-radius: 0.25rem;
+  color: var(--red);
+  font-size: 0.85rem;
+  transform: scale(0.8);
+}
+
+.user-comment__action > .btn-action:disabled {
+  opacity: 0.6;
 }
 
 .user-comment__action > .btn-action > .btn-action__prepend {
-  width: 32px;
-  height: 32px;
-  padding: 8px;
-}
-
-.user-comment__action > .btn-action > .btn-action__content {
-  display: none;
+  margin: 0;
 }
 
 .user-comment__likes {

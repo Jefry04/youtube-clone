@@ -5,7 +5,7 @@
 /* base */
 @import './styles/base/reset';
 @import './styles/base/base';
-@import '../node_modules/alertifyjs/build/css/alertify.css';
+@import '../node_modules/react-toastify/dist/ReactToastify.css';
 
 /* components */
 @import './styles/components/VideoList.scss';

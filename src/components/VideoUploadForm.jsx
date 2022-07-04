@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dropzone, MIME_TYPES, IMAGE_MIME_TYPE } from '@mantine/dropzone';
-import { Loader } from '@mantine/core';
+import { Loader, Progress } from '@mantine/core';
 
 import ButtonAction from './ButtonAction';
 import InputValidator from './InputValidator';
@@ -17,7 +17,9 @@ export const dropzoneChildren = (uploadVideoState, mediaUrl, isImage) => (
 );
 
 const VideoUploadForm = () => {
-  const { loading } = useSelector((state) => state.VideoReducer);
+  const { loading, uploading, uploadingPercentage } = useSelector(
+    (state) => state.VideoReducer
+  );
   const [videoData, setVideoData] = useState(null);
   const [imageData, setImageData] = useState(null);
   const [videoPreview, setVideoPreview] = useState(null);
@@ -82,11 +84,11 @@ const VideoUploadForm = () => {
     setUploadImageState({ ...uploadImageState, accepted: true });
   };
 
-  if (loading) {
+  if (!uploading && loading) {
     return (
       <div className="loading">
         <Loader color="red" size={100} />
-        <h2>Uploading...</h2>
+        <h2>Procesando video...</h2>
       </div>
     );
   }
@@ -136,6 +138,12 @@ const VideoUploadForm = () => {
             </button>
           )}
         </div>
+        {uploading && (
+          <div className="video-upload-fom__uploading">
+            <Progress size="sm" value={uploadingPercentage} />
+            <span>Cargando archivos...</span>
+          </div>
+        )}
       </header>
       <div className="videoform__content">
         <InputValidator
