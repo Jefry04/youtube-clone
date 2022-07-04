@@ -16,6 +16,8 @@ import {
   POST_NEW_COMMENT_LOADING,
   ADD_NEW_COMMENT,
   RESET_INITIAL_STATE,
+  IS_UPLOADING_VIDEO,
+  SET_UPLOADING_PERCENTAGE,
 } from './Video.actions';
 
 const url = process.env.REACT_APP_BACKEND_URI;
@@ -32,21 +34,29 @@ export const postView = ({ viwer, videoId }) => {
 };
 
 export const postVideo = (uploadData) => {
-  const token = localStorage.getItem('token');
   return async (dispatch) => {
     try {
-      dispatch({ type: GET_VIDEO_LOADING, payload: true });
+      dispatch(actionBody(GET_VIDEO_LOADING, true));
+      dispatch(actionBody(IS_UPLOADING_VIDEO, true));
       const response = await axios.post(`${url}/videos`, uploadData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `bearer ${token}`,
+        headers: { 'Content-Type': 'multipart/form-data' },
+        onUploadProgress: (progressEvent) => {
+          const completed = Math.round(
+            (progressEvent.loaded * 100) / progressEvent.total
+          );
+          dispatch(actionBody(SET_UPLOADING_PERCENTAGE, completed));
+          // console.log(completed);
+          if (completed === 100) {
+            dispatch(actionBody(IS_UPLOADING_VIDEO, false));
+            dispatch(actionBody(SET_UPLOADING_PERCENTAGE, 0));
+          }
         },
       });
       if (response.status === 201) dispatch(showFormAction());
-      dispatch({ type: UPLOAD_VIDEO_SUCCESS, payload: response.data.video });
+      dispatch(actionBody(UPLOAD_VIDEO_SUCCESS, response.data.video));
       alertify.notify('Video subido con exito', 'success', 5);
     } catch (error) {
-      dispatch({ type: GET_VIDEO_ERROR, payload: error });
+      dispatch(actionBody(UPLOAD_VIDEO_SUCCESS, error));
       alertify.notify(error.message, 'error', 5);
     }
   };
