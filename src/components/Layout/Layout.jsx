@@ -42,10 +42,11 @@ function Layout(props) {
           <PublicModal
             opened={showingLoginForm}
             onClose={() => dispatch(hiddeLoginForm())}
-            size={largeScreen ? '50%' : '90%'}
+            size={largeScreen ? '30%' : '90%'}
           >
             <Login />
           </PublicModal>
+
           <PublicModal
             opened={showRecoverPassword}
             onClose={() => dispatch(hiddeRecoverPassword())}

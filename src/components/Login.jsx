@@ -8,7 +8,10 @@ import Icon from '../assets/images/brand/icon.png';
 import Letter from '../assets/images/brand/letter.png';
 import '../styles/components/Login.scss';
 import { authUser } from '../store/reducers/Auth.actionCreator';
-import { showRecoverPassword } from '../store/reducers/Modals.actionCreator';
+import {
+  showRecoverPassword,
+  showRegisterForm,
+} from '../store/reducers/Modals.actionCreator';
 
 function Login() {
   const [loginData, setLoginData] = useState({
@@ -37,44 +40,61 @@ function Login() {
   };
 
   return (
-    <form>
-      <header>
-        <div className="form__header">
-          <img src={Icon} alt="logoYoutube" className="brand__icon" />
-          <img src={Letter} alt="letterYoutube" className="brand__letter" />
+    <form className="login">
+      <header className="login__header">
+        <div className="login__brand">
+          <img src={Icon} alt="logoYoutube" className="login__brand__icon" />
+          <img
+            src={Letter}
+            alt="letterYoutube"
+            className="login__brand__letter"
+          />
         </div>
-        <p className="form__subtitle"> Login </p>
+
+        <h3 className="login__title"> Iniciar Sesión </h3>
       </header>
-      <div className="form__content">
+      <div className="login__content">
+        {/* Email */}
         <InputValidator
           name="email"
           type="email"
           value={loginData.name}
           onChange={onChange}
-          classname="input__Login --span"
+          classname="login__input "
           placeholder="email"
-          errorMessage="Mensaje de email"
+          errorMessage="EL correo es requerido."
           required
         />
+
+        {/* Password */}
         <InputValidator
           name="password"
           type="password"
           value={loginData.name}
           onChange={onChange}
-          classname="input__Login --span"
+          classname="login__input"
           placeholder="Contraseña"
           errorMessage="Minimo 8 caracteres e incluir 1 numero y 1 caracter especial"
           pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
           required
         />
-      </div>
-      <div className="form__footer">
+
+        {/* Recover */}
         <button
           type="button"
-          className="form__link"
+          className="login__link"
           onClick={() => dispatch(showRecoverPassword())}
         >
-          Olvidaste la contraseña
+          ¿Olvidaste la contraseña?
+        </button>
+      </div>
+      <div className="login__footer">
+        <button
+          type="button"
+          className="login__link"
+          onClick={() => dispatch(showRegisterForm())}
+        >
+          Registrarse
         </button>
         <Buttonaction
           className="btn-action--form"

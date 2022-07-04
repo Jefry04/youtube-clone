@@ -51,30 +51,36 @@ function GetEmail() {
 
   return (
     <form>
-      <header>
-        <div className="form__header">
-          <img src={Icon} alt="logoYoutube" className="brand__icon" />
-          <img src={Letter} alt="letterYoutube" className="brand__letter" />
+      <header className="login__header">
+        <div className="login__brand">
+          <img src={Icon} alt="logoYoutube" className="login__brand__icon" />
+          <img
+            src={Letter}
+            alt="letterYoutube"
+            className="login__brand__letter"
+          />
         </div>
-        <p className="form__subtitle"> Recover Password </p>
+
+        <h3 className="login__title"> Recuperar Contraseña </h3>
       </header>
-      <div className="form__content_change">
-        <InputValidator
-          name="email"
-          classSpan="col-span-2"
-          value={formData.name}
-          type="email"
-          classname="input__Login"
-          placeholder="Email"
-          onChange={onChange}
-          errorMessage="Debe ser email valido"
-          required
-        />
+      <div className="register__content">
+        <div className="register__input--span">
+          <InputValidator
+            name="email"
+            value={formData.name}
+            type="email"
+            classname="register__input"
+            placeholder="Email"
+            onChange={onChange}
+            errorMessage="Debe ser email valido"
+            required
+          />
+        </div>
       </div>
-      <div className="form__footer">
+      <div className="login__footer">
         <Buttonaction
-          className="btn-action--form"
-          content="Next"
+          className="btn-action--form login__footer--span"
+          content="Enviar Correo"
           type="submit"
           handleClick={handleSubmit}
         />
