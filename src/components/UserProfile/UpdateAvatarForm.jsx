@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import alertify from 'alertifyjs';
+import { Progress } from '@mantine/core';
 import '../../styles/components/UserProfile/UpdateAvatarForm.scss';
 import { Trash } from 'tabler-icons-react';
 import { updateUser } from '../../store/reducers/Auth.actionCreator';
@@ -12,6 +13,8 @@ export default function UpdateAvatarForm({ user }) {
   const [avatarPreview, setAvatarPreview] = useState(null);
   const [avatarData, setAvatarData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [percentCompleted, setPercentCompleted] = useState(0);
 
   const avatarInput = useRef(null);
   const dispatch = useDispatch();
@@ -56,8 +59,18 @@ export default function UpdateAvatarForm({ user }) {
     data.append('image', avatarData);
 
     try {
+      setUploading(true);
       const res = await axios.put(url, data, {
         headers: { 'Content-Type': 'multipart/form-data' },
+        onUploadProgress: (progressEvent) => {
+          const completed = Math.round(
+            (progressEvent.loaded * 100) / progressEvent.total
+          );
+          setPercentCompleted(completed);
+          if (completed === 100) {
+            setUploading(false);
+          }
+        },
       });
       const { user: userUpdated } = res.data;
 
@@ -122,6 +135,18 @@ export default function UpdateAvatarForm({ user }) {
         </button>
       )}
 
+      {uploading && (
+        <div className="user-profile__loading">
+          <Progress size="sm" value={percentCompleted} />
+          <span>Cargando imagen...</span>
+        </div>
+      )}
+
+      {loading && !uploading && (
+        <div className="user-profile__loading">
+          <span>Procesando solicitud...</span>
+        </div>
+      )}
       <div className="user-profile__avatar-form__actions">
         {user.hasAvatar && (
           <ButtonAction
