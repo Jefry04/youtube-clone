@@ -1,5 +1,5 @@
 import axios from 'axios';
-import alertify from 'alertifyjs';
+import { toast } from 'react-toastify';
 import { showFormAction } from './Modals.actionCreator';
 
 import {
@@ -15,7 +15,11 @@ import {
   VIDEO_COMMENTS_SUCCESS,
   POST_NEW_COMMENT_LOADING,
   ADD_NEW_COMMENT,
+  REMOVE_COMMENT,
+  SET_DELETE_COMMENT_LOADING,
   RESET_INITIAL_STATE,
+  IS_UPLOADING_VIDEO,
+  SET_UPLOADING_PERCENTAGE,
 } from './Video.actions';
 
 const url = process.env.REACT_APP_BACKEND_URI;
@@ -26,34 +30,41 @@ export const postView = ({ viwer, videoId }) => {
     try {
       await axios.post(`${url}/videos/${videoId}/view`, viwer);
     } catch (error) {
-      alertify.notify(error.message, 'error', 5);
+      toast.error(error.message);
     }
   };
 };
 
 export const postVideo = (uploadData) => {
-  const token = localStorage.getItem('token');
   return async (dispatch) => {
     try {
-      dispatch({ type: GET_VIDEO_LOADING, payload: true });
+      dispatch(actionBody(GET_VIDEO_LOADING, true));
+      dispatch(actionBody(IS_UPLOADING_VIDEO, true));
       const response = await axios.post(`${url}/videos`, uploadData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `bearer ${token}`,
+        headers: { 'Content-Type': 'multipart/form-data' },
+        onUploadProgress: (progressEvent) => {
+          const completed = Math.round(
+            (progressEvent.loaded * 100) / progressEvent.total
+          );
+          dispatch(actionBody(SET_UPLOADING_PERCENTAGE, completed));
+          // console.log(completed);
+          if (completed === 100) {
+            dispatch(actionBody(IS_UPLOADING_VIDEO, false));
+            dispatch(actionBody(SET_UPLOADING_PERCENTAGE, 0));
+          }
         },
       });
       if (response.status === 201) dispatch(showFormAction());
-      dispatch({ type: UPLOAD_VIDEO_SUCCESS, payload: response.data.video });
-      alertify.notify('Video subido con exito', 'success', 5);
+      dispatch(actionBody(UPLOAD_VIDEO_SUCCESS, response.data.video));
+      toast.success('Video subido con exito');
     } catch (error) {
-      dispatch({ type: GET_VIDEO_ERROR, payload: error });
-      alertify.notify(error.message, 'error', 5);
+      dispatch(actionBody(UPLOAD_VIDEO_SUCCESS, error));
+      toast.error(error.message);
     }
   };
 };
 
 export const postComment = (videoId, comment) => {
-  const token = localStorage.getItem('token');
   const commentUrl = `${url}/videos/${videoId}/comments`;
   const commentData = { commentBody: comment };
 
@@ -61,21 +72,38 @@ export const postComment = (videoId, comment) => {
     try {
       dispatch(actionBody(POST_NEW_COMMENT_LOADING, true));
 
-      const res = await axios.post(commentUrl, commentData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await axios.post(commentUrl, commentData);
 
       if (res.status === 201) {
         const { comment: newComment } = res.data;
         dispatch({ type: ADD_NEW_COMMENT, payload: newComment });
-        alertify.notify('Comentario creado', 'success', 5);
+        toast.success('Comentario creado');
       }
     } catch (error) {
-      alertify.notify(error.message, 'error', 5);
+      toast.error(error.message, 'error', 5);
     } finally {
       dispatch(actionBody(POST_NEW_COMMENT_LOADING, false));
+    }
+  };
+};
+
+export const removeComment = (videoId, commentId) => {
+  const deleteUrl = `${url}/videos/${videoId}/comments/${commentId}`;
+  return async (dispatch) => {
+    try {
+      dispatch(actionBody(SET_DELETE_COMMENT_LOADING, commentId));
+      const res = await axios.delete(deleteUrl);
+      dispatch(actionBody(REMOVE_COMMENT, commentId));
+      toast.success(res.data.message);
+    } catch (error) {
+      if (error.response) {
+        const { message } = error.response.data;
+        toast.error(message);
+      } else {
+        toast.error('No se pudo eliminar el comentario.');
+      }
+    } finally {
+      dispatch(actionBody(SET_DELETE_COMMENT_LOADING, null));
     }
   };
 };
@@ -127,9 +155,7 @@ export const getVideoComments = (videoId) => {
       const { comments } = res.data;
       dispatch(actionBody(VIDEO_COMMENTS_SUCCESS, comments));
     } catch (error) {
-      alertify.alert('Alert Title', 'Alert Message!', () => {
-        alertify.success('Ok');
-      });
+      toast.error('No se pudo recuperar los comentarios.');
     } finally {
       dispatch(actionBody(VIDEO_COMMENTS_LOADING, false));
     }

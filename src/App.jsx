@@ -28,7 +28,7 @@ function App() {
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path="videoview/:videoId" element={<VideoView />}>
+          <Route path="watchvideo/:videoId" element={<VideoView />}>
             <Route path=":redirect" component={<VideoView />} />
           </Route>
           <Route path="/" element={<Home />} />

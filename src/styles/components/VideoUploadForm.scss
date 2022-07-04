@@ -54,6 +54,20 @@
   color: #000000d2;
 }
 
+.video-upload-fom__uploading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--gray-dark);
+  font-size: 0.8rem;
+  font-style: italic;
+
+  @include tabletAndDesktop() {
+    grid-column: span 2;
+  }
+}
+
 .video-upload-form__media__container {
   position: absolute;
   top: 0;

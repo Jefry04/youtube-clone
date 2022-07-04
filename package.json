@@ -19,9 +19,11 @@
     "react-redux": "^8.0.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-toastify": "^9.0.5",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
     "sass": "^1.51.0",
+    "sweetalert2": "^11.4.19",
     "tabler-icons-react": "^1.48.1",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
-import alertify from 'alertifyjs';
 import '../../styles/components/UserProfile/UpdateUserForm.scss';
 import { updateUser } from '../../store/reducers/Auth.actionCreator';
 
@@ -16,10 +16,6 @@ export default function UpdateUserForm({ user }) {
   const dispatch = useDispatch();
 
   const backUri = process.env.REACT_APP_BACKEND_URI;
-  const token = localStorage.getItem('token');
-  const headers = {
-    Authorization: `Bearer ${token}`,
-  };
 
   useEffect(() => {
     if (user) {
@@ -36,10 +32,10 @@ export default function UpdateUserForm({ user }) {
     setLoading(true);
 
     try {
-      const res = await axios.put(url, data, { headers });
+      const res = await axios.put(url, data);
       const { user: userUpdated } = res.data;
       dispatch(updateUser(userUpdated));
-      alertify.notify('¡Información actualizada!', 'success', 5);
+      toast.success('¡Información de usuario actualizada!');
     } catch (error) {
       if (error.response) {
         const { status } = error.response;
@@ -47,10 +43,8 @@ export default function UpdateUserForm({ user }) {
         if (status === 406) {
           setErrors(validationErrors);
         }
-        alertify.notify(
-          'No se pudo actualizar la información, revisa el formulario.',
-          'error',
-          5
+        toast.error(
+          'No se pudo actualizar la información, revisa el formulario.'
         );
       }
     } finally {
@@ -135,7 +129,6 @@ export default function UpdateUserForm({ user }) {
           content={loading ? 'Actualizando...' : 'Actualizar'}
           isSubmit
           isDisabled={loading}
-          /* handleClick={() => dispatch(showFormAction())} */
         />
       </footer>
     </form>
