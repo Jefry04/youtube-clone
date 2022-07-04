@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import alertify from 'alertifyjs';
+import { toast } from 'react-toastify';
 import { Progress } from '@mantine/core';
 import '../../styles/components/UserProfile/UpdateAvatarForm.scss';
 import { Trash } from 'tabler-icons-react';
@@ -77,9 +77,9 @@ export default function UpdateAvatarForm({ user }) {
       dispatch(updateUser(userUpdated));
 
       resetForm();
-      alertify.notify('¡Avatar Actualizado!', 'success', 5);
+      toast.info('¡Avatar Actualizado!');
     } catch (error) {
-      alertify.notify('No se pudo actualizar el avatar.', 'error', 5);
+      toast.error('No se pudo actualizar el avatar.');
     } finally {
       setLoading(false);
     }
@@ -95,9 +95,9 @@ export default function UpdateAvatarForm({ user }) {
 
       dispatch(updateUser(userUpdated));
       resetForm();
-      alertify.notify('¡Avatar Actualizado!', 'success', 5);
+      toast.success('¡Imagen de perfil eliminada!');
     } catch (error) {
-      alertify.notify('No se pudo eliminar la imagen del avatar.', 'error', 5);
+      toast.error('No se pudo eliminar la imagen de perfil');
     } finally {
       setLoading(false);
     }

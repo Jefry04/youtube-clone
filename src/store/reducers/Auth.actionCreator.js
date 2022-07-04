@@ -1,5 +1,5 @@
 import axios from 'axios';
-import alertify from 'alertifyjs';
+import { toast } from 'react-toastify';
 
 import { hiddeLoginForm, hiddeRegisterForm } from './Modals.actionCreator';
 import { AUTH_SUCCESS, AUTH_ERROR, LOGOUT, USER_SUCCESS } from './Auth.actions';
@@ -33,7 +33,7 @@ export const register = (body) => {
       const { token, message, ...user } = response.data;
       localStorage.setItem('token', token);
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-      alertify.notify('Usuario registrado con exito', 'success', 5);
+      toast.success('Usuario registrado con exito');
       dispatch(hiddeRegisterForm());
       dispatch({ type: AUTH_SUCCESS, payload: user });
     } catch (error) {
@@ -123,10 +123,10 @@ export const putNewPasswordData = ({
         }
       );
       dispatch({ type: USER_SUCCESS, payload: response.data.user });
-      alertify.notify('Cambio de password con exito', 'success', 5);
+      toast.success('Cambio de contraseña con exito');
     } catch (error) {
       dispatch({ type: AUTH_ERROR, payload: error.response });
-      alertify.notify(error.message, 'error', 5);
+      toast.error(error.message, 'error', 5);
     }
   };
 };

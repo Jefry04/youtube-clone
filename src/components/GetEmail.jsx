@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import alertify from 'alertifyjs';
+import { toast } from 'react-toastify';
 import { Loader } from '@mantine/core';
 
 import Buttonaction from './ButtonAction';
@@ -35,7 +35,7 @@ function GetEmail() {
     const response = await axios.post(`${url}/user/getemail`, { email });
     if (response.status === 201) {
       dispatch(hiddeRecoverPassword());
-      alertify.notify('Correo enviado con exito', 'success', 5);
+      toast.success('Correo enviado con exito');
     }
     navigate('/');
   };
@@ -44,7 +44,7 @@ function GetEmail() {
     return (
       <div className="loading">
         <Loader color="red" size={100} />
-        <h2>Sending email...</h2>
+        <h2>Enviando correo...</h2>
       </div>
     );
   }

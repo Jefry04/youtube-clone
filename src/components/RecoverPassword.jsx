@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import alertify from 'alertifyjs';
+import { toast } from 'react-toastify';
 import { Loader } from '@mantine/core';
 
 import Buttonaction from './ButtonAction';
@@ -41,17 +41,17 @@ function RecoverPassword() {
         },
         {
           headers: {
-            Authorization: `bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
       if (response.status === 201) {
-        alertify.notify('Cambio de contraseña exitoso', 'success', 5);
+        toast.success('Cambio de contraseña exitoso');
         navigate('/');
       }
     } catch (error) {
       setLoading(false);
-      alertify.notify('Credenciales vencidas', 'error', 5);
+      toast.error('Credenciales vencidas.');
     }
   };
 

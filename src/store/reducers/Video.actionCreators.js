@@ -1,5 +1,5 @@
 import axios from 'axios';
-import alertify from 'alertifyjs';
+import { toast } from 'react-toastify';
 import { showFormAction } from './Modals.actionCreator';
 
 import {
@@ -28,7 +28,7 @@ export const postView = ({ viwer, videoId }) => {
     try {
       await axios.post(`${url}/videos/${videoId}/view`, viwer);
     } catch (error) {
-      alertify.notify(error.message, 'error', 5);
+      toast.error(error.message);
     }
   };
 };
@@ -54,10 +54,10 @@ export const postVideo = (uploadData) => {
       });
       if (response.status === 201) dispatch(showFormAction());
       dispatch(actionBody(UPLOAD_VIDEO_SUCCESS, response.data.video));
-      alertify.notify('Video subido con exito', 'success', 5);
+      toast.success('Video subido con exito');
     } catch (error) {
       dispatch(actionBody(UPLOAD_VIDEO_SUCCESS, error));
-      alertify.notify(error.message, 'error', 5);
+      toast.error(error.message);
     }
   };
 };
@@ -80,10 +80,10 @@ export const postComment = (videoId, comment) => {
       if (res.status === 201) {
         const { comment: newComment } = res.data;
         dispatch({ type: ADD_NEW_COMMENT, payload: newComment });
-        alertify.notify('Comentario creado', 'success', 5);
+        toast.success('Comentario creado');
       }
     } catch (error) {
-      alertify.notify(error.message, 'error', 5);
+      toast.error(error.message, 'error', 5);
     } finally {
       dispatch(actionBody(POST_NEW_COMMENT_LOADING, false));
     }
@@ -137,9 +137,7 @@ export const getVideoComments = (videoId) => {
       const { comments } = res.data;
       dispatch(actionBody(VIDEO_COMMENTS_SUCCESS, comments));
     } catch (error) {
-      alertify.alert('Alert Title', 'Alert Message!', () => {
-        alertify.success('Ok');
-      });
+      toast.error('No se pudo recuperar los comentarios.');
     } finally {
       dispatch(actionBody(VIDEO_COMMENTS_LOADING, false));
     }

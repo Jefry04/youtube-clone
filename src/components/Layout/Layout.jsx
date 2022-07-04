@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMediaQuery } from '@mantine/hooks';
+import { ToastContainer } from 'react-toastify';
 
 import {
   hiddeRegisterForm,
@@ -53,6 +54,19 @@ function Layout(props) {
           >
             <GetEmail />
           </PublicModal>
+
+          <ToastContainer
+            position="bottom-right"
+            theme="dark"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </main>
       </div>
       <MobileFooter />
