@@ -15,6 +15,8 @@ import {
   VIDEO_COMMENTS_SUCCESS,
   POST_NEW_COMMENT_LOADING,
   ADD_NEW_COMMENT,
+  REMOVE_COMMENT,
+  SET_DELETE_COMMENT_LOADING,
   RESET_INITIAL_STATE,
   IS_UPLOADING_VIDEO,
   SET_UPLOADING_PERCENTAGE,
@@ -63,7 +65,6 @@ export const postVideo = (uploadData) => {
 };
 
 export const postComment = (videoId, comment) => {
-  const token = localStorage.getItem('token');
   const commentUrl = `${url}/videos/${videoId}/comments`;
   const commentData = { commentBody: comment };
 
@@ -71,11 +72,7 @@ export const postComment = (videoId, comment) => {
     try {
       dispatch(actionBody(POST_NEW_COMMENT_LOADING, true));
 
-      const res = await axios.post(commentUrl, commentData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await axios.post(commentUrl, commentData);
 
       if (res.status === 201) {
         const { comment: newComment } = res.data;
@@ -86,6 +83,27 @@ export const postComment = (videoId, comment) => {
       toast.error(error.message, 'error', 5);
     } finally {
       dispatch(actionBody(POST_NEW_COMMENT_LOADING, false));
+    }
+  };
+};
+
+export const removeComment = (videoId, commentId) => {
+  const deleteUrl = `${url}/videos/${videoId}/comments/${commentId}`;
+  return async (dispatch) => {
+    try {
+      dispatch(actionBody(SET_DELETE_COMMENT_LOADING, commentId));
+      const res = await axios.delete(deleteUrl);
+      dispatch(actionBody(REMOVE_COMMENT, commentId));
+      toast.success(res.data.message);
+    } catch (error) {
+      if (error.response) {
+        const { message } = error.response.data;
+        toast.error(message);
+      } else {
+        toast.error('No se pudo eliminar el comentario.');
+      }
+    } finally {
+      dispatch(actionBody(SET_DELETE_COMMENT_LOADING, null));
     }
   };
 };
