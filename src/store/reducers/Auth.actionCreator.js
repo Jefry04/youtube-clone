@@ -17,10 +17,12 @@ export const authUser = ({ email, password }) => {
       localStorage.setItem('token', token);
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
       dispatch(hiddeLoginForm());
+      toast.info(`Bienvenido ${response.data.user.name}`);
 
       dispatch({ type: AUTH_SUCCESS, payload: user });
     } catch (error) {
       dispatch({ type: AUTH_ERROR, payload: error });
+      toast.error(error.response.data.message);
     }
   };
 };
