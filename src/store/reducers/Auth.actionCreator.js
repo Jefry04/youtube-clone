@@ -60,6 +60,7 @@ export const getUerData = (token) => {
 
       dispatch({ type: USER_SUCCESS, payload: response.data.user });
     } catch (error) {
+      localStorage.removeItem('token');
       dispatch({ type: AUTH_ERROR, payload: error.response });
     }
   };

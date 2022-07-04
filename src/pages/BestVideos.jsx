@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Card from '../components/Card';
 import SkeletonElement from '../components/SkeletonElement';
 import {
@@ -9,20 +9,19 @@ import {
   resetState,
 } from '../store/reducers/Video.actionCreators';
 
-const VideoResults = () => {
-  const location = useLocation();
-  const searchInput = location.state;
+const BestVideos = () => {
+  const { labelName } = useParams();
 
   const { filtersVideo, loading } = useSelector((state) => state.VideoReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchFilterVideos(searchInput));
+    dispatch(fetchFilterVideos(labelName));
 
     return () => {
       dispatch(resetState());
     };
-  }, [searchInput, dispatch]);
+  }, [labelName, dispatch]);
 
   return (
     <div>
@@ -46,11 +45,11 @@ const VideoResults = () => {
         </div>
       ) : (
         <div className="card__container">
-          No se encontraron videos de: {searchInput}
+          No se encontraron videos de: {labelName}
         </div>
       )}
     </div>
   );
 };
 
-export default VideoResults;
+export default BestVideos;

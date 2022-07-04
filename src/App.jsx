@@ -12,6 +12,7 @@ import VideoView from './pages/VideoView';
 import VideoResults from './pages/VideoResults';
 import ProtectedRoute from './components/ProtectedRoute';
 import Response from './pages/Response';
+import BestVideos from './pages/BestVideos';
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
             <Route path=":redirect" component={<VideoView />} />
           </Route>
           <Route path="/" element={<Home />} />
+          <Route path="videos/bestvideos/:labelName" element={<BestVideos />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<UserProfile />} />
           </Route>
