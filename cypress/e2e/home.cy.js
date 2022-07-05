@@ -18,17 +18,17 @@ describe('e2e home page test', () => {
   });
 
   it('display dropdown from icon profile', () => {
-    cy.get(`[data-cy="profile-icon"]`).click({ force: true });
+    cy.get(`[data-cy="profile-icon"]`).click();
     cy.contains('Iniciar Sesión');
   });
 
   it('show login form', () => {
     cy.get(`[data-cy="profile-icon"]`)
-      .click({ force: true })
+      .click()
       .get("div[role='menu']")
       .find("button[role='menuitem']")
       .eq(1)
-      .click({ force: true });
-    cy.contains('Login');
+      .click();
+    cy.contains('Iniciar Sesión');
   });
 });

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Eye, Message, ThumbUp } from 'tabler-icons-react';
 import '../../styles/components/UserProfile/VideoList.scss';
+import SkeletonElement from '../SkeletonElement';
 
 export default function VideoList({ videos, loading, getVideos }) {
   const handleClick = (video) => {
@@ -42,7 +43,12 @@ export default function VideoList({ videos, loading, getVideos }) {
     <div className="user-profile__videos">
       <h2 className="user-profile__videos__title">Listado de videos</h2>
       {loading && (
-        <p className="user-profile__videos__loading">Recuperando videos...</p>
+        <div className="card__container">
+          {[...Array(8).keys()].map((n) => (
+            <SkeletonElement key={n} />
+          ))}
+        </div>
+        // <p className="user-profile__videos__loading">Recuperando videos...</p>
       )}
 
       {!loading && (
