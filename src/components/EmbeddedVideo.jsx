@@ -13,7 +13,10 @@ import {
   actionSearchData,
   postView,
 } from '../store/reducers/Video.actionCreators';
-import { showFormAction } from '../store/reducers/Modals.actionCreator';
+import {
+  showFormAction,
+  showLoginForm,
+} from '../store/reducers/Modals.actionCreator';
 import {
   getLikeData,
   getLikeDatarest,
@@ -35,7 +38,7 @@ const EmbeddedVideo = () => {
     like: false,
     numerLike: 0,
   });
-  const shareLink = `http://localhost:3000${location.pathname}`;
+  const shareLink = `https://youtubetopv22.netlify.app${location.pathname}`;
 
   const handler = window.ePayco.checkout.configure({
     key: process.env.REACT_APP_EPAYCO_PUBLIC_KEY,
@@ -52,6 +55,8 @@ const EmbeddedVideo = () => {
         setStateLike({ like: true, numerLike: stateLike.numerLike + 1 });
         dispatch(getLikeData({ videoId }));
       }
+    } else {
+      dispatch(showLoginForm());
     }
   };
 
@@ -156,15 +161,17 @@ const EmbeddedVideo = () => {
           <div className="primaryinfo__scope">
             <div className="scope__views">{`Visitas a este video ${views}`}</div>
             <div className="scope__buttons">
-              <p>{stateLike.numerLike}</p>
-              <div className="buttons__like">
-                <ButtonAction
-                  className="btn-action--like"
-                  prependIcon={stateLike.like ? <LikeIconOn /> : <LikeIcon />}
-                  type="submit"
-                  np
-                  handleClick={handleSubmit}
-                />
+              <div className="scope__buttons_like">
+                <div className="buttons__like">
+                  <ButtonAction
+                    className="btn-action--like"
+                    prependIcon={stateLike.like ? <LikeIconOn /> : <LikeIcon />}
+                    type="submit"
+                    np
+                    handleClick={handleSubmit}
+                  />
+                </div>
+                <p>{stateLike.numerLike}</p>
               </div>
               <ButtonAction
                 className="btn-action--toshare"
